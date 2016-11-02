@@ -2,9 +2,10 @@ import click # for group
 import os # for chdir, getcwd
 import os.path # for dirname
 import subprocess # for check_call
+import glob # for glob
 
 def dirs_of_repos():
-    for x in glob('*/.git'):
+    for x in glob.glob('*/.git'):
         yield os.path.dirname(x)
 
 @click.group()
