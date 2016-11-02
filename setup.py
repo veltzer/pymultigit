@@ -21,6 +21,7 @@ setuptools.setup(
     package_dir={'':'src'},
     packages=setuptools.find_packages('src'),
     install_requires=[
+        'click',
     ],
     entry_points={
         'console_scripts': [
