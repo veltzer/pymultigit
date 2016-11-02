@@ -1,5 +1,5 @@
 #!/bin/sh
 
-sudo -H pip3 install --quiet --upgrade awskit
-#sudo -H pip install --quiet --upgrade awskit
-pip3 show awskit | grep -e "^Version"
+PKG=multigit
+sudo -H pip3 install --quiet --upgrade multigit
+pip3 show multigit | grep -e "^Version"

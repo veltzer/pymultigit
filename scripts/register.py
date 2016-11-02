@@ -1,12 +1,11 @@
 #!/usr/bin/python3
 
 '''
-This script registers your project via twine.
+This script registers your project in pypi via setuptools.
 
 It does:
 - full clean
-- build wheel using setup.py
-- twine register
+- call for registration
 - full clean
 
 NOTE!!!
@@ -38,26 +37,3 @@ subprocess.check_call([
     'pypi',
 ], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 common.git_clean_full()
-
-'''
-import os # for listdir
-
-this does not work
-subprocess.check_call([
-    'python3',
-    'setup.py',
-    'bdist_wheel',
-], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-
-# at this point there should be only one file in the 'dist' folder
-file_list = list(os.listdir('dist'))
-assert len(file_list) == 1
-filename = file_list[0]
-full_filename = os.path.join('dist', filename)
-subprocess.check_call([
-    'twine',
-    'register',
-    full_filename,
-])
-], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-'''
