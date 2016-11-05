@@ -1,5 +1,10 @@
 import setuptools
 
+'''
+TODO: generate this file automagically
+from template.
+'''
+
 setuptools.setup(
     name='multigit',
     version='0.0.5',
