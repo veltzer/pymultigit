@@ -71,6 +71,7 @@ def status(obj):
             print('project [{0}] is dirty'.format(project_name))
             if obj.verbose:
                 print(res_out, end='')
+                print(res_err, end='')
         os.chdir(orig_dir)
     if obj.stats:
         print('scanned [{0}] projects'.format(count))
