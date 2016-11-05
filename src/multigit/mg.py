@@ -65,6 +65,9 @@ def status(obj):
         (res_out, res_err, returncode)=run([
             'git',
             'status',
+            # porcelain is guaranteed to have parsable output and not
+            # change across git versions
+            '--porcelain',
             #'--short',
         ])
         if res_out!='' or res_err!='':
