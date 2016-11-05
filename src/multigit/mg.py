@@ -30,10 +30,12 @@ class Obj(object):
 
 @click.group()
 @click.option('--verbose/--no-verbose', default=False, is_flag=True)
+@click.option('--stats/--no-stats', default=False, is_flag=True)
 @click.pass_context
-def cli(ctx, verbose):
+def cli(ctx, verbose, stats):
     ctx.obj=Obj()
     ctx.obj.verbose=verbose
+    ctx.obj.stats=stats
 
 @cli.command()
 @click.pass_obj
@@ -52,7 +54,9 @@ def build(obj):
 @click.pass_obj
 def status(obj):
     orig_dir=os.getcwd()
+    count=0
     for (project_name, project_dir) in projects():
+        count+=1
         os.chdir(project_dir)
         (res_out, res_err, returncode)=run([
             'git',
@@ -60,16 +64,22 @@ def status(obj):
             '--short',
         ])
         if res_out!='' or res_err!='':
-            print('{0} is dirty'.format(project_name))
+            print('project [{0}] is dirty'.format(project_name))
             if obj.verbose:
                 print(res_out, end='')
         os.chdir(orig_dir)
+    if obj.stats:
+        print('scanned [{0}] projects'.format(count))
 
 @cli.command()
 @click.pass_obj
 def list(obj):
+    count=0
     for (project_name, project_dir) in projects():
+        count+=1
         if obj.verbose:
             print(project_name, project_dir)
         else:
             print(project_name)
+    if obj.stats:
+        print('scanned [{0}] projects'.format(count))
