@@ -65,7 +65,7 @@ def status(obj):
         (res_out, res_err, returncode)=run([
             'git',
             'status',
-            '--short',
+            #'--short',
         ])
         if res_out!='' or res_err!='':
             print('project [{0}] is dirty'.format(project_name))
