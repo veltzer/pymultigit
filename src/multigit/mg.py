@@ -9,7 +9,11 @@ def projects():
     '''
     the method returns tuples of (project_name, project_dir)
     '''
-    for x in glob.glob('*/.git'):
+    repos_list=glob.glob('*/.git')
+    if len(repos_list)==0:
+        print('no git repos here', file=sys.stderr)
+        sys.exit(1)
+    for x in repos_list:
         yield (os.path.dirname(x), os.path.dirname(x))
 
 def run(args, exit=True):
