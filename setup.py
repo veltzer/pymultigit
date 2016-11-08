@@ -28,16 +28,9 @@ setuptools.setup(
     install_requires=[
         'click',
     ],
-    entry_points='''
-        [console_scripts]
-        mg=multigit.mg:cli
-    ''',
+    entry_points={
+        'console_scripts': [
+            'mg=multigit.mg:cli',
+        ],
+    },
 )
-
-'''
-entry_points={
-    'console_scripts': [
-        'mg=multigit.mg:cli',
-    ],
-},
-'''
