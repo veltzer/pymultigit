@@ -1,14 +1,14 @@
-import click # for group
-import os # for chdir, getcwd
-import os.path # for dirname
-import subprocess # for check_call
-import glob # for glob
-import sys # for exit
+import click
+import os
+import os.path
+import subprocess
+import glob
+import sys
 
 def projects():
-    '''
+    """
     the method returns tuples of (project_name, project_dir)
-    '''
+    """
     repos_list=glob.glob('*/.git')
     if len(repos_list)==0:
         print('no git repos here', file=sys.stderr)
@@ -87,7 +87,7 @@ def status(obj):
 @cli.command()
 @click.pass_obj
 def list(obj):
-    ''' doc for list '''
+    """ list all projects """
     count=0
     for (project_name, project_dir) in projects():
         count+=1
@@ -97,6 +97,41 @@ def list(obj):
             print(project_name)
     if obj.stats:
         print('scanned [{0}] projects'.format(count))
+
+@cli.command()
+@click.pass_obj
+def clean(obj):
+    """ clean all projects """
+    count=0
+    count_not_found=0
+    count_error=0
+    count_ok=0
+    orig_dir=os.getcwd()
+    for (project_name, project_dir) in projects():
+        if obj.verbose:
+            print('cleaning [{0}] at [{1}]...'.format(project_name, project_dir), end='')
+            sys.stdout.flush()
+        count+=1
+        if os.path.isdir(project_dir):
+            os.chdir(project_dir)
+            ret = subprocess.call(['git','clean','-qffxd'])
+            if ret:
+                count_error+=1
+            else:
+                count_ok+=1
+            if obj.verbose:
+                print('OK')
+            os.chdir(orig_dir)
+        else:
+            if obj.verbose:
+                print('NOT FOUND')
+            count_not_found+=1
+    if obj.stats:
+        print('scanned [{}] projects'.format(count))
+        print('[{}] not found'.format(count_not_found))
+        print('[{}] error'.format(count_error))
+        print('[{}] ok'.format(count_ok))
+
 
 if __name__=='__main__':
     cli()
