@@ -1,5 +1,5 @@
 .. multigit documentation master file, created by
-   sphinx-quickstart on Sat Nov  5 18:04:46 2016.
+   sphinx-quickstart on Tue Nov 29 13:13:36 2016.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 

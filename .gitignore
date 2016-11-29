@@ -90,4 +90,4 @@ ENV/
 .ropeproject
 
 # sphinx
-/_build
+/doc/build
