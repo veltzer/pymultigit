@@ -6,11 +6,15 @@ import glob
 import sys
 import git
 
+sort = True
+
 def projects():
     """
     the method returns tuples of (project_name, project_dir)
     """
     repos_list=glob.glob('*/.git')
+    if sort:
+        repos_list.sort()
     if len(repos_list)==0:
         print('no git repos here', file=sys.stderr)
         sys.exit(1)
@@ -66,7 +70,7 @@ def status(obj):
     for (project_name, project_dir) in projects():
         count+=1
         repo = git.Repo(project_dir)
-        dirty = repo.is_dirty()
+        dirty = repo.is_dirty() or len(repo.untracked_files)>0
         if dirty:
             count_dirty+=1
         if obj.verbose:
