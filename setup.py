@@ -27,6 +27,7 @@ setuptools.setup(
     packages=setuptools.find_packages('src'),
     install_requires=[
         'click',
+        'gitpython',
     ],
     entry_points={
         'console_scripts': [

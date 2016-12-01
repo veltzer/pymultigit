@@ -4,6 +4,7 @@ import os.path
 import subprocess
 import glob
 import sys
+import git
 
 def projects():
     """
@@ -33,11 +34,11 @@ class Obj(object):
     pass
 
 @click.group(short_help="short help")
-@click.option('--verbose/--no-verbose', default=False, is_flag=True, help='help for verbose')
-@click.option('--stats/--no-stats', default=False, is_flag=True, help='help for stats')
+@click.option('--verbose/--no-verbose', default=False, is_flag=True, help='be verbose')
+@click.option('--stats/--no-stats', default=False, is_flag=True, help='show statstics at the end')
 @click.pass_context
 def cli(ctx, verbose, stats):
-    """ doc for cli """
+    """ multigit allows you to perform operations on multiple git repositories """
     ctx.obj=Obj()
     ctx.obj.verbose=verbose
     ctx.obj.stats=stats
@@ -45,7 +46,7 @@ def cli(ctx, verbose, stats):
 @cli.command()
 @click.pass_obj
 def build(obj):
-    ''' doc for build '''
+    """ build multiple git repositories """
     orig_dir=os.getcwd()
     for (project_name, project_dir) in projects():
         os.chdir(project_dir)
@@ -56,12 +57,31 @@ def build(obj):
         ])
         os.chdir(orig_dir)
 
-@cli.command(help="this is help")
+@cli.command()
 @click.pass_obj
 def status(obj):
-    """
-    doc for status
-    """
+    """ show the status of multiple git repositories """
+    count=0
+    count_dirty=0
+    for (project_name, project_dir) in projects():
+        count+=1
+        repo = git.Repo(project_dir)
+        dirty = repo.is_dirty()
+        if dirty:
+            count_dirty+=1
+        if obj.verbose:
+            if dirty:
+                print('project [{}] is dirty'.format(project_name))
+            else:
+                print('project [{}] is clean'.format(project_name))
+    if obj.stats:
+        print('scanned [{0}] projects'.format(count))
+        print('[{0}] projects were dirty'.format(count_dirty))
+
+@cli.command()
+@click.pass_obj
+def status_old(obj):
+    """ show the status of multiple git repositories """
     orig_dir=os.getcwd()
     count=0
     for (project_name, project_dir) in projects():

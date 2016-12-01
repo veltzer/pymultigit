@@ -91,3 +91,5 @@ ENV/
 
 # sphinx
 /doc/build
+
+*.stamp
