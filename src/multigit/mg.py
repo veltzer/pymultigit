@@ -37,6 +37,44 @@ def run(args, exit=True):
 class Obj(object):
     pass
 
+def do_count(obj, function, attr_name, not_attr_name, attr_plural):
+    count=0
+    count_attr=0
+    for (project_name, project_dir) in projects():
+        count+=1
+        repo = git.Repo(project_dir)
+        attr = function(repo)
+        if attr:
+            count_attr+=1
+        if obj.verbose:
+            if attr:
+                print('project [{project_name}] {attr_name}'.format(
+                    project_name=project_name,
+                    attr_name=attr_name,
+                ))
+            else:
+                print('project [{project_name}] {not_attr_name}'.format(
+                    project_name=proejct_name,
+                    not_attr_name=not_attr_name,
+                ))
+    if obj.stats:
+        print('scanned [{count}] projects'.format(
+            count=count,
+        ))
+        print('[{count_attr}] projects {attr_plural}'.format(
+            count_attr=count_attr,
+            attr_plural=attr_plural,
+        ))
+
+def is_dirty(repo):
+    return repo.is_dirty()
+
+def has_untracked_files(repo):
+    return len(repo.untracked_files)>0
+
+def synced_with_upstream(repo):
+    return true
+
 @click.group(short_help="short help")
 @click.option('--verbose/--no-verbose', default=False, is_flag=True, help='be verbose')
 @click.option('--stats/--no-stats', default=False, is_flag=True, help='show statstics at the end')
@@ -63,24 +101,24 @@ def build(obj):
 
 @cli.command()
 @click.pass_obj
-def status(obj):
+def dirty(obj):
     """ show the status of multiple git repositories """
-    count=0
-    count_dirty=0
-    for (project_name, project_dir) in projects():
-        count+=1
-        repo = git.Repo(project_dir)
-        dirty = repo.is_dirty() or len(repo.untracked_files)>0
-        if dirty:
-            count_dirty+=1
-        if obj.verbose:
-            if dirty:
-                print('project [{}] is dirty'.format(project_name))
-            else:
-                print('project [{}] is clean'.format(project_name))
-    if obj.stats:
-        print('scanned [{0}] projects'.format(count))
-        print('[{0}] projects were dirty'.format(count_dirty))
+    do_count(obj, is_dirty, 'is dirty', 'is clean', 'were dirty')
+
+
+@cli.command()
+@click.pass_obj
+def untracked(obj):
+    """ show which repositories have untracked files """
+    do_count(obj, has_untracked_files, 'has untracked files', 'is fully tracked', 'have untracked files')
+
+
+@cli.command()
+@click.pass_obj
+def (obj):
+    """ show which repositories are synchronized with their upsteam """
+    do_count(obj, synced_with_upstream, 'is behind upstream', 'is synched', 'are behind upstream')
+
 
 @cli.command()
 @click.pass_obj
