@@ -115,7 +115,7 @@ def untracked(obj):
 
 @cli.command()
 @click.pass_obj
-def (obj):
+def synched(obj):
     """ show which repositories are synchronized with their upsteam """
     do_count(obj, synced_with_upstream, 'is behind upstream', 'is synched', 'are behind upstream')
 
