@@ -73,7 +73,7 @@ def has_untracked_files(repo):
     return len(repo.untracked_files)>0
 
 def synced_with_upstream(repo):
-    return true
+    return True
 
 @click.group(short_help="short help")
 @click.option('--verbose/--no-verbose', default=False, is_flag=True, help='be verbose')
