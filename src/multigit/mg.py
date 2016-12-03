@@ -66,6 +66,37 @@ def do_count(obj, function, attr_name, not_attr_name, attr_plural):
             attr_plural=attr_plural,
         ))
 
+def do_for_all_projects(obj, function):
+    count=0
+    count_not_found=0
+    count_error=0
+    count_ok=0
+    orig_dir=os.getcwd()
+    for (project_name, project_dir) in projects():
+        if obj.verbose:
+            print('cleaning [{0}] at [{1}]...'.format(project_name, project_dir), end='')
+            sys.stdout.flush()
+        count+=1
+        if os.path.isdir(project_dir):
+            os.chdir(project_dir)
+            ret = function(obj, porject_name, project_dir)
+            if ret:
+                count_error+=1
+            else:
+                count_ok+=1
+            if obj.verbose:
+                print('OK')
+            os.chdir(orig_dir)
+        else:
+            if obj.verbose:
+                print('NOT FOUND')
+            count_not_found+=1
+    if obj.stats:
+        print('scanned [{}] projects'.format(count))
+        print('[{}] not found'.format(count_not_found))
+        print('[{}] error'.format(count_error))
+        print('[{}] ok'.format(count_ok))
+
 def is_dirty(repo):
     return repo.is_dirty()
 
@@ -74,6 +105,36 @@ def has_untracked_files(repo):
 
 def synced_with_upstream(repo):
     return True
+
+def do_clean(obj, project_name, project_dir):
+    return subprocess.call(['git','clean','-qffxd'])
+
+def do_status(obj, project_name, project_dir):
+    (res_out, res_err, returncode)=run([
+        'git',
+        'status',
+        # porcelain is guaranteed to have parsable output and not
+        # change across git versions
+        '--porcelain',
+        #'--short',
+    ])
+    if res_out!='' or res_err!='':
+        print('project [{0}] is dirty'.format(project_name))
+        if obj.verbose:
+            print(res_out, end='')
+            print(res_err, end='')
+        return 1
+    else:
+        return 0
+
+
+def do_print(obj, project_name, project_dir):
+    if obj.verbose:
+        print(project_name, project_dir)
+    else:
+        print(project_name)
+    return 0
+
 
 @click.group(short_help="short help")
 @click.option('--verbose/--no-verbose', default=False, is_flag=True, help='be verbose')
@@ -85,19 +146,6 @@ def cli(ctx, verbose, stats):
     ctx.obj.verbose=verbose
     ctx.obj.stats=stats
 
-@cli.command()
-@click.pass_obj
-def build(obj):
-    """ build multiple git repositories """
-    orig_dir=os.getcwd()
-    for (project_name, project_dir) in projects():
-        os.chdir(project_dir)
-        (res_out, res_err, returncode)=run([
-            'git',
-            'status',
-            '--short',
-        ])
-        os.chdir(orig_dir)
 
 @cli.command()
 @click.pass_obj
@@ -122,77 +170,30 @@ def synched(obj):
 
 @cli.command()
 @click.pass_obj
-def status_old(obj):
+def clean(obj):
+    """ clean all projects """
+    do_for_all_projects(obj, do_clean)
+
+
+@cli.command()
+@click.pass_obj
+def status(obj):
     """ show the status of multiple git repositories """
-    orig_dir=os.getcwd()
-    count=0
-    for (project_name, project_dir) in projects():
-        count+=1
-        os.chdir(project_dir)
-        (res_out, res_err, returncode)=run([
-            'git',
-            'status',
-            # porcelain is guaranteed to have parsable output and not
-            # change across git versions
-            '--porcelain',
-            #'--short',
-        ])
-        if res_out!='' or res_err!='':
-            print('project [{0}] is dirty'.format(project_name))
-            if obj.verbose:
-                print(res_out, end='')
-                print(res_err, end='')
-        os.chdir(orig_dir)
-    if obj.stats:
-        print('scanned [{0}] projects'.format(count))
+    do_for_all_projects(obj, do_status)
+
+
+@cli.command()
+@click.pass_obj
+def build(obj):
+    """ build multiple git repositories """
+    do_for_all_projects(obj, do_build)
+
 
 @cli.command()
 @click.pass_obj
 def list(obj):
     """ list all projects """
-    count=0
-    for (project_name, project_dir) in projects():
-        count+=1
-        if obj.verbose:
-            print(project_name, project_dir)
-        else:
-            print(project_name)
-    if obj.stats:
-        print('scanned [{0}] projects'.format(count))
-
-@cli.command()
-@click.pass_obj
-def clean(obj):
-    """ clean all projects """
-    count=0
-    count_not_found=0
-    count_error=0
-    count_ok=0
-    orig_dir=os.getcwd()
-    for (project_name, project_dir) in projects():
-        if obj.verbose:
-            print('cleaning [{0}] at [{1}]...'.format(project_name, project_dir), end='')
-            sys.stdout.flush()
-        count+=1
-        if os.path.isdir(project_dir):
-            os.chdir(project_dir)
-            ret = subprocess.call(['git','clean','-qffxd'])
-            if ret:
-                count_error+=1
-            else:
-                count_ok+=1
-            if obj.verbose:
-                print('OK')
-            os.chdir(orig_dir)
-        else:
-            if obj.verbose:
-                print('NOT FOUND')
-            count_not_found+=1
-    if obj.stats:
-        print('scanned [{}] projects'.format(count))
-        print('[{}] not found'.format(count_not_found))
-        print('[{}] error'.format(count_error))
-        print('[{}] ok'.format(count_ok))
+    do_for_all_projects(obj, do_print)
 
 
 if __name__=='__main__':
