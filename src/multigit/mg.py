@@ -79,7 +79,7 @@ def do_for_all_projects(obj, function):
         count+=1
         if os.path.isdir(project_dir):
             os.chdir(project_dir)
-            ret = function(obj, porject_name, project_dir)
+            ret = function(obj, project_name, project_dir)
             if ret:
                 count_error+=1
             else:
