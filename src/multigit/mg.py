@@ -103,8 +103,8 @@ def is_dirty(repo):
 def has_untracked_files(repo):
     return len(repo.untracked_files)>0
 
-def synced_with_upstream(repo):
-    return True
+def outsynced_with_upstream(repo):
+    return False
 
 def do_clean(obj, project_name, project_dir):
     return subprocess.call(['git','clean','-qffxd'])
@@ -165,7 +165,7 @@ def untracked(obj):
 @click.pass_obj
 def synched(obj):
     """ show which repositories are synchronized with their upsteam """
-    do_count(obj, synced_with_upstream, 'is behind upstream', 'is synched', 'are behind upstream')
+    do_count(obj, outsynced_with_upstream, 'is behind upstream', 'is synched', 'are behind upstream')
 
 
 @cli.command()
