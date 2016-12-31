@@ -23,7 +23,7 @@ setuptools.setup(
         'Programming Language :: Python :: 3.5',
     ],
     keywords='git python repositories multiple',
-    package_dir={'':'src'},
+    package_dir={'': 'src'},
     packages=setuptools.find_packages('src'),
     install_requires=[
         'click',

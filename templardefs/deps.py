@@ -1,17 +1,19 @@
-'''
+"""
 dependencies for this project
-'''
+"""
+
 
 def populate(d):
-    d.requirements3_dev=[
-        #'sphinx-pypi-upload',
+    d.requirements3_dev = [
+        # 'sphinx-pypi-upload',
     ]
-    d.requirements3=[
+    d.requirements3 = [
         'click',
         'gitpython',
     ]
 
-def getdeps():
+
+def get_deps():
     return [
-        __file__, # myself
+        __file__,  # myself
     ]

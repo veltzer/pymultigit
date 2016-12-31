@@ -5,47 +5,56 @@ import subprocess
 import glob
 import sys
 import git
+from pyfakeuse.pyfakeuse import fake_use
 
 sort = True
+
 
 def projects():
     """
     the method returns tuples of (project_name, project_dir)
     """
-    repos_list=glob.glob('*/.git')
+    repos_list = glob.glob('*/.git')
     if sort:
         repos_list.sort()
-    if len(repos_list)==0:
+    if len(repos_list) == 0:
         print('no git repos here', file=sys.stderr)
         sys.exit(1)
     for x in repos_list:
         yield (os.path.dirname(x), os.path.dirname(x))
 
-def run(args, exit=True):
-    p=subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    (res_out, res_err)=p.communicate()
-    res_out=res_out.decode()
-    res_err=res_err.decode()
+
+def run(args, do_exit=True):
+    p = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    (res_out, res_err) = p.communicate()
+    res_out = res_out.decode()
+    res_err = res_err.decode()
     if p.returncode:
         print('errors while running [{0}]...'.format(args))
         print(res_out, end='', file=sys.stderr)
         print(res_err, end='', file=sys.stderr)
-        if exit:
+        if do_exit:
             sys.exit(p.returncode)
-    return (res_out, res_err, p.returncode)
+    return res_out, res_err, p.returncode
+
 
 class Obj(object):
     pass
 
+
+def do_build():
+    pass
+
+
 def do_count(obj, function, attr_name, not_attr_name, attr_plural):
-    count=0
-    count_attr=0
+    count = 0
+    count_attr = 0
     for (project_name, project_dir) in projects():
-        count+=1
+        count += 1
         repo = git.Repo(project_dir)
         attr = function(repo)
         if attr:
-            count_attr+=1
+            count_attr += 1
         if obj.verbose:
             if attr:
                 print('project [{project_name}] {attr_name}'.format(
@@ -54,7 +63,7 @@ def do_count(obj, function, attr_name, not_attr_name, attr_plural):
                 ))
             else:
                 print('project [{project_name}] {not_attr_name}'.format(
-                    project_name=proejct_name,
+                    project_name=project_name,
                     not_attr_name=not_attr_name,
                 ))
     if obj.stats:
@@ -66,59 +75,70 @@ def do_count(obj, function, attr_name, not_attr_name, attr_plural):
             attr_plural=attr_plural,
         ))
 
+
 def do_for_all_projects(obj, function):
-    count=0
-    count_not_found=0
-    count_error=0
-    count_ok=0
-    orig_dir=os.getcwd()
+    count = 0
+    count_not_found = 0
+    count_error = 0
+    count_ok = 0
+    orig_dir = os.getcwd()
     for (project_name, project_dir) in projects():
         if obj.verbose:
             print('cleaning [{0}] at [{1}]...'.format(project_name, project_dir), end='')
             sys.stdout.flush()
-        count+=1
+        count += 1
         if os.path.isdir(project_dir):
             os.chdir(project_dir)
             ret = function(obj, project_name, project_dir)
             if ret:
-                count_error+=1
+                count_error += 1
             else:
-                count_ok+=1
+                count_ok += 1
             if obj.verbose:
                 print('OK')
             os.chdir(orig_dir)
         else:
             if obj.verbose:
                 print('NOT FOUND')
-            count_not_found+=1
+            count_not_found += 1
     if obj.stats:
         print('scanned [{}] projects'.format(count))
         print('[{}] not found'.format(count_not_found))
         print('[{}] error'.format(count_error))
         print('[{}] ok'.format(count_ok))
 
+
 def is_dirty(repo):
     return repo.is_dirty()
 
+
 def has_untracked_files(repo):
-    return len(repo.untracked_files)>0
+    return len(repo.untracked_files) > 0
+
 
 def outsynced_with_upstream(repo):
+    fake_use(repo)
     return False
 
+
 def do_clean(obj, project_name, project_dir):
-    return subprocess.call(['git','clean','-qffxd'])
+    fake_use(obj)
+    fake_use(project_name)
+    fake_use(project_dir)
+    return subprocess.call(['git', 'clean', '-qffxd'])
+
 
 def do_status(obj, project_name, project_dir):
-    (res_out, res_err, returncode)=run([
+    fake_use(project_dir)
+    (res_out, res_err, returncode) = run([
         'git',
         'status',
         # porcelain is guaranteed to have parsable output and not
         # change across git versions
         '--porcelain',
-        #'--short',
+        # '--short',
     ])
-    if res_out!='' or res_err!='':
+    if res_out != '' or res_err != '':
         print('project [{0}] is dirty'.format(project_name))
         if obj.verbose:
             print(res_out, end='')
@@ -142,9 +162,9 @@ def do_print(obj, project_name, project_dir):
 @click.pass_context
 def cli(ctx, verbose, stats):
     """ pymultigit allows you to perform operations on multiple git repositories """
-    ctx.obj=Obj()
-    ctx.obj.verbose=verbose
-    ctx.obj.stats=stats
+    ctx.obj = Obj()
+    ctx.obj.verbose = verbose
+    ctx.obj.stats = stats
 
 
 @cli.command()
@@ -191,10 +211,10 @@ def build(obj):
 
 @cli.command()
 @click.pass_obj
-def list(obj):
+def list_projects(obj):
     """ list all projects """
     do_for_all_projects(obj, do_print)
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     cli()

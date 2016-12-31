@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-'''
+"""
 This script registers your project in pypi via setuptools.
 
 It does:
@@ -23,10 +23,10 @@ You just need to do it once...:)
 
 References:
 - https://packaging.python.org/distributing/
-'''
+"""
 
-import common # for git_clean_full
-import subprocess # for check_call, DEVNULL
+import common
+import subprocess
 
 common.git_clean_full()
 subprocess.check_call([
