@@ -141,7 +141,7 @@ def do_print(obj, project_name, project_dir):
 @click.option('--stats/--no-stats', default=False, is_flag=True, help='show statstics at the end')
 @click.pass_context
 def cli(ctx, verbose, stats):
-    """ multigit allows you to perform operations on multiple git repositories """
+    """ pymultigit allows you to perform operations on multiple git repositories """
     ctx.obj=Obj()
     ctx.obj.verbose=verbose
     ctx.obj.stats=stats

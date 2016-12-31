@@ -6,11 +6,11 @@ from template.
 '''
 
 setuptools.setup(
-    name='multigit',
+    name='pymultigit',
     version='0.0.12',
-    description='multigit is a command to help you deal with multiple git repositories',
-    long_description='this is the long description of multigit',
-    url='https://veltzer.github.io/multigit',
+    description='pymultigit is a command to help you deal with pymultiple git repositories',
+    long_description='this is the long description of pymultigit',
+    url='https://veltzer.github.io/pymultigit',
     author='Mark Veltzer',
     author_email='mark.veltzer@gmail.com',
     license='GPL3',
@@ -31,7 +31,7 @@ setuptools.setup(
     ],
     entry_points={
         'console_scripts': [
-            'mg=multigit.mg:cli',
+            'mg=pymultigit.mg:cli',
         ],
     },
 )

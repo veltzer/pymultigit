@@ -1,9 +1,9 @@
-.. multigit documentation master file, created by
+.. pymultigit documentation master file, created by
    sphinx-quickstart on Tue Nov 29 13:13:36 2016.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to multigit's documentation!
+Welcome to pymultigit's documentation!
 ====================================
 
 Contents:
