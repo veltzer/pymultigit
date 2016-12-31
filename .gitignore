@@ -93,3 +93,5 @@ ENV/
 /doc/build
 
 *.stamp
+
+/.idea/workspace.xml
