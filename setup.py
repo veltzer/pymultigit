@@ -19,7 +19,6 @@ setuptools.setup(
     author_email='mark.veltzer@gmail.com',
     license='MIT',
     classifiers=[
-        'License :: OSI Approved :: MIT License'
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'Programming Language :: Python :: 3',
