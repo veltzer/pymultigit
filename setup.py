@@ -17,14 +17,12 @@ setuptools.setup(
     url='https://veltzer.github.io/pymultigit',
     author='Mark Veltzer',
     author_email='mark.veltzer@gmail.com',
-    license='GPL3',
-    # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
+    license='MIT',
     classifiers=[
+        'License :: OSI Approved :: MIT License'
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
-        'Topic :: Software Development :: Build Tools',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
     ],
     keywords='git python repositories multiple',
     package_dir={'': 'src'},
