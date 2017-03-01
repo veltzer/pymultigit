@@ -1,0 +1,1 @@
+generate the setup.cfg file from a template
