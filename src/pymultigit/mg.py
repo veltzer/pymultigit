@@ -46,13 +46,13 @@ def do_build():
     pass
 
 
-def do_count(obj, function, attr_name, not_attr_name, attr_plural):
+def do_count(obj, fnc, attr_name, not_attr_name, attr_plural):
     count = 0
     count_attr = 0
     for (project_name, project_dir) in projects():
         count += 1
         repo = git.Repo(project_dir)
-        attr = function(repo)
+        attr = fnc(repo)
         if attr:
             count_attr += 1
         if obj.verbose:
@@ -76,7 +76,7 @@ def do_count(obj, function, attr_name, not_attr_name, attr_plural):
         ))
 
 
-def do_for_all_projects(obj, function):
+def do_for_all_projects(obj, fnc):
     count = 0
     count_not_found = 0
     count_error = 0
@@ -89,7 +89,7 @@ def do_for_all_projects(obj, function):
         count += 1
         if os.path.isdir(project_dir):
             os.chdir(project_dir)
-            ret = function(obj, project_name, project_dir)
+            ret = fnc(obj, project_name, project_dir)
             if ret:
                 count_error += 1
             else:
@@ -116,7 +116,7 @@ def has_untracked_files(repo):
     return len(repo.untracked_files) > 0
 
 
-def outsynced_with_upstream(repo):
+def non_synchronized_with_upstream(repo):
     fake_use(repo)
     return False
 
@@ -130,7 +130,7 @@ def do_clean(obj, project_name, project_dir):
 
 def do_status(obj, project_name, project_dir):
     fake_use(project_dir)
-    (res_out, res_err, returncode) = run([
+    (res_out, res_err, return_code) = run([
         'git',
         'status',
         # porcelain is guaranteed to have parsable output and not
@@ -158,7 +158,7 @@ def do_print(obj, project_name, project_dir):
 
 @click.group(short_help="short help")
 @click.option('--verbose/--no-verbose', default=False, is_flag=True, help='be verbose')
-@click.option('--stats/--no-stats', default=False, is_flag=True, help='show statstics at the end')
+@click.option('--stats/--no-stats', default=False, is_flag=True, help='show statistics at the end')
 @click.pass_context
 def cli(ctx, verbose, stats):
     """ pymultigit allows you to perform operations on multiple git repositories """
@@ -183,9 +183,9 @@ def untracked(obj):
 
 @cli.command()
 @click.pass_obj
-def synched(obj):
-    """ show which repositories are synchronized with their upsteam """
-    do_count(obj, outsynced_with_upstream, 'is behind upstream', 'is synched', 'are behind upstream')
+def synchronized(obj):
+    """ show which repositories are synchronized with their upstream """
+    do_count(obj, non_synchronized_with_upstream, 'is behind upstream', 'is synchronized', 'are behind upstream')
 
 
 @cli.command()

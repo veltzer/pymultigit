@@ -7,7 +7,7 @@ import common
 
 # PIP="pip"
 PIP = "pip3"
-module = os.path.basename(os.getcwd())
+project_name = os.path.basename(os.getcwd())
 common.check_call_no_output([
     "sudo",
     "-H",

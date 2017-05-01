@@ -5,7 +5,7 @@ if not sys.version_info[0] == 3:
     sys.exit("Sorry, only python version 3 is supported")
 
 '''
-TODO: generate this file automagically
+TODO: generate this file automatically
 from template.
 '''
 
@@ -32,7 +32,7 @@ setuptools.setup(
     ],
     entry_points={
         'console_scripts': [
-            'mg=pymultigit.mg:cli',
+            'pymultigit=pymultigit.mg:cli',
         ],
     },
 )

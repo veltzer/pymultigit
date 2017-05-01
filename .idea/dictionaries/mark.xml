@@ -2,6 +2,10 @@
   <dictionary name="mark">
     <words>
       <w>gitpython</w>
+      <w>parsable</w>
+      <w>pymultigit</w>
+      <w>templardefs</w>
+      <w>untracked</w>
     </words>
   </dictionary>
 </component>

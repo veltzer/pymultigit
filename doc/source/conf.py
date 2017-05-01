@@ -57,6 +57,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'pymultigit'
+# noinspection PyShadowingBuiltins
 copyright = '2016, Mark Veltzer'
 author = 'Mark Veltzer'
 

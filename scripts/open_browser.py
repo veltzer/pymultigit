@@ -3,12 +3,12 @@
 import subprocess
 import os
 
-module = os.path.basename(os.getcwd())
+project_name = os.path.basename(os.getcwd())
 subprocess.call([
     'gnome-open',
-    'https://pythonhosted.org/{module}'.format(module=module),
+    'https://pythonhosted.org/{project_name}'.format(project_name=project_name),
 ])
 subprocess.call([
     'gnome-open',
-    'http://{module}.readthedocs.io/en/latest/'.format(module=module),
+    'http://{project_name}.readthedocs.io/en/latest/'.format(project_name=project_name),
 ])
