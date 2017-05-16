@@ -42,8 +42,10 @@ class Obj(object):
     pass
 
 
-def do_build():
-    pass
+def do_build(obj, project_name, project_dir):
+    fake_use(obj)
+    fake_use(project_name)
+    fake_use(project_dir)
 
 
 def do_count(obj, fnc, attr_name, not_attr_name, attr_plural):
