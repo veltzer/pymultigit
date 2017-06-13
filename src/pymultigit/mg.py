@@ -84,7 +84,7 @@ def do_for_all_projects(obj, fnc):
     orig_dir = os.getcwd()
     for (project_name, project_dir) in projects():
         if obj.verbose:
-            print('cleaning [{0}] at [{1}]...'.format(project_name, project_dir), end='')
+            print('doing [{0}] at [{1}]...'.format(project_name, project_dir), end='')
             sys.stdout.flush()
         count += 1
         if os.path.isdir(project_dir):
@@ -123,7 +123,18 @@ def non_synchronized_with_upstream(repo):
 
 def do_pull(obj, project_name, project_dir):
     fake_use(obj, project_name, project_dir)
-    return subprocess.call(['git', 'pull'])
+    """
+    (res_out, res_err, return_code) = run([
+        'git',
+        'pull',
+    ])
+    """
+    # return subprocess.call(['git', 'pull'])
+    return subprocess.call(
+        ['git', 'pull'],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
 
 
 def do_clean(obj, project_name, project_dir):
