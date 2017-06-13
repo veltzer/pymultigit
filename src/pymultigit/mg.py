@@ -43,9 +43,7 @@ class Obj(object):
 
 
 def do_build(obj, project_name, project_dir):
-    fake_use(obj)
-    fake_use(project_name)
-    fake_use(project_dir)
+    fake_use(obj, project_name, project_dir)
 
 
 def do_count(obj, fnc, attr_name, not_attr_name, attr_plural):
@@ -123,10 +121,13 @@ def non_synchronized_with_upstream(repo):
     return False
 
 
+def do_pull(obj, project_name, project_dir):
+    fake_use(obj, project_name, project_dir)
+    return subprocess.call(['git', 'pull'])
+
+
 def do_clean(obj, project_name, project_dir):
-    fake_use(obj)
-    fake_use(project_name)
-    fake_use(project_dir)
+    fake_use(obj, project_name, project_dir)
     return subprocess.call(['git', 'clean', '-qffxd'])
 
 
@@ -209,6 +210,13 @@ def status(obj):
 def build(obj):
     """ build multiple git repositories """
     do_for_all_projects(obj, do_build)
+
+
+@cli.command()
+@click.pass_obj
+def pull(obj):
+    """ pull changes for multiple git repositories """
+    do_for_all_projects(obj, do_pull)
 
 
 @cli.command()
