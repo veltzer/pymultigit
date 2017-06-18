@@ -7,10 +7,8 @@ import sys
 import git
 from pyfakeuse.pyfakeuse import fake_use
 
-sort = True
 
-
-def projects():
+def projects(sort: bool):
     """
     the method returns tuples of (project_name, project_dir)
     """
@@ -38,18 +36,17 @@ def run(args, do_exit=True):
     return res_out, res_err, p.returncode
 
 
-class Obj(object):
-    pass
+class Obj:
+    def __init__(self):
+        self.stats = False  # type: bool
+        self.verbose = False  # type: bool
+        self.sort = False  # type: bool
 
 
-def do_build(obj, project_name, project_dir):
-    fake_use(obj, project_name, project_dir)
-
-
-def do_count(obj, fnc, attr_name, not_attr_name, attr_plural):
+def do_count(obj: Obj, fnc, attr_name, not_attr_name, attr_plural):
     count = 0
     count_attr = 0
-    for (project_name, project_dir) in projects():
+    for (project_name, project_dir) in projects(sort=obj.sort):
         count += 1
         repo = git.Repo(project_dir)
         attr = fnc(repo)
@@ -82,7 +79,7 @@ def do_for_all_projects(obj, fnc):
     count_error = 0
     count_ok = 0
     orig_dir = os.getcwd()
-    for (project_name, project_dir) in projects():
+    for (project_name, project_dir) in projects(sort=obj.sort):
         if obj.verbose:
             print('doing [{0}] at [{1}]...'.format(project_name, project_dir), end='')
             sys.stdout.flush()
@@ -121,28 +118,36 @@ def non_synchronized_with_upstream(repo):
     return False
 
 
-def do_pull(obj, project_name, project_dir):
-    fake_use(obj, project_name, project_dir)
-    """
-    (res_out, res_err, return_code) = run([
-        'git',
-        'pull',
-    ])
-    """
-    # return subprocess.call(['git', 'pull'])
-    return subprocess.call(
-        ['git', 'pull'],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-    )
+def do_build(obj: Obj, project_name: str, project_dir: str):
+    fake_use(project_name)
+    makefile = os.path.join(project_dir, 'Makefile')
+    bootstrap = os.path.join(project_dir, 'bootstrap')
+    if os.path.isfile(makefile):
+        pass
+    if os.path.isfile(bootstrap):
+        pass
+    if obj.stats:
+        pass
 
 
-def do_clean(obj, project_name, project_dir):
+def do_pull(obj: Obj, project_name: str, project_dir: str):
+    fake_use(project_name, project_dir)
+    if obj.verbose:
+        return subprocess.call(
+            ['git', 'pull'],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+    else:
+        return subprocess.call(['git', 'pull'])
+
+
+def do_clean(obj: Obj, project_name: str, project_dir: str):
     fake_use(obj, project_name, project_dir)
     return subprocess.call(['git', 'clean', '-qffxd'])
 
 
-def do_status(obj, project_name, project_dir):
+def do_status(obj: Obj, project_name: str, project_dir: str):
     fake_use(project_dir)
     (res_out, res_err, return_code) = run([
         'git',
@@ -162,7 +167,7 @@ def do_status(obj, project_name, project_dir):
         return 0
 
 
-def do_print(obj, project_name, project_dir):
+def do_print(obj: Obj, project_name: str, project_dir: str):
     if obj.verbose:
         print(project_name, project_dir)
     else:
@@ -173,12 +178,14 @@ def do_print(obj, project_name, project_dir):
 @click.group(short_help="short help")
 @click.option('--verbose/--no-verbose', default=False, is_flag=True, help='be verbose')
 @click.option('--stats/--no-stats', default=False, is_flag=True, help='show statistics at the end')
+@click.option('--sort/--no-sort', default=True, is_flag=True, help='sort project name')
 @click.pass_context
-def cli(ctx, verbose, stats):
+def cli(ctx, verbose, stats, sort):
     """ pymultigit allows you to perform operations on multiple git repositories """
     ctx.obj = Obj()
     ctx.obj.verbose = verbose
     ctx.obj.stats = stats
+    ctx.obj.sort = sort
 
 
 @cli.command()
