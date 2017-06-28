@@ -155,6 +155,9 @@ def do_status(obj: Obj, project_name: str, project_dir: str):
         # porcelain is guaranteed to have parsable output and not
         # change across git versions
         '--porcelain',
+        # when using --porcelain branch information is not shown,
+        # this flag makes it not so
+        '--branch'
         # '--short',
     ])
     if res_out != '' or res_err != '':
