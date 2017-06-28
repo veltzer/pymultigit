@@ -156,8 +156,10 @@ def do_status(obj: Obj, project_name: str, project_dir: str):
         # change across git versions
         '--porcelain',
         # when using --porcelain branch information is not shown,
-        # this flag makes it not so
-        '--branch'
+        # this flag makes it not so, the problem with it is that
+        # it produces output which should be parsed and that is
+        # why we do not used it and use the 'git rev-list' that follows...
+        # '--branch'
         # '--short',
     ])
     if res_out != '' or res_err != '':
@@ -166,8 +168,20 @@ def do_status(obj: Obj, project_name: str, project_dir: str):
             print(res_out, end='')
             print(res_err, end='')
         return 1
-    else:
-        return 0
+    (res_out, res_err, return_code) = run([
+        'git',
+        'rev-list',
+        '--left-only',
+        '--count',
+        '@...@{upstream}',
+    ])
+    if res_out != '0\n' or res_err != '':
+        print('project [{0}] is not synced'.format(project_name))
+        if obj.verbose:
+            print(res_out, end='')
+            print(res_err, end='')
+        return 1
+    return 0
 
 
 def do_print(obj: Obj, project_name: str, project_dir: str):
