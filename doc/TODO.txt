@@ -1,1 +1,3 @@
 - make 'clean' be based on gitpython and not command line.
+- status does not report changes which are not pushed.
+	have a mode that does report that.
