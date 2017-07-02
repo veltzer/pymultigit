@@ -133,13 +133,13 @@ def do_build(obj: Obj, project_name: str, project_dir: str):
 def do_pull(obj: Obj, project_name: str, project_dir: str):
     fake_use(project_name, project_dir)
     if obj.verbose:
+        return subprocess.call(['git', 'pull'])
+    else:
         return subprocess.call(
             ['git', 'pull'],
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
         )
-    else:
-        return subprocess.call(['git', 'pull'])
 
 
 def do_clean(obj: Obj, project_name: str, project_dir: str):
