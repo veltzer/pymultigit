@@ -147,8 +147,7 @@ def do_clean(obj: Obj, project_name: str, project_dir: str):
     return subprocess.call(['git', 'clean', '-qffxd'])
 
 
-def do_status(obj: Obj, project_name: str, project_dir: str):
-    fake_use(project_dir)
+def do_status_msg(obj: Obj, project_name: str, msg: str):
     (res_out, res_err, return_code) = run([
         'git',
         'status',
@@ -163,7 +162,7 @@ def do_status(obj: Obj, project_name: str, project_dir: str):
         # '--short',
     ])
     if res_out != '' or res_err != '':
-        print('project [{0}] is dirty'.format(project_name))
+        print(msg.format(project_name=project_name))
         if obj.verbose:
             print(res_out, end='')
             print(res_err, end='')
@@ -182,6 +181,16 @@ def do_status(obj: Obj, project_name: str, project_dir: str):
             print(res_err, end='')
         return 1
     return 0
+
+
+def do_status(obj: Obj, project_name: str, project_dir: str):
+    fake_use(project_dir)
+    return do_status_msg(obj=obj, project_name=project_name, msg='project [{project_name}] is dirty')
+
+
+def do_dirty(obj: Obj, project_name: str, project_dir: str):
+    fake_use(project_dir)
+    return do_status_msg(obj=obj, project_name=project_name, msg='{project_name}')
 
 
 def do_print(obj: Obj, project_name: str, project_dir: str):
@@ -237,6 +246,13 @@ def clean(obj):
 @click.pass_obj
 def status(obj):
     """ show the status of multiple git repositories """
+    do_for_all_projects(obj, do_status)
+
+
+@cli.command()
+@click.pass_obj
+def dirty(obj):
+    """ show names of project which are dirty """
     do_for_all_projects(obj, do_status)
 
 
