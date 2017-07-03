@@ -253,7 +253,7 @@ def status(obj):
 @click.pass_obj
 def dirty(obj):
     """ show names of project which are dirty """
-    do_for_all_projects(obj, do_status)
+    do_for_all_projects(obj, do_dirty)
 
 
 @cli.command()
