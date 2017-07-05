@@ -270,7 +270,7 @@ def pull(obj):
     do_for_all_projects(obj, do_pull)
 
 
-@cli.command()
+@cli.command(name="list")
 @click.pass_obj
 def list_projects(obj):
     """ list all projects """

@@ -11,7 +11,7 @@ from template.
 
 setuptools.setup(
     name='pymultigit',
-    version='0.0.22',
+    version='0.0.23',
     description='pymultigit is a command to help you deal with multiple git repositories',
     long_description='this is the long description of pymultigit',
     url='https://veltzer.github.io/pymultigit',
@@ -29,6 +29,7 @@ setuptools.setup(
     install_requires=[
         'click',
         'gitpython',
+        'pyfakeuse',
     ],
     entry_points={
         'console_scripts': [
