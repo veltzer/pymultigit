@@ -11,7 +11,7 @@ from template.
 
 setuptools.setup(
     name='pymultigit',
-    version='0.0.23',
+    version='0.0.24',
     description='pymultigit is a command to help you deal with multiple git repositories',
     long_description='this is the long description of pymultigit',
     url='https://veltzer.github.io/pymultigit',
@@ -24,8 +24,7 @@ setuptools.setup(
         'Programming Language :: Python :: 3',
     ],
     keywords='git python repositories multiple',
-    package_dir={'': 'src'},
-    packages=setuptools.find_packages('src'),
+    packages=setuptools.find_packages(),
     install_requires=[
         'click',
         'gitpython',
