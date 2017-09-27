@@ -1,9 +1,10 @@
-import click
+import glob
 import os
 import os.path
 import subprocess
-import glob
 import sys
+
+import click
 import git
 from pyfakeuse.pyfakeuse import fake_use
 
@@ -40,6 +41,7 @@ class Obj:
     def __init__(self):
         self.stats = False  # type: bool
         self.verbose = False  # type: bool
+        self.quiet = False  # type: bool
         self.sort = False  # type: bool
 
 
@@ -132,19 +134,20 @@ def do_build(obj: Obj, project_name: str, project_dir: str):
 
 def do_pull(obj: Obj, project_name: str, project_dir: str):
     fake_use(project_name, project_dir)
+    args = ['git', 'pull']
     if obj.verbose:
-        return subprocess.call(['git', 'pull'])
-    else:
-        return subprocess.call(
-            ['git', 'pull'],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-        )
+        args.append('--verbose')
+    if obj.quiet:
+        args.append('--quiet')
+    return subprocess.call(args)
 
 
 def do_clean(obj: Obj, project_name: str, project_dir: str):
     fake_use(obj, project_name, project_dir)
-    return subprocess.call(['git', 'clean', '-qffxd'])
+    args = ['git', 'clean', '-ffxd']
+    if obj.quiet:
+        args.append('--quiet')
+    return subprocess.call(args)
 
 
 def do_status_msg(obj: Obj, project_name: str, msg: str):
@@ -203,13 +206,15 @@ def do_print(obj: Obj, project_name: str, project_dir: str):
 
 @click.group(short_help="short help")
 @click.option('--verbose/--no-verbose', default=False, is_flag=True, help='be verbose')
+@click.option('--quiet/--no-quiet', default=False, is_flag=True, help='be quiet')
 @click.option('--stats/--no-stats', default=False, is_flag=True, help='show statistics at the end')
 @click.option('--sort/--no-sort', default=True, is_flag=True, help='sort project name')
 @click.pass_context
-def cli(ctx, verbose, stats, sort):
+def cli(ctx, verbose, quiet, stats, sort):
     """ pymultigit allows you to perform operations on multiple git repositories """
     ctx.obj = Obj()
     ctx.obj.verbose = verbose
+    ctx.obj.quiet = quiet
     ctx.obj.stats = stats
     ctx.obj.sort = sort
 

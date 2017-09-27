@@ -6,6 +6,7 @@
       <w>crossref</w>
       <w>detailmenu</w>
       <w>documentclass</w>
+      <w>ffxd</w>
       <w>filenames</w>
       <w>genindex</w>
       <w>gettext</w>
@@ -26,6 +27,7 @@
       <w>parsable</w>
       <w>pointsize</w>
       <w>pymultigit</w>
+      <w>readthedocs</w>
       <w>sectionauthor</w>
       <w>sourcelink</w>
       <w>sphinxstrong</w>
