@@ -1,23 +1,18 @@
 import setuptools
 
-import sys
-if not sys.version_info[0] == 3:
-    sys.exit("Sorry, only python version 3 is supported")
-
-'''
-TODO: generate this file automatically
-from template.
-'''
-
 setuptools.setup(
     name='pymultigit',
     version='0.0.25',
     description='pymultigit is a command to help you deal with multiple git repositories',
     long_description='this is the long description of pymultigit',
-    url='https://veltzer.github.io/pymultigit',
+    url='https://github.com/veltzer/pymultigit',
+    download_url='https://github.com/veltzer/pymultigit',
     author='Mark Veltzer',
     author_email='mark.veltzer@gmail.com',
+    maintainer='Mark Veltzer',
+    maintainer_email='mark.veltzer@gmail.com',
     license='MIT',
+    platforms=['python3'],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
