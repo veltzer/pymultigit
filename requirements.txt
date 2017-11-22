@@ -1,3 +1,6 @@
+# production
 click
 gitpython
 pyfakeuse
+# development tools
+pypitools
