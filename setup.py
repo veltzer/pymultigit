@@ -5,7 +5,7 @@ setuptools.setup(
     version='0.0.25',
     description='pymultigit is a command to help you deal with multiple git repositories',
     long_description='this is the long description of pymultigit',
-    url='https://github.com/veltzer/pymultigit',
+    url='https://veltzer.github.io/pymultigit',
     download_url='https://github.com/veltzer/pymultigit',
     author='Mark Veltzer',
     author_email='mark.veltzer@gmail.com',
