@@ -43,6 +43,7 @@ class Obj:
         self.verbose = False  # type: bool
         self.quiet = False  # type: bool
         self.sort = False  # type: bool
+        self.phrase = ""  # type: str
 
 
 def do_count(obj: Obj, fnc, attr_name, not_attr_name, attr_plural):
@@ -142,6 +143,16 @@ def do_pull(obj: Obj, project_name: str, project_dir: str):
     return subprocess.call(args)
 
 
+def do_grep(obj: Obj, project_name: str, project_dir: str):
+    fake_use(project_name, project_dir)
+    args = ['git', 'grep', obj.phrase]
+    if obj.verbose:
+        args.append('--verbose')
+    if obj.quiet:
+        args.append('--quiet')
+    return subprocess.call(args)
+
+
 def do_clean(obj: Obj, project_name: str, project_dir: str):
     fake_use(obj, project_name, project_dir)
     args = ['git', 'clean', '-ffxd']
@@ -209,6 +220,7 @@ def do_print(obj: Obj, project_name: str, project_dir: str):
 @click.option('--quiet/--no-quiet', default=False, is_flag=True, help='be quiet')
 @click.option('--stats/--no-stats', default=False, is_flag=True, help='show statistics at the end')
 @click.option('--sort/--no-sort', default=True, is_flag=True, help='sort project name')
+@click.option('--phrase', default=None, is_flag=False, help='what to look for')
 @click.pass_context
 def cli(ctx, verbose, quiet, stats, sort):
     """ pymultigit allows you to perform operations on multiple git repositories """
@@ -273,6 +285,13 @@ def build(obj):
 def pull(obj):
     """ pull changes for multiple git repositories """
     do_for_all_projects(obj, do_pull)
+
+
+@cli.command()
+@click.pass_obj
+def grep(obj):
+    """ grep multiple repositories for pattern """
+    do_for_all_projects(obj, do_grep)
 
 
 @cli.command(name="list")
