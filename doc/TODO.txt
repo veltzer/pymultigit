@@ -1,6 +1,6 @@
 - get ridd of click and use pytconf instead.
-- make 'pull' do stuff in parallel. This would be much faster to do when
-	I have lots of repos.
+- make 'pull' do stuff in parallel.
+	This would be much faster when I have lots of repos.
 - make 'clean' be based on gitpython and not command line.
 - do grep functionality.
 - enable to be terse and only show names of repos to enable scripting.
