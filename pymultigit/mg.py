@@ -222,13 +222,14 @@ def do_print(obj: Obj, project_name: str, project_dir: str):
 @click.option('--sort/--no-sort', default=True, is_flag=True, help='sort project name')
 @click.option('--phrase', default=None, is_flag=False, help='what to look for')
 @click.pass_context
-def cli(ctx, verbose, quiet, stats, sort):
+def cli(ctx, verbose, quiet, stats, sort, phrase):
     """ pymultigit allows you to perform operations on multiple git repositories """
     ctx.obj = Obj()
     ctx.obj.verbose = verbose
     ctx.obj.quiet = quiet
     ctx.obj.stats = stats
     ctx.obj.sort = sort
+    ctx.obj.phrase = phrase
 
 
 @cli.command()

@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
     name='pymultigit',
-    version='0.0.26',
+    version='0.0.27',
     description='pymultigit is a command to help you deal with multiple git repositories',
     long_description='this is the long description of pymultigit',
     url='https://veltzer.github.io/pymultigit',
