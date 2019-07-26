@@ -1,7 +1,8 @@
-d.requirements3_dev = [
+requirements3_dev = [
     # 'sphinx-pypi-upload',
 ]
-d.requirements3 = [
+
+requirements3 = [
     'click',
     'gitpython',
 ]
