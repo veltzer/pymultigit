@@ -89,5 +89,3 @@ celerybeat-schedule
 /doc/build
 
 *.stamp
-
-/.idea/workspace.xml
