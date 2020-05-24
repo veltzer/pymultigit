@@ -1,3 +1,5 @@
+- run build again to get to wheel.
+- do templates.
 - get ridd of click and use pytconf instead.
 - make 'pull' do stuff in parallel.
 	This would be much faster when I have lots of repos.
