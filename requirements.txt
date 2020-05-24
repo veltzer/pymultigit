@@ -1,6 +1,16 @@
-# production
+# THIS IS AN AUTO-GENERATED FILE. DO NOT EDIT!
+# production requirements
 click
 gitpython
 pyfakeuse
-# development tools
+pytconf
+pylogconf
+# dev requirements
+pyclassifiers
 pypitools
+pydmt
+Sphinx
+# test requirements
+pylint
+pytest
+pyflakes

@@ -1,2 +1,5 @@
-# pymultigit
-An easy command line utility to execute commands on multiple git repositories
+=======================
+*pymultigit* project by Mark Veltzer
+=======================
+
+version: (0, 0, 29)
