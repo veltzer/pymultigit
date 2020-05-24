@@ -20,7 +20,7 @@ def projects(sort: bool):
         print('no git repos here', file=sys.stderr)
         sys.exit(1)
     for x in repos_list:
-        yield (os.path.dirname(x), os.path.dirname(x))
+        yield os.path.dirname(x), os.path.dirname(x)
 
 
 def run(args, do_exit=True):

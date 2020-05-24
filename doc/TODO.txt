@@ -1,5 +1,5 @@
 - run build again to get to wheel.
-- get ridd of click and use pytconf instead.
+- get rid of click and use pytconf instead.
 - make 'pull' do stuff in parallel.
 	This would be much faster when I have lots of repos.
 - make 'clean' be based on gitpython and not command line.

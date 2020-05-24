@@ -8,7 +8,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build" />
       <excludeFolder url="file://$MODULE_DIR$/pymultigit.egg-info" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.7 (pymultigit)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.8 (pymultigit)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
