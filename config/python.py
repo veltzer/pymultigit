@@ -3,14 +3,13 @@ import config.project
 package_name = config.project.project_name
 
 console_scripts = [
-    'pymultigit=pymultigit.mg:cli',
+    'pymultigit=pymultigit.endpoints.main:main',
 ]
 
 setup_requires = [
 ]
 
 run_requires = [
-    'click',  # for command line parsing
     'gitpython',  # for accessing git
     'pyfakeuse',  # fake use of a var
     'pytconf',  # for command line parsing

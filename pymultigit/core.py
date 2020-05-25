@@ -4,9 +4,10 @@ import os.path
 import subprocess
 import sys
 
-import click
 import git
 from pyfakeuse.pyfakeuse import fake_use
+
+from pymultigit.configs import ConfigAll
 
 
 def projects(sort: bool):
@@ -37,25 +38,16 @@ def run(args, do_exit=True):
     return res_out, res_err, p.returncode
 
 
-class Obj:
-    def __init__(self):
-        self.stats = False  # type: bool
-        self.verbose = False  # type: bool
-        self.quiet = False  # type: bool
-        self.sort = False  # type: bool
-        self.phrase = ""  # type: str
-
-
-def do_count(obj: Obj, fnc, attr_name, not_attr_name, attr_plural):
+def do_count(fnc, attr_name, not_attr_name, attr_plural):
     count = 0
     count_attr = 0
-    for (project_name, project_dir) in projects(sort=obj.sort):
+    for (project_name, project_dir) in projects(sort=ConfigAll.sort):
         count += 1
         repo = git.Repo(project_dir)
         attr = fnc(repo)
         if attr:
             count_attr += 1
-        if obj.verbose:
+        if ConfigAll.verbose:
             if attr:
                 print('project [{project_name}] {attr_name}'.format(
                     project_name=project_name,
@@ -66,7 +58,7 @@ def do_count(obj: Obj, fnc, attr_name, not_attr_name, attr_plural):
                     project_name=project_name,
                     not_attr_name=not_attr_name,
                 ))
-    if obj.stats:
+    if ConfigAll.stats:
         print('scanned [{count}] projects'.format(
             count=count,
         ))
@@ -76,32 +68,32 @@ def do_count(obj: Obj, fnc, attr_name, not_attr_name, attr_plural):
         ))
 
 
-def do_for_all_projects(obj, fnc):
+def do_for_all_projects(fnc):
     count = 0
     count_not_found = 0
     count_error = 0
     count_ok = 0
     orig_dir = os.getcwd()
-    for (project_name, project_dir) in projects(sort=obj.sort):
-        if obj.verbose:
+    for (project_name, project_dir) in projects(sort=ConfigAll.sort):
+        if ConfigAll.verbose:
             print('doing [{0}] at [{1}]...'.format(project_name, project_dir), end='')
             sys.stdout.flush()
         count += 1
         if os.path.isdir(project_dir):
             os.chdir(project_dir)
-            ret = fnc(obj, project_name, project_dir)
+            ret = fnc(project_name, project_dir)
             if ret:
                 count_error += 1
             else:
                 count_ok += 1
-            if obj.verbose:
+            if ConfigAll.verbose:
                 print('OK')
             os.chdir(orig_dir)
         else:
-            if obj.verbose:
+            if ConfigAll.verbose:
                 print('NOT FOUND')
             count_not_found += 1
-    if obj.stats:
+    if ConfigAll.stats:
         print('scanned [{}] projects'.format(count))
         print('[{}] not found'.format(count_not_found))
         print('[{}] error'.format(count_error))
@@ -121,7 +113,7 @@ def non_synchronized_with_upstream(repo):
     return False
 
 
-def do_build(obj: Obj, project_name: str, project_dir: str):
+def do_build(project_name: str, project_dir: str):
     fake_use(project_name)
     makefile = os.path.join(project_dir, 'Makefile')
     bootstrap = os.path.join(project_dir, 'bootstrap')
@@ -129,39 +121,39 @@ def do_build(obj: Obj, project_name: str, project_dir: str):
         pass
     if os.path.isfile(bootstrap):
         pass
-    if obj.stats:
+    if ConfigAll.stats:
         pass
 
 
-def do_pull(obj: Obj, project_name: str, project_dir: str):
+def do_pull(project_name: str, project_dir: str):
     fake_use(project_name, project_dir)
     args = ['git', 'pull']
-    if obj.verbose:
+    if ConfigAll.verbose:
         args.append('--verbose')
-    if obj.quiet:
+    if ConfigAll.quiet:
         args.append('--quiet')
     return subprocess.call(args)
 
 
-def do_grep(obj: Obj, project_name: str, project_dir: str):
+def do_grep(project_name: str, project_dir: str):
     fake_use(project_name, project_dir)
-    args = ['git', 'grep', obj.phrase]
-    if obj.verbose:
+    args = ['git', 'grep', ConfigAll.regexp]
+    if ConfigAll.verbose:
         args.append('--verbose')
-    if obj.quiet:
+    if ConfigAll.quiet:
         args.append('--quiet')
     return subprocess.call(args)
 
 
-def do_clean(obj: Obj, project_name: str, project_dir: str):
-    fake_use(obj, project_name, project_dir)
+def do_clean(project_name: str, project_dir: str):
+    fake_use(project_name, project_dir)
     args = ['git', 'clean', '-ffxd']
-    if obj.quiet:
+    if ConfigAll.quiet:
         args.append('--quiet')
     return subprocess.call(args)
 
 
-def do_status_msg(obj: Obj, project_name: str, msg: str):
+def do_status_msg(project_name: str, msg: str):
     (res_out, res_err, return_code) = run([
         'git',
         'status',
@@ -177,7 +169,7 @@ def do_status_msg(obj: Obj, project_name: str, msg: str):
     ])
     if res_out != '' or res_err != '':
         print(msg.format(project_name=project_name))
-        if obj.verbose:
+        if ConfigAll.verbose:
             print(res_out, end='')
             print(res_err, end='')
         return 1
@@ -190,117 +182,28 @@ def do_status_msg(obj: Obj, project_name: str, msg: str):
     ])
     if res_out != '0\n' or res_err != '':
         print('project [{0}] is not synced'.format(project_name))
-        if obj.verbose:
+        if ConfigAll.verbose:
             print(res_out, end='')
             print(res_err, end='')
         return 1
     return 0
 
 
-def do_status(obj: Obj, project_name: str, project_dir: str):
+def do_status(project_name: str, project_dir: str):
     fake_use(project_dir)
-    return do_status_msg(obj=obj, project_name=project_name, msg='project [{project_name}] is dirty')
+    return do_status_msg(project_name=project_name, msg='project [{project_name}] is dirty')
 
 
-def do_dirty(obj: Obj, project_name: str, project_dir: str):
+def do_dirty(project_name: str, project_dir: str):
     fake_use(project_dir)
-    return do_status_msg(obj=obj, project_name=project_name, msg='{project_name}')
+    return do_status_msg(project_name=project_name, msg='{project_name}')
 
 
-def do_print(obj: Obj, project_name: str, project_dir: str):
-    if obj.verbose:
+def do_print(project_name: str, project_dir: str):
+    if ConfigAll.verbose:
         print(project_name, project_dir)
     else:
         print(project_name)
     return 0
 
 
-@click.group(short_help="short help")
-@click.option('--verbose/--no-verbose', default=False, is_flag=True, help='be verbose')
-@click.option('--quiet/--no-quiet', default=False, is_flag=True, help='be quiet')
-@click.option('--stats/--no-stats', default=False, is_flag=True, help='show statistics at the end')
-@click.option('--sort/--no-sort', default=True, is_flag=True, help='sort project name')
-@click.option('--phrase', default=None, is_flag=False, help='what to look for')
-@click.pass_context
-def cli(ctx, verbose, quiet, stats, sort, phrase):
-    """ pymultigit allows you to perform operations on multiple git repositories """
-    ctx.obj = Obj()
-    ctx.obj.verbose = verbose
-    ctx.obj.quiet = quiet
-    ctx.obj.stats = stats
-    ctx.obj.sort = sort
-    ctx.obj.phrase = phrase
-
-
-@cli.command()
-@click.pass_obj
-def dirty(obj):
-    """ show the status of multiple git repositories """
-    do_count(obj, is_dirty, 'is dirty', 'is clean', 'were dirty')
-
-
-@cli.command()
-@click.pass_obj
-def untracked(obj):
-    """ show which repositories have untracked files """
-    do_count(obj, has_untracked_files, 'has untracked files', 'is fully tracked', 'have untracked files')
-
-
-@cli.command()
-@click.pass_obj
-def synchronized(obj):
-    """ show which repositories are synchronized with their upstream """
-    do_count(obj, non_synchronized_with_upstream, 'is behind upstream', 'is synchronized', 'are behind upstream')
-
-
-@cli.command()
-@click.pass_obj
-def clean(obj):
-    """ clean all projects """
-    do_for_all_projects(obj, do_clean)
-
-
-@cli.command()
-@click.pass_obj
-def status(obj):
-    """ show the status of multiple git repositories """
-    do_for_all_projects(obj, do_status)
-
-
-@cli.command()
-@click.pass_obj
-def dirty(obj):
-    """ show names of project which are dirty """
-    do_for_all_projects(obj, do_dirty)
-
-
-@cli.command()
-@click.pass_obj
-def build(obj):
-    """ build multiple git repositories """
-    do_for_all_projects(obj, do_build)
-
-
-@cli.command()
-@click.pass_obj
-def pull(obj):
-    """ pull changes for multiple git repositories """
-    do_for_all_projects(obj, do_pull)
-
-
-@cli.command()
-@click.pass_obj
-def grep(obj):
-    """ grep multiple repositories for pattern """
-    do_for_all_projects(obj, do_grep)
-
-
-@cli.command(name="list")
-@click.pass_obj
-def list_projects(obj):
-    """ list all projects """
-    do_for_all_projects(obj, do_print)
-
-
-if __name__ == '__main__':
-    cli()
