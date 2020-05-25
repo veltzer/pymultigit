@@ -7,9 +7,10 @@ http://setuptools.readthedocs.io/en/latest/setuptools.html
 setuptools.setup(
     # the first three fields are a must according to the documentation
     name='pymultigit',
-    version='0.0.29',
+    version='0.0.30',
     packages=[
         'pymultigit',
+        'pymultigit.endpoints',
     ],
     # from here all is optional
     description='pymultigit is a command to help you deal with multiple git repositories',
@@ -31,7 +32,6 @@ setuptools.setup(
         'python3',
     ],
     install_requires=[
-        'click',
         'gitpython',
         'pyfakeuse',
         'pytconf',
@@ -47,7 +47,7 @@ setuptools.setup(
     data_files=[
     ],
     entry_points={'console_scripts': [
-        'pymultigit=pymultigit.mg:cli',
+        'pymultigit=pymultigit.endpoints.main:main',
     ]},
     python_requires='>=3.5',
 )
