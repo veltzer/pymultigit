@@ -128,9 +128,9 @@ def do_build(project_name: str, project_dir: str):
 def do_pull(project_name: str, project_dir: str):
     fake_use(project_name, project_dir)
     args = ['git', 'pull']
-    if ConfigDebug.verbose:
+    if ConfigDebug.git_verbose:
         args.append('--verbose')
-    if ConfigDebug.quiet:
+    if ConfigDebug.git_quiet:
         args.append('--quiet')
     return subprocess.call(args)
 
@@ -138,22 +138,24 @@ def do_pull(project_name: str, project_dir: str):
 def do_grep(project_name: str, project_dir: str):
     fake_use(project_name, project_dir)
     args = ['git', 'grep', ConfigGrep.regexp]
-    if ConfigDebug.verbose:
+    if ConfigDebug.git_verbose:
         args.append('--verbose')
-    if ConfigDebug.quiet:
+    if ConfigDebug.git_quiet:
         args.append('--quiet')
     return subprocess.call(args)
 
 
-def do_clean(project_name: str, project_dir: str):
+def do_clean(project_name: str, project_dir: str) -> int:
     fake_use(project_name, project_dir)
     args = ['git', 'clean', '-ffxd']
-    if ConfigDebug.quiet:
+    if ConfigDebug.git_verbose:
+        args.append('--verbose')
+    if ConfigDebug.git_quiet:
         args.append('--quiet')
     return subprocess.call(args)
 
 
-def do_status_msg(project_name: str, msg: str):
+def do_status_msg(project_name: str, msg: str) -> int:
     (res_out, res_err, return_code) = run([
         'git',
         'status',
@@ -191,10 +193,14 @@ def do_status_msg(project_name: str, msg: str):
 
 def do_status(project_name: str, project_dir: str):
     fake_use(project_dir)
-    return do_status_msg(project_name=project_name, msg='project [{project_name}] is dirty')
+    if ConfigDebug.terse:
+        msg = "{project_name}"
+    else:
+        msg = 'project [{project_name}] is dirty'
+    return do_status_msg(project_name=project_name, msg=msg)
 
 
-def do_dirty(project_name: str, project_dir: str):
+def do_dirty(project_name: str, project_dir: str) -> int:
     fake_use(project_dir)
     return do_status_msg(project_name=project_name, msg='{project_name}')
 
@@ -204,6 +210,4 @@ def do_print(project_name: str, project_dir: str):
         print(project_name, project_dir)
     else:
         print(project_name)
-    return 0
-
 
