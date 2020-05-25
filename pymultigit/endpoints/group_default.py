@@ -5,7 +5,7 @@ The default group of operations that pymultigit has
 from pytconf.config import register_endpoint, register_function_group
 
 import pymultigit.version
-from pymultigit.configs import ConfigAll
+from pymultigit.configs import ConfigDebug, ConfigGrep
 from pymultigit.core import do_count, is_dirty, has_untracked_files, non_synchronized_with_upstream, \
     do_for_all_projects, do_clean, do_status, do_dirty, do_build, do_pull, do_grep, do_print
 
@@ -25,7 +25,7 @@ def register_group_default():
 
 @register_endpoint(
     configs=[
-        ConfigAll,
+        ConfigDebug,
     ],
     group=GROUP_NAME_DEFAULT,
 )
@@ -38,7 +38,7 @@ def version() -> None:
 
 @register_endpoint(
     configs=[
-        ConfigAll,
+        ConfigDebug,
     ],
     group=GROUP_NAME_DEFAULT,
 )
@@ -49,7 +49,7 @@ def dirty() -> None:
 
 @register_endpoint(
     configs=[
-        ConfigAll,
+        ConfigDebug,
     ],
     group=GROUP_NAME_DEFAULT,
 )
@@ -60,7 +60,7 @@ def untracked() -> None:
 
 @register_endpoint(
     configs=[
-        ConfigAll,
+        ConfigDebug,
     ],
     group=GROUP_NAME_DEFAULT,
 )
@@ -71,7 +71,7 @@ def synchronized() -> None:
 
 @register_endpoint(
     configs=[
-        ConfigAll,
+        ConfigDebug,
     ],
     group=GROUP_NAME_DEFAULT,
 )
@@ -82,7 +82,7 @@ def clean() -> None:
 
 @register_endpoint(
     configs=[
-        ConfigAll,
+        ConfigDebug,
     ],
     group=GROUP_NAME_DEFAULT,
 )
@@ -93,7 +93,7 @@ def status() -> None:
 
 @register_endpoint(
     configs=[
-        ConfigAll,
+        ConfigDebug,
     ],
     group=GROUP_NAME_DEFAULT,
 )
@@ -104,7 +104,7 @@ def dirty() -> None:
 
 @register_endpoint(
     configs=[
-        ConfigAll,
+        ConfigDebug,
     ],
     group=GROUP_NAME_DEFAULT,
 )
@@ -115,7 +115,7 @@ def build() -> None:
 
 @register_endpoint(
     configs=[
-        ConfigAll,
+        ConfigDebug,
     ],
     group=GROUP_NAME_DEFAULT,
 )
@@ -126,7 +126,8 @@ def pull() -> None:
 
 @register_endpoint(
     configs=[
-        ConfigAll,
+        ConfigDebug,
+        ConfigGrep,
     ],
     group=GROUP_NAME_DEFAULT,
 )
@@ -137,7 +138,7 @@ def grep() -> None:
 
 @register_endpoint(
     configs=[
-        ConfigAll,
+        ConfigDebug,
     ],
     group=GROUP_NAME_DEFAULT,
 )
