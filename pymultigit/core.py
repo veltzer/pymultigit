@@ -7,7 +7,7 @@ import sys
 import git
 from pyfakeuse.pyfakeuse import fake_use
 
-from pymultigit.configs import ConfigAll
+from pymultigit.configs import ConfigDebug, ConfigGrep
 
 
 def projects(sort: bool):
@@ -41,13 +41,13 @@ def run(args, do_exit=True):
 def do_count(fnc, attr_name, not_attr_name, attr_plural):
     count = 0
     count_attr = 0
-    for (project_name, project_dir) in projects(sort=ConfigAll.sort):
+    for (project_name, project_dir) in projects(sort=ConfigDebug.sort):
         count += 1
         repo = git.Repo(project_dir)
         attr = fnc(repo)
         if attr:
             count_attr += 1
-        if ConfigAll.verbose:
+        if ConfigDebug.verbose:
             if attr:
                 print('project [{project_name}] {attr_name}'.format(
                     project_name=project_name,
@@ -58,7 +58,7 @@ def do_count(fnc, attr_name, not_attr_name, attr_plural):
                     project_name=project_name,
                     not_attr_name=not_attr_name,
                 ))
-    if ConfigAll.stats:
+    if ConfigDebug.stats:
         print('scanned [{count}] projects'.format(
             count=count,
         ))
@@ -74,8 +74,8 @@ def do_for_all_projects(fnc):
     count_error = 0
     count_ok = 0
     orig_dir = os.getcwd()
-    for (project_name, project_dir) in projects(sort=ConfigAll.sort):
-        if ConfigAll.verbose:
+    for (project_name, project_dir) in projects(sort=ConfigDebug.sort):
+        if ConfigDebug.verbose:
             print('doing [{0}] at [{1}]...'.format(project_name, project_dir), end='')
             sys.stdout.flush()
         count += 1
@@ -86,14 +86,14 @@ def do_for_all_projects(fnc):
                 count_error += 1
             else:
                 count_ok += 1
-            if ConfigAll.verbose:
+            if ConfigDebug.verbose:
                 print('OK')
             os.chdir(orig_dir)
         else:
-            if ConfigAll.verbose:
+            if ConfigDebug.verbose:
                 print('NOT FOUND')
             count_not_found += 1
-    if ConfigAll.stats:
+    if ConfigDebug.stats:
         print('scanned [{}] projects'.format(count))
         print('[{}] not found'.format(count_not_found))
         print('[{}] error'.format(count_error))
@@ -121,26 +121,26 @@ def do_build(project_name: str, project_dir: str):
         pass
     if os.path.isfile(bootstrap):
         pass
-    if ConfigAll.stats:
+    if ConfigDebug.stats:
         pass
 
 
 def do_pull(project_name: str, project_dir: str):
     fake_use(project_name, project_dir)
     args = ['git', 'pull']
-    if ConfigAll.verbose:
+    if ConfigDebug.verbose:
         args.append('--verbose')
-    if ConfigAll.quiet:
+    if ConfigDebug.quiet:
         args.append('--quiet')
     return subprocess.call(args)
 
 
 def do_grep(project_name: str, project_dir: str):
     fake_use(project_name, project_dir)
-    args = ['git', 'grep', ConfigAll.regexp]
-    if ConfigAll.verbose:
+    args = ['git', 'grep', ConfigGrep.regexp]
+    if ConfigDebug.verbose:
         args.append('--verbose')
-    if ConfigAll.quiet:
+    if ConfigDebug.quiet:
         args.append('--quiet')
     return subprocess.call(args)
 
@@ -148,7 +148,7 @@ def do_grep(project_name: str, project_dir: str):
 def do_clean(project_name: str, project_dir: str):
     fake_use(project_name, project_dir)
     args = ['git', 'clean', '-ffxd']
-    if ConfigAll.quiet:
+    if ConfigDebug.quiet:
         args.append('--quiet')
     return subprocess.call(args)
 
@@ -169,7 +169,7 @@ def do_status_msg(project_name: str, msg: str):
     ])
     if res_out != '' or res_err != '':
         print(msg.format(project_name=project_name))
-        if ConfigAll.verbose:
+        if ConfigDebug.verbose:
             print(res_out, end='')
             print(res_err, end='')
         return 1
@@ -182,7 +182,7 @@ def do_status_msg(project_name: str, msg: str):
     ])
     if res_out != '0\n' or res_err != '':
         print('project [{0}] is not synced'.format(project_name))
-        if ConfigAll.verbose:
+        if ConfigDebug.verbose:
             print(res_out, end='')
             print(res_err, end='')
         return 1
@@ -200,7 +200,7 @@ def do_dirty(project_name: str, project_dir: str):
 
 
 def do_print(project_name: str, project_dir: str):
-    if ConfigAll.verbose:
+    if ConfigDebug.verbose:
         print(project_name, project_dir)
     else:
         print(project_name)
