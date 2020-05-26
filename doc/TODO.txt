@@ -2,6 +2,8 @@
 	$ mg grep click -- requirements.txt
 	this requires that pytconf support extra arguments after -- to be collected and
 	accessible to the command being run.
+- enable to just list matching projects when doing 'grep'.
+	much like -l to git grep
 - make 'pull' do stuff in parallel.
 	This would be much faster when I have lots of repos.
 - make 'clean' be based on gitpython and not command line.
