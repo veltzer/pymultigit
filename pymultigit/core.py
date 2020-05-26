@@ -3,6 +3,7 @@ import os
 import os.path
 import subprocess
 import sys
+from typing import Tuple, Generator
 
 import git
 from pyfakeuse.pyfakeuse import fake_use
@@ -10,7 +11,7 @@ from pyfakeuse.pyfakeuse import fake_use
 from pymultigit.configs import ConfigDebug, ConfigGrep
 
 
-def projects(sort: bool):
+def projects(sort: bool) -> Generator[str, str]:
     """
     the method returns tuples of (project_name, project_dir)
     """
@@ -24,7 +25,7 @@ def projects(sort: bool):
         yield os.path.dirname(x), os.path.dirname(x)
 
 
-def run(args, do_exit=True):
+def run(args, do_exit=True) -> Tuple[str, str, int]:
     p = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     (res_out, res_err) = p.communicate()
     res_out = res_out.decode()
@@ -38,7 +39,7 @@ def run(args, do_exit=True):
     return res_out, res_err, p.returncode
 
 
-def do_count(fnc, attr_name, not_attr_name, attr_plural):
+def do_count(fnc, attr_name, not_attr_name, attr_plural) -> None:
     count = 0
     count_attr = 0
     for (project_name, project_dir) in projects(sort=ConfigDebug.sort):
@@ -68,7 +69,7 @@ def do_count(fnc, attr_name, not_attr_name, attr_plural):
         ))
 
 
-def do_for_all_projects(fnc):
+def do_for_all_projects(fnc) -> None:
     count = 0
     count_not_found = 0
     count_error = 0
@@ -100,20 +101,20 @@ def do_for_all_projects(fnc):
         print('[{}] ok'.format(count_ok))
 
 
-def is_dirty(repo):
+def is_dirty(repo) -> bool:
     return repo.is_dirty()
 
 
-def has_untracked_files(repo):
+def has_untracked_files(repo) -> bool:
     return len(repo.untracked_files) > 0
 
 
-def non_synchronized_with_upstream(repo):
+def non_synchronized_with_upstream(repo) -> bool:
     fake_use(repo)
     return False
 
 
-def do_build(project_name: str, project_dir: str):
+def do_build(project_name: str, project_dir: str) -> None:
     fake_use(project_name)
     makefile = os.path.join(project_dir, 'Makefile')
     bootstrap = os.path.join(project_dir, 'bootstrap')
@@ -125,7 +126,7 @@ def do_build(project_name: str, project_dir: str):
         pass
 
 
-def do_pull(project_name: str, project_dir: str):
+def do_pull(project_name: str, project_dir: str) -> int:
     fake_use(project_name, project_dir)
     args = ['git', 'pull']
     if ConfigDebug.git_verbose:
@@ -135,14 +136,28 @@ def do_pull(project_name: str, project_dir: str):
     return subprocess.call(args)
 
 
-def do_grep(project_name: str, project_dir: str):
+def do_grep(project_name: str, project_dir: str) -> None:
     fake_use(project_name, project_dir)
     args = ['git', 'grep', ConfigGrep.regexp]
     if ConfigDebug.git_verbose:
         args.append('--verbose')
     if ConfigDebug.git_quiet:
         args.append('--quiet')
-    return subprocess.call(args)
+    # return subprocess.call(args)
+    pipe = subprocess.Popen(
+        args,
+        shell=False,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+    )
+    for line in pipe.stdout:
+        print("{}: {}".format(project_dir, line))
+    if pipe.returncode:
+        raise subprocess.CalledProcessError(
+            returncode=pipe.returncode,
+            cmd=' '.join(args),
+        )
 
 
 def do_clean(project_name: str, project_dir: str) -> int:
@@ -191,7 +206,7 @@ def do_status_msg(project_name: str, msg: str) -> int:
     return 0
 
 
-def do_status(project_name: str, project_dir: str):
+def do_status(project_name: str, project_dir: str) -> int:
     fake_use(project_dir)
     if ConfigDebug.terse:
         msg = "{project_name}"
@@ -205,7 +220,7 @@ def do_dirty(project_name: str, project_dir: str) -> int:
     return do_status_msg(project_name=project_name, msg='{project_name}')
 
 
-def do_print(project_name: str, project_dir: str):
+def do_print(project_name: str, project_dir: str) -> None:
     if ConfigDebug.verbose:
         print(project_name, project_dir)
     else:
