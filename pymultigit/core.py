@@ -11,7 +11,7 @@ from pyfakeuse.pyfakeuse import fake_use
 from pymultigit.configs import ConfigDebug, ConfigGrep
 
 
-def projects(sort: bool) -> Generator[str, str]:
+def projects(sort: bool) -> Generator[Tuple[str, str], None, None]:
     """
     the method returns tuples of (project_name, project_dir)
     """
