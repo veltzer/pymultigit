@@ -1,5 +1,7 @@
-- make the grep functionality easier to use:
-	print the repo from which each grep line comes.
+- enable to do something like this:
+	$ mg grep click -- requirements.txt
+	this requires that pytconf support extra arguments after -- to be collected and
+	accessible to the command being run.
 - make 'pull' do stuff in parallel.
 	This would be much faster when I have lots of repos.
 - make 'clean' be based on gitpython and not command line.
