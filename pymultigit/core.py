@@ -152,7 +152,7 @@ def do_grep(project_name: str, project_dir: str) -> None:
         text=True,
     )
     for line in pipe.stdout:
-        print("{}: {}".format(project_dir, line))
+        print("{}/{}".format(project_dir, line), end="")
     if pipe.returncode:
         raise subprocess.CalledProcessError(
             returncode=pipe.returncode,
