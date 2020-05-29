@@ -1,3 +1,7 @@
+- enable to upgrade or install a certain version of a module in
+	all repositories:
+	$ mg upgrade pydmt
+	will go into every repository, check if it has pydmt and will upgrade it.
 - enable to do something like this:
 	$ mg grep click -- requirements.txt
 	this requires that pytconf support extra arguments after -- to be collected and
