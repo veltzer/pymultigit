@@ -10,7 +10,7 @@ from pymultigit.core import do_count, is_dirty, has_untracked_files, non_synchro
     do_for_all_projects, do_clean, do_status, do_dirty, do_build, do_pull, do_grep, do_print
 
 GROUP_NAME_DEFAULT = "default"
-GROUP_DESCRIPTION_DEFAULT = "all pymakehelper commands"
+GROUP_DESCRIPTION_DEFAULT = "all pymultigit commands"
 
 
 def register_group_default():

@@ -19,7 +19,7 @@ def register_all_groups():
 @register_main()
 def main():
     """
-    pymakehelper will help you write makefiles
+    pymultigit will help you manage multiple git repos
     """
     pylogconf.core.setup()
     register_all_groups()
