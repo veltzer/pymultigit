@@ -7,7 +7,7 @@ http://setuptools.readthedocs.io/en/latest/setuptools.html
 setuptools.setup(
     # the first three fields are a must according to the documentation
     name='pymultigit',
-    version='0.0.31',
+    version='0.0.32',
     packages=[
         'pymultigit',
         'pymultigit.endpoints',
