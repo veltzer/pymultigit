@@ -9,3 +9,5 @@
 
 pymultigit is a command to help you deal with multiple git repositories
 
+project website: https://veltzer.github.io/pymultigit
+
