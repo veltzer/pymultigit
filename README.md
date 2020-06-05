@@ -6,6 +6,10 @@
 ![GitHub](https://img.shields.io/github/license/veltzer/pymultigit)
 ![PyPI](https://img.shields.io/pypi/v/pymultigit)
 ![PyPI - Format](https://img.shields.io/pypi/format/pymultigit)
+[![Downloads](https://pepy.tech/badge/pytsv)](https://pepy.tech/project/pymultigit)
+[![Downloads](https://pepy.tech/badge/pytsv/month)](https://pepy.tech/project/pymultigit/month)
+[![Downloads](https://pepy.tech/badge/pytsv/week)](https://pepy.tech/project/pymultigit/week)
+
 
 pymultigit is a command to help you deal with multiple git repositories
 
