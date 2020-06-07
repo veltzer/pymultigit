@@ -30,7 +30,7 @@ setuptools.setup(
     ],
     url="https://veltzer.github.io/pymultigit",
     download_url="https://github.com/veltzer/pymultigit",
-    # license="MIT",
+    license="MIT",
     platforms=[
         'python3',
     ],
