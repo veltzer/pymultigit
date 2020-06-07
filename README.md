@@ -2,14 +2,20 @@
 
 # *pymultigit* project by Mark Veltzer
 
-![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
-![GitHub](https://img.shields.io/github/license/veltzer/pymultigit)
-![PyPI](https://img.shields.io/pypi/v/pymultigit)
+![PyPI - Status](https://img.shields.io/pypi/status/pymultigit)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pymultigit)
+![PyPI - License](https://img.shields.io/pypi/l/pymultigit)
+![PyPI - Package Name](https://img.shields.io/pypi/v/pymultigit)
 ![PyPI - Format](https://img.shields.io/pypi/format/pymultigit)
-[![Downloads](https://pepy.tech/badge/pytsv)](https://pepy.tech/project/pymultigit)
-[![Downloads](https://pepy.tech/badge/pytsv/month)](https://pepy.tech/project/pymultigit/month)
-[![Downloads](https://pepy.tech/badge/pytsv/week)](https://pepy.tech/project/pymultigit/week)
 
+![PyPI - Downloads](https://img.shields.io/pypi/dd/pymultigit)
+![PyPI - Downloads](https://img.shields.io/pypi/dw/pymultigit)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/pymultigit)
+
+![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
+![Downloads](https://pepy.tech/badge/pymultigit)
+![Downloads](https://pepy.tech/badge/pymultigit/month)
+![Downloads](https://pepy.tech/badge/pymultigit/week)
 
 pymultigit is a command to help you deal with multiple git repositories
 
