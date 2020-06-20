@@ -1,5 +1,4 @@
 
-
 # *pymultigit* project by Mark Veltzer
 
 ![PyPI - Status](https://img.shields.io/pypi/status/pymultigit)
@@ -17,7 +16,7 @@
 ![Downloads](https://pepy.tech/badge/pymultigit/month)
 ![Downloads](https://pepy.tech/badge/pymultigit/week)
 
+
 pymultigit is a command to help you deal with multiple git repositories
 
-project website: https://veltzer.github.io/pymultigit
-
+project website: <https://veltzer.github.io/pymultigit>
