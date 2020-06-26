@@ -198,7 +198,11 @@ def do_status_msg(project_name: str, msg: str) -> int:
         '@...@{upstream}',
     ])
     if res_out != '0\n' or res_err != '':
-        print('project [{0}] is not synced'.format(project_name))
+        if ConfigDebug.terse:
+            msg = project_name
+        else:
+            msg = 'project [{}] is not synced'.format(project_name)
+        print(msg)
         if ConfigDebug.verbose:
             print(res_out, end='')
             print(res_err, end='')
