@@ -12,6 +12,6 @@ project website: https://veltzer.github.io/pymultigit
 
 author: Mark Veltzer
 
-version: 0.0.33
+version: 0.0.34
 
 

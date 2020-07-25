@@ -2,7 +2,7 @@
 The default group of operations that pymultigit has
 """
 
-from pytconf.config import register_endpoint, register_function_group
+from pytconf import register_endpoint, register_function_group
 
 import pymultigit.version
 from pymultigit.configs import ConfigDebug, ConfigGrep
