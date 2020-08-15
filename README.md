@@ -17,8 +17,11 @@
 ![Downloads](https://pepy.tech/badge/pymultigit/week)
 
 
+
 pymultigit is a command to help you deal with multiple git repositories
 
 project website: <https://veltzer.github.io/pymultigit>
+
+chat with me at [![gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/veltzer/mark.veltzer)
 
 
