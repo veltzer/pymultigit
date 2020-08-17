@@ -6,7 +6,7 @@ import sys
 from typing import Tuple, Generator
 
 import git
-from pyfakeuse.pyfakeuse import fake_use
+from pyfakeuse import fake_use
 
 from pymultigit.configs import ConfigDebug, ConfigGrep
 
