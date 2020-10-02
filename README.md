@@ -16,6 +16,8 @@
 ![Downloads](https://pepy.tech/badge/pymultigit/month)
 ![Downloads](https://pepy.tech/badge/pymultigit/week)
 
+[![Known Vulnerabilities](https://snyk.io/test/github/veltzer/pymultigit/badge.svg?targetFile=requirements.txt)](https://snyk.io/test/github/veltzer/pymultigit?targetFile=requirements.txt)
+
 
 
 pymultigit is a command to help you deal with multiple git repositories
