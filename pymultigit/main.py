@@ -17,7 +17,7 @@ from pymultigit.static import DESCRIPTION, APP_NAME, VERSION_STR
     configs=[ConfigDebug],
     description="Show the status of multiple git repositories",
 )
-def count_ditry() -> None:
+def count_dirty() -> None:
     do_count(is_dirty, 'is dirty', 'is clean', 'were dirty')
 
 
