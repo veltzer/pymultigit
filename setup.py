@@ -9,10 +9,9 @@ def get_readme():
 setuptools.setup(
     # the first three fields are a must according to the documentation
     name="pymultigit",
-    version="0.0.34",
+    version="0.0.35",
     packages=[
         'pymultigit',
-        'pymultigit.endpoints',
     ],
     # from here all is optional
     description="pymultigit is a command to help you deal with multiple git repositories",
@@ -58,7 +57,7 @@ setuptools.setup(
     data_files=[
     ],
     entry_points={"console_scripts": [
-        'pymultigit=pymultigit.endpoints.main:main',
+        'pymultigit=pymultigit.main:main',
     ]},
     python_requires=">=3.6",
 )
