@@ -171,7 +171,7 @@ def do_clean(project_name: str, project_dir: str) -> int:
 
 
 def do_status_msg(project_name: str, msg: str) -> int:
-    (res_out, res_err, return_code) = run([
+    (res_out, res_err, _) = run([
         'git',
         'status',
         # porcelain is guaranteed to have parsable output and not
@@ -190,7 +190,7 @@ def do_status_msg(project_name: str, msg: str) -> int:
             print(res_out, end='')
             print(res_err, end='')
         return 1
-    (res_out, res_err, return_code) = run([
+    (res_out, res_err, _) = run([
         'git',
         'rev-list',
         '--left-only',
@@ -229,4 +229,3 @@ def do_print(project_name: str, project_dir: str) -> None:
         print(project_name, project_dir)
     else:
         print(project_name)
-
