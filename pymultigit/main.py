@@ -9,7 +9,7 @@ import pylogconf.core
 
 from pymultigit.configs import ConfigDebug, ConfigGrep
 from pymultigit.core import do_count, is_dirty, has_untracked_files, non_synchronized_with_upstream, \
-    do_for_all_projects, do_clean, do_status, do_dirty, do_build, do_pull, do_grep, do_print
+    do_for_all_projects, do_clean, do_status, do_dirty, do_build, do_pull, do_grep, do_print, do_local_branch
 from pymultigit.static import DESCRIPTION, APP_NAME, VERSION_STR
 
 
@@ -27,6 +27,14 @@ def count_dirty() -> None:
 )
 def untracked() -> None:
     do_count(has_untracked_files, 'has untracked files', 'is fully tracked', 'have untracked files')
+
+
+@register_endpoint(
+    configs=[ConfigDebug],
+    description="Show which local branch we are on",
+)
+def local_branch() -> None:
+    do_for_all_projects(do_local_branch)
 
 
 @register_endpoint(
