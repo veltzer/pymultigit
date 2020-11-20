@@ -170,6 +170,16 @@ def do_local_branch(project_name: str, project_dir: str) -> int:
     return subprocess.call(args)
 
 
+def do_remote_branch(project_name: str, project_dir: str) -> int:
+    fake_use(project_name, project_dir)
+    args = ['git', 'branch', '--remotes', '--show-current']
+    if ConfigDebug.git_verbose:
+        args.append('--verbose')
+    if ConfigDebug.git_quiet:
+        args.append('--quiet')
+    return subprocess.call(args)
+
+
 def do_clean(project_name: str, project_dir: str) -> int:
     fake_use(project_name, project_dir)
     args = ['git', 'clean', '-ffxd']
