@@ -1,19 +1,22 @@
 name: build
-on:
-  push:
+on: [push, pull_request]
 jobs:
   build:
-    name: build
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-16.04, ubuntu-18.04, ubuntu-20.04]
+        python-version: [3.6, 3.7, 3.8]
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
-      - name: add_path
-        run: echo "/home/runner/.local/bin" >> $GITHUB_PATH
-      - name: deps
-        run: |
-          python3 -m pip install --upgrade pip
-          python3 -m pip install setuptools
-          python3 -m pip install -r requirements.txt
-      - name: make
-        run: make
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Build
+      run: |
+        make
