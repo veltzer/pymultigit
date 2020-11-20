@@ -31,7 +31,7 @@ def run(args, do_exit=True) -> Tuple[str, str, int]:
     res_out = res_out.decode()
     res_err = res_err.decode()
     if p.returncode:
-        print('errors while running [{0}]...'.format(args))
+        print(f'errors while running [{args}]...')
         print(res_out, end='', file=sys.stderr)
         print(res_err, end='', file=sys.stderr)
         if do_exit:
@@ -50,23 +50,12 @@ def do_count(fnc, attr_name, not_attr_name, attr_plural) -> None:
             count_attr += 1
         if ConfigDebug.verbose:
             if attr:
-                print('project [{project_name}] {attr_name}'.format(
-                    project_name=project_name,
-                    attr_name=attr_name,
-                ))
+                print(f'project [{project_name}] {attr_name}')
             else:
-                print('project [{project_name}] {not_attr_name}'.format(
-                    project_name=project_name,
-                    not_attr_name=not_attr_name,
-                ))
+                print(f'project [{project_name}] {not_attr_name}')
     if ConfigDebug.stats:
-        print('scanned [{count}] projects'.format(
-            count=count,
-        ))
-        print('[{count_attr}] projects {attr_plural}'.format(
-            count_attr=count_attr,
-            attr_plural=attr_plural,
-        ))
+        print(f'scanned [{count}] projects')
+        print(f'[{count_attr}] projects {attr_plural}')
 
 
 def do_for_all_projects(fnc) -> None:
@@ -77,7 +66,7 @@ def do_for_all_projects(fnc) -> None:
     orig_dir = os.getcwd()
     for (project_name, project_dir) in projects(sort=ConfigDebug.sort):
         if ConfigDebug.verbose:
-            print('doing [{0}] at [{1}]...'.format(project_name, project_dir), end='')
+            print(f'doing [{project_name}] at [{project_dir}]...')
             sys.stdout.flush()
         count += 1
         if os.path.isdir(project_dir):
@@ -95,10 +84,10 @@ def do_for_all_projects(fnc) -> None:
                 print('NOT FOUND')
             count_not_found += 1
     if ConfigDebug.stats:
-        print('scanned [{}] projects'.format(count))
-        print('[{}] not found'.format(count_not_found))
-        print('[{}] error'.format(count_error))
-        print('[{}] ok'.format(count_ok))
+        print(f'scanned [{count}] projects')
+        print(f'[{count_not_found}] not found')
+        print(f'[{count_error}] error')
+        print(f'[{count_ok}] ok')
 
 
 def is_dirty(repo) -> bool:
@@ -149,10 +138,9 @@ def do_grep(project_name: str, project_dir: str) -> None:
         shell=False,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
-        text=True,
     )
     for line in pipe.stdout:
-        print("{}/{}".format(project_dir, line), end="")
+        print(f"{project_dir}/{line.decode()}", end="")
     if pipe.returncode:
         raise subprocess.CalledProcessError(
             returncode=pipe.returncode,
@@ -221,7 +209,7 @@ def do_status_msg(project_name: str, msg: str) -> int:
         if ConfigDebug.terse:
             msg = project_name
         else:
-            msg = 'project [{}] is not synced'.format(project_name)
+            msg = f'project [{project_name}] is not synced'
         print(msg)
         if ConfigDebug.verbose:
             print(res_out, end='')
