@@ -19,6 +19,9 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/veltzer/pymultigit/badge.svg?targetFile=requirements.txt)](https://snyk.io/test/github/veltzer/pymultigit?targetFile=requirements.txt)
 
 
+Actions
+
+![build](https://github.com/veltzer/pymultigit/workflows/build/badge.svg)
 
 pymultigit is a command to help you deal with multiple git repositories
 
