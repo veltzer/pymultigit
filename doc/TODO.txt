@@ -1,3 +1,4 @@
+- make this project do all that the scripts in the "scripts" folder do.
 - enable to upgrade or install a certain version of a module in
 	all repositories:
 	$ mg upgrade pydmt
