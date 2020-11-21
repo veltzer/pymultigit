@@ -14,6 +14,7 @@ pycmdtools mcmp py*/templates/setup.py.mako
 pycmdtools mcmp py*/templates/README.rst.mako
 pycmdtools mcmp py*/templates/README.md.mako
 pycmdtools mcmp py*/templates/*/static.py.mako
+pycmdtools mcmp py*/templates/.github/workflows/build.yml.mako
 pycmdtools mcmp py*/config/apt.py
 pycmdtools mcmp py*/config/composites.py
 pycmdtools mcmp py*/config/deb.py
