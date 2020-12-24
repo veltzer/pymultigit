@@ -22,4 +22,4 @@ pycmdtools mcmp py*/config/general.py
 pycmdtools mcmp py*/config/git.py
 pycmdtools mcmp py*/config/__init__.py
 pycmdtools mcmp py*/config/messages.py
-pycmdtools mcmp py*/.github/workflows/build.yml
+# pycmdtools mcmp py*/.github/workflows/build.yml
