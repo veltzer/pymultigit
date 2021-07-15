@@ -26,16 +26,16 @@ def projects(sort: bool) -> Generator[Tuple[str, str], None, None]:
 
 
 def run(args, do_exit=True) -> Tuple[str, str, int]:
-    p = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    (res_out, res_err) = p.communicate()
-    res_out = res_out.decode()
-    res_err = res_err.decode()
-    if p.returncode:
-        print(f'errors while running [{args}]...')
-        print(res_out, end='', file=sys.stderr)
-        print(res_err, end='', file=sys.stderr)
-        if do_exit:
-            sys.exit(p.returncode)
+    with subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE) as p:
+        (res_out, res_err) = p.communicate()
+        res_out = res_out.decode()
+        res_err = res_err.decode()
+        if p.returncode:
+            print(f'errors while running [{args}]...')
+            print(res_out, end='', file=sys.stderr)
+            print(res_err, end='', file=sys.stderr)
+            if do_exit:
+                sys.exit(p.returncode)
     return res_out, res_err, p.returncode
 
 
@@ -133,19 +133,19 @@ def do_grep(project_name: str, project_dir: str) -> None:
     if ConfigDebug.git_quiet:
         args.append('--quiet')
     # return subprocess.call(args)
-    pipe = subprocess.Popen(
+    with subprocess.Popen(
         args,
         shell=False,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
-    )
-    for line in pipe.stdout:
-        print(f"{project_dir}/{line.decode()}", end="")
-    if pipe.returncode:
-        raise subprocess.CalledProcessError(
-            returncode=pipe.returncode,
-            cmd=' '.join(args),
-        )
+    ) as pipe:
+        for line in pipe.stdout:
+            print(f"{project_dir}/{line.decode()}", end="")
+        if pipe.returncode:
+            raise subprocess.CalledProcessError(
+                returncode=pipe.returncode,
+                cmd=' '.join(args),
+            )
 
 
 def do_local_branch(project_name: str, project_dir: str) -> int:
