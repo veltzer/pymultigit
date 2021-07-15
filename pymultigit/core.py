@@ -66,7 +66,7 @@ def do_for_all_projects(fnc) -> None:
     orig_dir = os.getcwd()
     for (project_name, project_dir) in projects(sort=ConfigDebug.sort):
         if ConfigDebug.verbose:
-            print(f'doing [{project_name}] at [{project_dir}]...')
+            print(f'doing [{project_name}] at [{project_dir}]...', end="")
             sys.stdout.flush()
         count += 1
         if os.path.isdir(project_dir):
