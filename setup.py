@@ -59,5 +59,5 @@ setuptools.setup(
     entry_points={"console_scripts": [
         'pymultigit=pymultigit.main:main',
     ]},
-    python_requires=">=3.6",
+    python_requires=">=3.7",
 )
