@@ -28,7 +28,7 @@ class ConfigDebug(Config):
     )
     git_quiet = ParamCreator.create_bool(
         help_string="add --quiet when running git?",
-        default=False,
+        default=True,
     )
     stats = ParamCreator.create_bool(
         help_string="show statistics are the end?",
