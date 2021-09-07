@@ -14,7 +14,7 @@ setuptools.setup(
         'pymultigit',
     ],
     # from here all is optional
-    description="pymultigit is a command to help you deal with multiple git repositories",
+    description="Help you deal with multiple git repositories",
     long_description=get_readme(),
     long_description_content_type="text/x-rst",
     author="Mark Veltzer",
