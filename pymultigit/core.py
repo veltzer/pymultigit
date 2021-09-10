@@ -125,14 +125,13 @@ def do_pull(project_name: str, project_dir: str) -> int:
     return subprocess.call(args)
 
 
-def do_grep(project_name: str, project_dir: str) -> None:
-    fake_use(project_name, project_dir)
+def do_grep(_project_name: str, project_dir: str) -> None:
     args = ['git', 'grep', ConfigGrep.regexp]
     if ConfigDebug.git_verbose:
         args.append('--verbose')
     if ConfigDebug.git_quiet:
         args.append('--quiet')
-    # return subprocess.call(args)
+    print(args)
     with subprocess.Popen(
         args,
         shell=False,
