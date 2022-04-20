@@ -42,9 +42,13 @@ class ConfigDebug(Config):
 
 class ConfigGrep(Config):
     """
-    Parameters for pymultigit
+    Parameters for the grep command
     """
 
     regexp = ParamCreator.create_str(
         help_string="what regexp to look for?",
+    )
+    files = ParamCreator.create_str_or_none(
+        help_string="what regexp to look for?",
+        default=None,
     )

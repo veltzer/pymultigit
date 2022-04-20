@@ -132,6 +132,11 @@ def do_grep(_project_name: str, project_dir: str) -> None:
     if ConfigDebug.git_quiet:
         args.append('--quiet')
     args.append(ConfigGrep.regexp)
+    if ConfigGrep.files is not None:
+        args.extend([
+            "--",
+            ConfigGrep.files
+        ])
     with subprocess.Popen(
         args,
         shell=False,
