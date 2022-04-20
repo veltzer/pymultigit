@@ -6,7 +6,6 @@ import sys
 from typing import Tuple, Generator
 
 import git
-from pyfakeuse import fake_use
 
 from pymultigit.configs import ConfigDebug, ConfigGrep, ConfigPull
 
@@ -98,13 +97,11 @@ def has_untracked_files(repo) -> bool:
     return len(repo.untracked_files) > 0
 
 
-def non_synchronized_with_upstream(repo) -> bool:
-    fake_use(repo)
+def non_synchronized_with_upstream(_repo: str) -> bool:
     return False
 
 
-def do_build(project_name: str, project_dir: str) -> None:
-    fake_use(project_name)
+def do_build(_project_name: str, project_dir: str) -> None:
     makefile = os.path.join(project_dir, 'Makefile')
     bootstrap = os.path.join(project_dir, 'bootstrap')
     if os.path.isfile(makefile):
@@ -115,8 +112,7 @@ def do_build(project_name: str, project_dir: str) -> None:
         pass
 
 
-def do_pull(project_name: str, project_dir: str) -> int:
-    fake_use(project_name, project_dir)
+def do_pull(_project_name: str, _project_dir: str) -> int:
     args = ['git', 'pull']
     if ConfigDebug.git_verbose:
         args.append('--verbose')
@@ -152,8 +148,7 @@ def do_grep(_project_name: str, project_dir: str) -> None:
             )
 
 
-def do_local_branch(project_name: str, project_dir: str) -> int:
-    fake_use(project_name, project_dir)
+def do_local_branch(_project_name: str, _project_dir: str) -> int:
     args = ['git', 'branch', '--show-current']
     if ConfigDebug.git_verbose:
         args.append('--verbose')
@@ -162,8 +157,7 @@ def do_local_branch(project_name: str, project_dir: str) -> int:
     return subprocess.call(args)
 
 
-def do_remote_branch(project_name: str, project_dir: str) -> int:
-    fake_use(project_name, project_dir)
+def do_remote_branch(_project_name: str, _project_dir: str) -> int:
     args = ['git', 'branch', '--remotes', '--show-current']
     if ConfigDebug.git_verbose:
         args.append('--verbose')
@@ -172,8 +166,7 @@ def do_remote_branch(project_name: str, project_dir: str) -> int:
     return subprocess.call(args)
 
 
-def do_clean(project_name: str, project_dir: str) -> int:
-    fake_use(project_name, project_dir)
+def do_clean(_project_name: str, _project_dir: str) -> int:
     args = ['git', 'clean', '-ffxd']
     if ConfigDebug.git_verbose:
         args.append('--verbose')
@@ -222,18 +215,16 @@ def do_status_msg(project_name: str, msg: str) -> int:
     return 0
 
 
-def do_status(project_name: str, project_dir: str) -> int:
-    fake_use(project_dir)
+def do_status(project_name: str, _project_dir: str) -> int:
     if ConfigDebug.terse:
-        msg = "{project_name}"
+        msg = f"{project_name}"
     else:
-        msg = 'project [{project_name}] is dirty'
+        msg = f"project [{project_name}] is dirty"
     return do_status_msg(project_name=project_name, msg=msg)
 
 
-def do_dirty(project_name: str, project_dir: str) -> int:
-    fake_use(project_dir)
-    return do_status_msg(project_name=project_name, msg='{project_name}')
+def do_dirty(project_name: str, _project_dir: str) -> int:
+    return do_status_msg(project_name=project_name, msg=f'{project_name}')
 
 
 def do_print(project_name: str, project_dir: str) -> None:
