@@ -8,7 +8,7 @@ from typing import Tuple, Generator
 import git
 from pyfakeuse import fake_use
 
-from pymultigit.configs import ConfigDebug, ConfigGrep
+from pymultigit.configs import ConfigDebug, ConfigGrep, ConfigPull
 
 
 def projects(sort: bool) -> Generator[Tuple[str, str], None, None]:
@@ -120,7 +120,7 @@ def do_pull(project_name: str, project_dir: str) -> int:
     args = ['git', 'pull']
     if ConfigDebug.git_verbose:
         args.append('--verbose')
-    if ConfigDebug.git_quiet:
+    if ConfigPull.git_quiet:
         args.append('--quiet')
     return subprocess.call(args)
 
