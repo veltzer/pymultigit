@@ -132,7 +132,6 @@ def do_grep(_project_name: str, project_dir: str) -> None:
     if ConfigDebug.git_quiet:
         args.append('--quiet')
     args.append(ConfigGrep.regexp)
-    print(args)
     with subprocess.Popen(
         args,
         shell=False,
