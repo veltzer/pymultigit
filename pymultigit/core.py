@@ -120,7 +120,7 @@ def do_pull(project_name: str, project_dir: str) -> int:
     args = ['git', 'pull']
     if ConfigDebug.git_verbose:
         args.append('--verbose')
-    if ConfigPull.git_quiet:
+    if ConfigPull.pull_quiet:
         args.append('--quiet')
     return subprocess.call(args)
 
