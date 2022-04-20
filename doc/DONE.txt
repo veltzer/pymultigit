@@ -1,0 +1,2 @@
+- make this project do all that the scripts in the "scripts" folder do.
+	I removed this TODO items because I don't know what it means
