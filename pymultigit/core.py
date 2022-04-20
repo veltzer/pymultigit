@@ -18,9 +18,9 @@ def projects(sort: bool) -> Generator[Tuple[str, str], None, None]:
     repos_list = glob.glob('*/.git')
     if sort:
         repos_list.sort()
-    if len(repos_list) == 0:
-        print('no git repos here', file=sys.stderr)
-        sys.exit(1)
+    # if len(repos_list) == 0:
+    #    print('no git repos here', file=sys.stderr)
+    #    sys.exit(1)
     for x in repos_list:
         yield os.path.dirname(x), os.path.dirname(x)
 
@@ -131,6 +131,7 @@ def do_grep(_project_name: str, project_dir: str) -> None:
         args.append('--verbose')
     if ConfigDebug.git_quiet:
         args.append('--quiet')
+    print("Hello")
     print(args)
     with subprocess.Popen(
         args,
