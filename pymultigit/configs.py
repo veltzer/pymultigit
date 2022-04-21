@@ -6,6 +6,16 @@ All configurations for pymultigit
 from pytconf import Config, ParamCreator
 
 
+class ConfigOutput(Config):
+    """
+    Parameters to control output
+    """
+    terse = ParamCreator.create_bool(
+        help_string="be terse?",
+        default=False,
+    )
+
+
 class ConfigDebug(Config):
     """
     Parameters for debug
@@ -16,10 +26,6 @@ class ConfigDebug(Config):
     )
     git_verbose = ParamCreator.create_bool(
         help_string="add --verbose when running git?",
-        default=False,
-    )
-    terse = ParamCreator.create_bool(
-        help_string="be terse?",
         default=False,
     )
     quiet = ParamCreator.create_bool(

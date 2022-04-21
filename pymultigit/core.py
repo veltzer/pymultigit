@@ -7,7 +7,7 @@ from typing import Tuple, Generator
 
 import git
 
-from pymultigit.configs import ConfigDebug, ConfigGrep, ConfigPull, ConfigMain
+from pymultigit.configs import ConfigOutput, ConfigDebug, ConfigGrep, ConfigPull, ConfigMain
 
 
 def projects(sort: bool) -> Generator[Tuple[str, str], None, None]:
@@ -204,7 +204,7 @@ def do_status_msg(project_name: str, msg: str) -> int:
         '@...@{upstream}',
     ])
     if res_out != '0\n' or res_err != '':
-        if ConfigDebug.terse:
+        if ConfigOutput.terse:
             msg = project_name
         else:
             msg = f'project [{project_name}] is not synced'
@@ -217,7 +217,7 @@ def do_status_msg(project_name: str, msg: str) -> int:
 
 
 def do_status(project_name: str, _project_dir: str) -> int:
-    if ConfigDebug.terse:
+    if ConfigOutput.terse:
         msg = f"{project_name}"
     else:
         msg = f"project [{project_name}] is dirty"
