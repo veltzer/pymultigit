@@ -49,7 +49,7 @@ def untracked() -> None:
     description="Show which local branch we are on",
 )
 def local_branch() -> None:
-    do_for_all_projects(do_local_branch)
+    do_for_all_projects(do_local_branch, True)
 
 
 @register_endpoint(
@@ -57,7 +57,7 @@ def local_branch() -> None:
     description="Show which local branch we are on",
 )
 def remote_branch() -> None:
-    do_for_all_projects(do_remote_branch)
+    do_for_all_projects(do_remote_branch, True)
 
 
 @register_endpoint(
@@ -80,7 +80,7 @@ def synchronized() -> None:
     description="Clean all projects",
 )
 def clean() -> None:
-    do_for_all_projects(do_clean)
+    do_for_all_projects(do_clean, False)
 
 
 @register_endpoint(
@@ -88,7 +88,7 @@ def clean() -> None:
     description="Show the status of multiple git repositories",
 )
 def status() -> None:
-    do_for_all_projects(do_status)
+    do_for_all_projects(do_status, False)
 
 
 @register_endpoint(
@@ -96,7 +96,7 @@ def status() -> None:
     description="Show names of project which are dirty",
 )
 def dirty() -> None:
-    do_for_all_projects(do_dirty)
+    do_for_all_projects(do_dirty, False)
 
 
 @register_endpoint(
@@ -104,7 +104,7 @@ def dirty() -> None:
     description="Build multiple git repositories",
 )
 def build() -> None:
-    do_for_all_projects(do_build)
+    do_for_all_projects(do_build, False)
 
 
 @register_endpoint(
@@ -112,7 +112,7 @@ def build() -> None:
     description="Pull changes for multiple git repositories",
 )
 def pull() -> None:
-    do_for_all_projects(do_pull)
+    do_for_all_projects(do_pull, False)
 
 
 @register_endpoint(
@@ -120,7 +120,7 @@ def pull() -> None:
     description="Grep multiple repositories for pattern",
 )
 def grep() -> None:
-    do_for_all_projects(do_grep)
+    do_for_all_projects(do_grep, False)
 
 
 @register_endpoint(
@@ -128,7 +128,7 @@ def grep() -> None:
     description="List all projects",
 )
 def list_projects() -> None:
-    do_for_all_projects(do_print)
+    do_for_all_projects(do_print, False)
 
 
 @register_main(
