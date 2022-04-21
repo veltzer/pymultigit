@@ -64,7 +64,7 @@ def do_count(fnc, attr_name, not_attr_name, attr_plural, print_attr, print_not_a
         print(f'[{count_attr}] projects {attr_plural}')
 
 
-def do_for_all_projects(fnc) -> None:
+def do_for_all_projects(fnc, show_output) -> None:
     count = 0
     count_not_found = 0
     count_error = 0
@@ -77,13 +77,28 @@ def do_for_all_projects(fnc) -> None:
         count += 1
         if os.path.isdir(project_dir):
             os.chdir(project_dir)
-            ret = fnc(project_name, project_dir)
-            if ret:
-                count_error += 1
-            else:
+            try:
+                ret = fnc(project_name, project_dir)
                 count_ok += 1
-            if ConfigDebug.verbose:
-                print('OK')
+                if ConfigDebug.verbose:
+                    print('OK')
+            # this is one of the rare cases in which we really want to catch all exceptions.
+            # pylint: disable=broad-except
+            # noinspection PyBroadException
+            except Exception:
+                count_error += 1
+                if ConfigDebug.verbose:
+                    print('ERROR')
+            if ConfigOutput.terse:
+                if show_output:
+                    print(f'{project_name} {ret}')
+                else:
+                    print(project_name)
+            else:
+                if show_output:
+                    print(f'project [{project_name}] at [{project_dir}] output [{ret}]')
+                else:
+                    print(f'project [{project_name}] at [{project_dir}]')
             os.chdir(orig_dir)
         else:
             if ConfigDebug.verbose:
