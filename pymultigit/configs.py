@@ -34,9 +34,27 @@ class ConfigDebug(Config):
         help_string="show statistics are the end?",
         default=False,
     )
+
+
+class ConfigMain(Config):
+    """
+    Main parameters
+    """
     sort = ParamCreator.create_bool(
         help_string="sort results by project name?",
         default=True,
+    )
+    glob = ParamCreator.create_str(
+        help_string="what glob to use?",
+        default="*/*.git"
+    )
+    use_glob = ParamCreator.create_bool(
+        help_string="Should I use glob or list of folders?",
+        default=True,
+    )
+    folders = ParamCreator.create_list_str(
+        help_string="what list of folders to use?",
+        default=[],
     )
 
 

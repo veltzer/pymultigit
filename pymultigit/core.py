@@ -7,21 +7,21 @@ from typing import Tuple, Generator
 
 import git
 
-from pymultigit.configs import ConfigDebug, ConfigGrep, ConfigPull
+from pymultigit.configs import ConfigDebug, ConfigGrep, ConfigPull, ConfigMain
 
 
 def projects(sort: bool) -> Generator[Tuple[str, str], None, None]:
     """
     the method returns tuples of (project_name, project_dir)
     """
-    repos_list = glob.glob('*/.git')
+    if ConfigMain.use_glob:
+        repos_list = [os.path.dirname(x) for x in glob.glob('*/.git')]
+    else:
+        repos_list = ConfigMain.folders
     if sort:
         repos_list.sort()
-    # if len(repos_list) == 0:
-    #    print('no git repos here', file=sys.stderr)
-    #    sys.exit(1)
     for x in repos_list:
-        yield os.path.dirname(x), os.path.dirname(x)
+        yield x, x
 
 
 def run(args, do_exit=True) -> Tuple[str, str, int]:
@@ -41,7 +41,7 @@ def run(args, do_exit=True) -> Tuple[str, str, int]:
 def do_count(fnc, attr_name, not_attr_name, attr_plural) -> None:
     count = 0
     count_attr = 0
-    for (project_name, project_dir) in projects(sort=ConfigDebug.sort):
+    for (project_name, project_dir) in projects(sort=ConfigMain.sort):
         count += 1
         repo = git.Repo(project_dir)
         attr = fnc(repo)
@@ -63,7 +63,7 @@ def do_for_all_projects(fnc) -> None:
     count_error = 0
     count_ok = 0
     orig_dir = os.getcwd()
-    for (project_name, project_dir) in projects(sort=ConfigDebug.sort):
+    for (project_name, project_dir) in projects(sort=ConfigMain.sort):
         if ConfigDebug.verbose:
             print(f'doing [{project_name}] at [{project_dir}]...', end="")
             sys.stdout.flush()
