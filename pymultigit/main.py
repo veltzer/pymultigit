@@ -19,7 +19,15 @@ from pymultigit.static import DESCRIPTION, APP_NAME, VERSION_STR
     description="Show the status of multiple git repositories",
 )
 def count_dirty() -> None:
-    do_count(is_dirty, 'is dirty', 'is clean', 'were dirty')
+    do_count(
+        is_dirty,
+        'is dirty',
+        'is clean',
+        'were dirty',
+        True,
+        False,
+        False,
+    )
 
 
 @register_endpoint(
@@ -27,7 +35,15 @@ def count_dirty() -> None:
     description="Show which repositories have untracked files",
 )
 def untracked() -> None:
-    do_count(has_untracked_files, 'has untracked files', 'is fully tracked', 'have untracked files')
+    do_count(
+        has_untracked_files,
+        'has untracked files',
+        'is fully tracked',
+        'have untracked files',
+        True,
+        False,
+        False,
+    )
 
 
 @register_endpoint(
@@ -51,7 +67,15 @@ def remote_branch() -> None:
     description="Show which repositories are synchronized with their upstream",
 )
 def synchronized() -> None:
-    do_count(non_synchronized_with_upstream, 'is behind upstream', 'is synchronized', 'are behind upstream')
+    do_count(
+        non_synchronized_with_upstream,
+        'is behind upstream',
+        'is synchronized',
+        'are behind upstream',
+        True,
+        False,
+        False,
+    )
 
 
 @register_endpoint(
