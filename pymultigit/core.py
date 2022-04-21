@@ -38,7 +38,7 @@ def run(args, do_exit=True) -> Tuple[str, str, int]:
     return res_out, res_err, p.returncode
 
 
-def do_count(fnc, attr_name, not_attr_name, attr_plural) -> None:
+def do_count(fnc, attr_name, not_attr_name, attr_plural, print_attr, print_not_attr, print_stats) -> None:
     count = 0
     count_attr = 0
     for (project_name, project_dir) in projects(sort=ConfigMain.sort):
@@ -47,12 +47,13 @@ def do_count(fnc, attr_name, not_attr_name, attr_plural) -> None:
         attr = fnc(repo)
         if attr:
             count_attr += 1
-        if ConfigDebug.verbose:
-            if attr:
+        if attr:
+            if print_attr:
                 print(f'project [{project_name}] {attr_name}')
-            else:
+        else:
+            if print_not_attr:
                 print(f'project [{project_name}] {not_attr_name}')
-    if ConfigDebug.stats:
+    if print_stats:
         print(f'scanned [{count}] projects')
         print(f'[{count_attr}] projects {attr_plural}')
 
