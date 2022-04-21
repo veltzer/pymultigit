@@ -14,6 +14,10 @@ class ConfigOutput(Config):
         help_string="be terse?",
         default=False,
     )
+    stats = ParamCreator.create_bool(
+        help_string="show statistics are the end?",
+        default=False,
+    )
 
 
 class ConfigDebug(Config):
@@ -34,10 +38,6 @@ class ConfigDebug(Config):
     )
     git_quiet = ParamCreator.create_bool(
         help_string="add --quiet when running git?",
-        default=False,
-    )
-    stats = ParamCreator.create_bool(
-        help_string="show statistics are the end?",
         default=False,
     )
 

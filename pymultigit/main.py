@@ -26,7 +26,6 @@ def count_dirty() -> None:
         'were dirty',
         True,
         False,
-        False,
     )
 
 
@@ -41,7 +40,6 @@ def untracked() -> None:
         'is fully tracked',
         'have untracked files',
         True,
-        False,
         False,
     )
 
@@ -73,7 +71,6 @@ def synchronized() -> None:
         'is synchronized',
         'are behind upstream',
         True,
-        False,
         False,
     )
 
