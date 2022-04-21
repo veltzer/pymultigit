@@ -262,7 +262,7 @@ def do_dirty(_project_name: str, _project_dir: str) -> int:
     if ConfigDebug.git_quiet:
         args.append('--quiet')
     output = subprocess.check_output(args, stderr=subprocess.DEVNULL)
-    return output == ''
+    return output.decode() != ''
 
 
 def do_print(project_name: str, project_dir: str) -> None:
