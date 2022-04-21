@@ -111,6 +111,16 @@ def do_for_all_projects(fnc, show_output) -> None:
         print(f'[{count_ok}] ok')
 
 
+def print_projects_that_return_true(fnc) -> None:
+    orig_dir = os.getcwd()
+    for (project_name, project_dir) in projects(sort=ConfigMain.sort):
+        if os.path.isdir(project_dir):
+            os.chdir(project_dir)
+            if fnc(project_name, project_dir):
+                print(project_name)
+            os.chdir(orig_dir)
+
+
 def is_dirty(repo) -> bool:
     return repo.is_dirty()
 
@@ -245,12 +255,14 @@ def do_status(project_name: str, _project_dir: str) -> int:
     return do_status_msg(project_name=project_name, msg=msg)
 
 
-def do_dirty(project_name: str, project_dir: str) -> int:
-    if ConfigOutput.terse:
-        msg = project_name
-    else:
-        msg = f"project [{project_name}] at directory [{project_dir}]"
-    return do_status_msg(project_name=project_name, msg=msg)
+def do_dirty(_project_name: str, _project_dir: str) -> int:
+    args = ['git', 'status', '--porcelain']
+    if ConfigDebug.git_verbose:
+        args.append('--verbose')
+    if ConfigDebug.git_quiet:
+        args.append('--quiet')
+    output = subprocess.check_output(args, stderr=subprocess.DEVNULL)
+    return output == ''
 
 
 def do_print(project_name: str, project_dir: str) -> None:
