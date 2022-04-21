@@ -38,7 +38,7 @@ def run(args, do_exit=True) -> Tuple[str, str, int]:
     return res_out, res_err, p.returncode
 
 
-def do_count(fnc, attr_name, not_attr_name, attr_plural, print_attr, print_not_attr, print_stats) -> None:
+def do_count(fnc, attr_name, not_attr_name, attr_plural, print_attr, print_not_attr) -> None:
     count = 0
     count_attr = 0
     for (project_name, project_dir) in projects(sort=ConfigMain.sort):
@@ -49,11 +49,17 @@ def do_count(fnc, attr_name, not_attr_name, attr_plural, print_attr, print_not_a
             count_attr += 1
         if attr:
             if print_attr:
-                print(f'project [{project_name}] {attr_name}')
+                if ConfigOutput.terse:
+                    print(project_name)
+                else:
+                    print(f'project [{project_name}] {attr_name}')
         else:
             if print_not_attr:
-                print(f'project [{project_name}] {not_attr_name}')
-    if print_stats:
+                if ConfigOutput.terse:
+                    print(project_name)
+                else:
+                    print(f'project [{project_name}] {not_attr_name}')
+    if ConfigOutput.stats:
         print(f'scanned [{count}] projects')
         print(f'[{count_attr}] projects {attr_plural}')
 
@@ -83,7 +89,7 @@ def do_for_all_projects(fnc) -> None:
             if ConfigDebug.verbose:
                 print('NOT FOUND')
             count_not_found += 1
-    if ConfigDebug.stats:
+    if ConfigOutput.stats:
         print(f'scanned [{count}] projects')
         print(f'[{count_not_found}] not found')
         print(f'[{count_error}] error')
@@ -109,7 +115,7 @@ def do_build(_project_name: str, project_dir: str) -> None:
         pass
     if os.path.isfile(bootstrap):
         pass
-    if ConfigDebug.stats:
+    if ConfigOutput.stats:
         pass
 
 
