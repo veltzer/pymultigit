@@ -230,8 +230,12 @@ def do_status(project_name: str, _project_dir: str) -> int:
     return do_status_msg(project_name=project_name, msg=msg)
 
 
-def do_dirty(project_name: str, _project_dir: str) -> int:
-    return do_status_msg(project_name=project_name, msg=f'{project_name}')
+def do_dirty(project_name: str, project_dir: str) -> int:
+    if ConfigOutput.terse:
+        msg = project_name
+    else:
+        msg = f"project [{project_name}] at directory [{project_dir}]"
+    return do_status_msg(project_name=project_name, msg=msg)
 
 
 def do_print(project_name: str, project_dir: str) -> None:

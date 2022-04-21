@@ -26,7 +26,7 @@ class ConfigDebug(Config):
     """
     verbose = ParamCreator.create_bool(
         help_string="be verbose?",
-        default=True,
+        default=False,
     )
     git_verbose = ParamCreator.create_bool(
         help_string="add --verbose when running git?",
