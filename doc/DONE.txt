@@ -1,2 +1,5 @@
 - make this project do all that the scripts in the "scripts" folder do.
 	I removed this TODO items because I don't know what it means
+- make "pymultigit status" be silent and only report projects which
+	have issues.
+	it should show the project and the output afterwards.
