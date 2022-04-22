@@ -24,16 +24,12 @@ class ConfigDebug(Config):
     """
     Parameters for debug
     """
-    verbose = ParamCreator.create_bool(
+    debug_verbose = ParamCreator.create_bool(
         help_string="be verbose?",
         default=False,
     )
     git_verbose = ParamCreator.create_bool(
         help_string="add --verbose when running git?",
-        default=False,
-    )
-    quiet = ParamCreator.create_bool(
-        help_string="be quiet?",
         default=False,
     )
     git_quiet = ParamCreator.create_bool(
