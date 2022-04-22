@@ -71,7 +71,7 @@ def do_for_all_projects(fnc, show_output) -> None:
     count_ok = 0
     orig_dir = os.getcwd()
     for (project_name, project_dir) in projects(sort=ConfigMain.sort):
-        if ConfigDebug.verbose:
+        if ConfigDebug.debug_verbose:
             print(f'doing [{project_name}] at [{project_dir}]...', end="")
             sys.stdout.flush()
         count += 1
@@ -81,14 +81,14 @@ def do_for_all_projects(fnc, show_output) -> None:
             try:
                 ret = fnc(project_name, project_dir)
                 count_ok += 1
-                if ConfigDebug.verbose:
+                if ConfigDebug.debug_verbose:
                     print('OK')
             # this is one of the rare cases in which we really want to catch all exceptions.
             # pylint: disable=broad-except
             # noinspection PyBroadException
             except Exception:
                 count_error += 1
-                if ConfigDebug.verbose:
+                if ConfigDebug.debug_verbose:
                     print('ERROR')
             if ConfigOutput.terse:
                 if show_output:
@@ -102,7 +102,7 @@ def do_for_all_projects(fnc, show_output) -> None:
                     print(f'project [{project_name}] at [{project_dir}]')
             os.chdir(orig_dir)
         else:
-            if ConfigDebug.verbose:
+            if ConfigDebug.debug_verbose:
                 print('NOT FOUND')
             count_not_found += 1
     if ConfigOutput.stats:
@@ -117,8 +117,14 @@ def print_projects_that_return_true(fnc) -> None:
     for (project_name, project_dir) in projects(sort=ConfigMain.sort):
         if os.path.isdir(project_dir):
             os.chdir(project_dir)
-            if fnc(project_name, project_dir):
-                print(project_name)
+            res, extra = fnc()
+            if res:
+                if ConfigOutput.terse:
+                    print(project_name)
+                else:
+                    print(f"project [{project_name}] at folder [{project_dir}]")
+                if not ConfigOutput.terse:
+                    print(extra, end="")
             os.chdir(orig_dir)
 
 
@@ -216,7 +222,7 @@ def do_clean(_project_name: str, _project_dir: str) -> int:
     return subprocess.call(args)
 
 
-def do_status_msg(project_name: str, msg: str) -> int:
+def do_status() -> Tuple[bool, str]:
     (res_out, res_err, _) = run([
         'git',
         'status',
@@ -231,11 +237,7 @@ def do_status_msg(project_name: str, msg: str) -> int:
         # '--short',
     ])
     if res_out != '' or res_err != '':
-        print(msg.format(project_name=project_name))
-        if ConfigDebug.verbose:
-            print(res_out, end='')
-            print(res_err, end='')
-        return 1
+        return True, res_out + res_err
     (res_out, res_err, _) = run([
         'git',
         'rev-list',
@@ -244,38 +246,15 @@ def do_status_msg(project_name: str, msg: str) -> int:
         '@...@{upstream}',
     ])
     if res_out != '0\n' or res_err != '':
-        if ConfigOutput.terse:
-            msg = project_name
-        else:
-            msg = f'project [{project_name}] is not synced'
-        print(msg)
-        if ConfigDebug.verbose:
-            print(res_out, end='')
-            print(res_err, end='')
-        return 1
-    return 0
+        return True, res_out + res_err
+    return False, ""
 
 
-def do_status(project_name: str, _project_dir: str) -> int:
-    if ConfigOutput.terse:
-        msg = f"{project_name}"
-    else:
-        msg = f"project [{project_name}] is dirty"
-    return do_status_msg(project_name=project_name, msg=msg)
-
-
-def do_dirty(_project_name: str, _project_dir: str) -> int:
+def do_dirty() -> Tuple[bool, str]:
     args = ['git', 'status', '--porcelain']
     if ConfigDebug.git_verbose:
         args.append('--verbose')
     if ConfigDebug.git_quiet:
         args.append('--quiet')
-    output = subprocess.check_output(args, stderr=subprocess.DEVNULL)
-    return output.decode() != ''
-
-
-def do_print(project_name: str, project_dir: str) -> None:
-    if ConfigDebug.verbose:
-        print(project_name, project_dir)
-    else:
-        print(project_name)
+    output = subprocess.check_output(args, stderr=subprocess.DEVNULL).decode()
+    return output != '', output
