@@ -10,7 +10,7 @@ import pylogconf.core
 from pymultigit.configs import ConfigDebug, ConfigGrep
 from pymultigit.core import do_count, is_dirty, has_untracked_files, non_synchronized_with_upstream, \
     do_for_all_projects, do_clean, do_status, do_dirty, do_build, do_pull, do_grep, do_print, do_local_branch, \
-    do_remote_branch, print_projects_that_return_true
+    do_remote_branch, print_projects_that_return_true, do_github_branch
 from pymultigit.static import DESCRIPTION, APP_NAME, VERSION_STR
 
 
@@ -58,6 +58,14 @@ def local_branch() -> None:
 )
 def remote_branch() -> None:
     do_for_all_projects(do_remote_branch, True)
+
+
+@register_endpoint(
+    configs=[ConfigDebug],
+    description="Show the branch on the github side",
+)
+def github_branch() -> None:
+    do_for_all_projects(do_github_branch, True)
 
 
 @register_endpoint(

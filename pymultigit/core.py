@@ -77,6 +77,7 @@ def do_for_all_projects(fnc, show_output) -> None:
         count += 1
         if os.path.isdir(project_dir):
             os.chdir(project_dir)
+            ret = None
             try:
                 ret = fnc(project_name, project_dir)
                 count_ok += 1
@@ -186,7 +187,7 @@ def do_local_branch(_project_name: str, _project_dir: str) -> int:
         args.append('--verbose')
     if ConfigDebug.git_quiet:
         args.append('--quiet')
-    return subprocess.call(args)
+    return subprocess.check_output(args).decode().strip()
 
 
 def do_remote_branch(_project_name: str, _project_dir: str) -> int:
@@ -195,7 +196,15 @@ def do_remote_branch(_project_name: str, _project_dir: str) -> int:
         args.append('--verbose')
     if ConfigDebug.git_quiet:
         args.append('--quiet')
-    return subprocess.call(args)
+    return subprocess.check_output(args).decode().strip()
+
+
+def do_github_branch(_project_name: str, _project_dir: str) -> int:
+    """
+    https://stackoverflow.com/questions/28666357/git-how-to-get-default-branch
+    """
+    args = ['gh', 'repo', 'view', '--json', 'defaultBranchRef', '--jq', '.defaultBranchRef.name',]
+    return subprocess.check_output(args).decode().strip()
 
 
 def do_clean(_project_name: str, _project_dir: str) -> int:
