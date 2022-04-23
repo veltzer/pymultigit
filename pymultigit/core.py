@@ -149,7 +149,7 @@ def do_build(_project_name: str, _project_dir: str) -> None:
     Can we run commands under a virtual environment directly?
     """
     kwargs = {}
-    if os.path.isfile(".myenv"):
+    if os.path.isfile(".myenv") and os.path.isfile("Makefile"):
         ret = subprocess.call([
             "venv-run",
             "--venv",
