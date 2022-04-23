@@ -1,3 +1,9 @@
+- add option so silence output (both stdout and stderr) when doing
+	mg clean
+	mg build
+- allow to rebuild the virtual envrionments for all project as part of
+	mg build.
+	* maybe even add command just to build the virtual environments.
 - enable to upgrade or install a certain version of a module in
 	all repositories:
 	$ mg upgrade pydmt
