@@ -150,7 +150,13 @@ def do_build(_project_name: str, _project_dir: str) -> None:
     """
     kwargs = {}
     if os.path.isfile(".myenv"):
-        ret = subprocess.call(["venv-run", "make"], **kwargs)
+        ret = subprocess.call([
+            "venv-run",
+            "--venv",
+            ".venv/default",
+            "--",
+            "make",
+        ], **kwargs)
         return ret == 0
     if os.path.isfile("bootstrap"):
         ret = subprocess.call(["bootstrap"], **kwargs)
