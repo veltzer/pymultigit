@@ -142,7 +142,8 @@ def non_synchronized_with_upstream(_repo: str) -> bool:
 
 def do_build(_project_name: str, _project_dir: str) -> None:
     if os.path.isfile("Makefile"):
-        ret = subprocess.call(["make"], stdout=subprocess.DEVNULL)
+        # ret = subprocess.call(["make"], stdout=subprocess.DEVNULL)
+        ret = subprocess.call(["make"])
         return ret == 0
     # bootstrap = os.path.join(project_dir, 'bootstrap')
     # if os.path.isfile(bootstrap):
