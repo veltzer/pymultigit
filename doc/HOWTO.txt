@@ -1,0 +1,5 @@
+Rebuild many projects:
+cd git
+mg clean
+for x in *; do echo $x; cd $x; myenv_prompt ; cd ..; done
+mg build
