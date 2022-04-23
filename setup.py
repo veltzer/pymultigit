@@ -9,7 +9,7 @@ def get_readme():
 setuptools.setup(
     # the first three fields are a must according to the documentation
     name="pymultigit",
-    version="0.0.56",
+    version="0.0.57",
     packages=[
         'pymultigit',
     ],
@@ -38,6 +38,7 @@ setuptools.setup(
         'pyfakeuse',
         'pytconf',
         'pylogconf',
+        'venv-run',
     ],
     extras_require={
     },
