@@ -1,6 +1,8 @@
 - add option so silence output (both stdout and stderr) when doing
 	mg clean
 	mg build
+- what about -j 8 or something when doing build with make.
+	find a way to setup to do parallel make with mg.
 - allow to rebuild the virtual envrionments for all project as part of
 	mg build.
 	* maybe even add command just to build the virtual environments.
