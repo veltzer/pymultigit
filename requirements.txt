@@ -4,6 +4,7 @@ gitpython
 pyfakeuse
 pytconf
 pylogconf
+venv-run
 # dev requirements
 pyclassifiers
 pypitools

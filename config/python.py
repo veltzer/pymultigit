@@ -14,6 +14,7 @@ run_requires = [
     'pyfakeuse',
     'pytconf',
     'pylogconf',
+    'venv-run',
 ]
 
 test_requires = [

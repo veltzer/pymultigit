@@ -141,13 +141,23 @@ def non_synchronized_with_upstream(_repo: str) -> bool:
 
 
 def do_build(_project_name: str, _project_dir: str) -> None:
-    if os.path.isfile("Makefile"):
-        # ret = subprocess.call(["make"], stdout=subprocess.DEVNULL)
-        ret = subprocess.call(["make"])
+    """
+    FIXME
+    Before we run make we need to activate a virtual environment
+    (if there is one). So we really need a bash script that activates
+    a virtual environment and then runs make...
+    Can we run commands under a virtual environment directly?
+    """
+    kwargs = {}
+    if os.path.isfile(".myenv"):
+        ret = subprocess.call(["venv-run", "make"], **kwargs)
         return ret == 0
-    # bootstrap = os.path.join(project_dir, 'bootstrap')
-    # if os.path.isfile(bootstrap):
-    #     pass
+    if os.path.isfile("bootstrap"):
+        ret = subprocess.call(["bootstrap"], **kwargs)
+        return ret == 0
+    if os.path.isfile("Makefile"):
+        ret = subprocess.call(["make"], **kwargs)
+        return ret == 0
     return True
 
 
