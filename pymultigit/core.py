@@ -140,15 +140,14 @@ def non_synchronized_with_upstream(_repo: str) -> bool:
     return False
 
 
-def do_build(_project_name: str, project_dir: str) -> None:
-    makefile = os.path.join(project_dir, 'Makefile')
-    bootstrap = os.path.join(project_dir, 'bootstrap')
-    if os.path.isfile(makefile):
-        pass
-    if os.path.isfile(bootstrap):
-        pass
-    if ConfigOutput.stats:
-        pass
+def do_build(_project_name: str, _project_dir: str) -> None:
+    if os.path.isfile("Makefile"):
+        ret = subprocess.call(["make"], stdout=subprocess.DEVNULL)
+        return ret == 0
+    # bootstrap = os.path.join(project_dir, 'bootstrap')
+    # if os.path.isfile(bootstrap):
+    #     pass
+    return True
 
 
 def do_pull(_project_name: str, _project_dir: str) -> int:
@@ -215,11 +214,11 @@ def do_github_branch(_project_name: str, _project_dir: str) -> int:
 
 def do_clean(_project_name: str, _project_dir: str) -> int:
     args = ['git', 'clean', '-ffxd']
-    if ConfigDebug.git_verbose:
-        args.append('--verbose')
-    if ConfigDebug.git_quiet:
-        args.append('--quiet')
-    return subprocess.call(args)
+    # if ConfigDebug.git_verbose:
+    #     args.append('--verbose')
+    # if ConfigDebug.git_quiet:
+    #     args.append('--quiet')
+    return subprocess.check_call(args)
 
 
 def do_status() -> Tuple[bool, str]:
