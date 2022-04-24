@@ -10,7 +10,7 @@ import pylogconf.core
 from pymultigit.configs import ConfigDebug, ConfigGrep
 from pymultigit.core import do_count, is_dirty, has_untracked_files, non_synchronized_with_upstream, \
     do_for_all_projects, do_clean, do_status, do_dirty, do_build, do_pull, do_grep, do_local_branch, \
-    do_remote_branch, print_projects_that_return_true, do_github_branch
+    do_remote_branch, print_projects_that_return_true, do_github_branch, do_check_misc
 from pymultigit.static import DESCRIPTION, APP_NAME, VERSION_STR
 
 
@@ -121,6 +121,14 @@ def build() -> None:
 )
 def pull() -> None:
     do_for_all_projects(do_pull, False)
+
+
+@register_endpoint(
+    configs=[],
+    description="Check various things",
+)
+def check_misc() -> None:
+    do_for_all_projects(do_check_misc, False)
 
 
 @register_endpoint(
