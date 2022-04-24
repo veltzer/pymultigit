@@ -178,7 +178,7 @@ def do_pull(_project_name: str, _project_dir: str) -> int:
 
 def do_check_workflow_exists_for_makefile() -> Tuple[bool, str]:
     if os.path.isfile("Makefile"):
-        if not os.path.isfile(".github/workflows/makefile.yml"):
+        if not os.path.isfile(".github/workflows/build.yml"):
             return True, ""
     return False, ""
 
