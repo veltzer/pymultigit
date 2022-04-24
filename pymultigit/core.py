@@ -176,10 +176,11 @@ def do_pull(_project_name: str, _project_dir: str) -> int:
     return subprocess.call(args)
 
 
-def do_check_misc(project_name: str, _project_dir: str) -> None:
+def do_check_workflow_exists_for_makefile() -> Tuple[bool, str]:
     if os.path.isfile("Makefile"):
         if not os.path.isfile(".github/workflows/makefile.yml"):
-            print(f"{project_name}")
+            return True, ""
+    return False, ""
 
 
 def do_grep(_project_name: str, project_dir: str) -> None:
