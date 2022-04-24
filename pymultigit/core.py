@@ -176,6 +176,12 @@ def do_pull(_project_name: str, _project_dir: str) -> int:
     return subprocess.call(args)
 
 
+def do_check_misc(project_name: str, _project_dir: str) -> None:
+    if os.path.isfile("Makefile"):
+        if not os.path.isfile(".github/workflows/makefile.yml"):
+            print(f"{project_name}")
+
+
 def do_grep(_project_name: str, project_dir: str) -> None:
     args = ['git', 'grep']
     if ConfigDebug.git_verbose:
