@@ -148,17 +148,22 @@ def do_build(_project_name: str, _project_dir: str) -> None:
     a virtual environment and then runs make...
     Can we run commands under a virtual environment directly?
     """
+    if os.path.isfile("bootstrap"):
+        ret = subprocess.call(["bootstrap"])
+        return ret == 0
+    do_ret = False
     if os.path.isfile(".myenv") and os.path.isfile("Makefile"):
-        ret = subprocess.call([
+        do_ret = True
+        ret1 = subprocess.call([
             "venv-run",
             "--venv",
             ".venv/default",
             "--",
             "make",
         ])
-        return ret == 0
     if os.path.isdir(".venv/default/lib/python3.9/site-packages/pydmt"):
-        ret = subprocess.call([
+        do_ret = True
+        ret2 = subprocess.call([
             "venv-run",
             "--venv",
             ".venv/default",
@@ -166,10 +171,8 @@ def do_build(_project_name: str, _project_dir: str) -> None:
             "pydmt",
             "build",
         ])
-        return ret == 0
-    if os.path.isfile("bootstrap"):
-        ret = subprocess.call(["bootstrap"])
-        return ret == 0
+    if do_ret:
+        return ret1 == 0 and ret2 == 0
     if os.path.isfile("Makefile"):
         ret = subprocess.call(["make"])
         return ret == 0
