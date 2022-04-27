@@ -1,6 +1,9 @@
 - add option so silence output (both stdout and stderr) when doing
 	mg clean
 	mg build
+- add feature to build the
+	venvs.
+	(currently we do not know how to build them).
 - add feature: mg pydmt build
 - add feature: mg compare_files
 	and all other mg_*.sh commands.
