@@ -161,7 +161,9 @@ def do_build(_project_name: str, _project_dir: str) -> None:
             "--",
             "make",
         ])
-    if os.path.isdir(".venv/default/lib/python3.9/site-packages/pydmt"):
+    package = ".venv/default/lib/python3.9/site-packages/pydmt"
+    disable = ".pydmt.disable"
+    if os.path.isdir(package) and not os.path.isfile(disable):
         do_ret = True
         ret2 = subprocess.call([
             "venv-run",
