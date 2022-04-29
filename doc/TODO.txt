@@ -1,3 +1,5 @@
+- add command which upgrades python modules for each repo where that python
+	module actually exists.
 - add option so silence output (both stdout and stderr) when doing
 	mg clean
 	mg build
