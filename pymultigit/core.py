@@ -148,7 +148,7 @@ def do_build(_project_name: str, _project_dir: str) -> None:
     a virtual environment and then runs make...
     Can we run commands under a virtual environment directly?
     """
-    disable = ".pymultigit.disable"
+    disable = ".build.disable"
     if os.path.isfile(disable):
         return True
     if os.path.isfile("bootstrap"):
