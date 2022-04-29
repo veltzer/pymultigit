@@ -148,10 +148,15 @@ def do_build(_project_name: str, _project_dir: str) -> None:
     a virtual environment and then runs make...
     Can we run commands under a virtual environment directly?
     """
+    disable = ".pymultigit.disable"
+    if os.path.isfile(disable):
+        return True
     if os.path.isfile("bootstrap"):
         ret = subprocess.call(["bootstrap"])
         return ret == 0
     do_ret = False
+    # creaete a virtual environment if it is not up to date
+    # TBD
     if os.path.isfile(".myenv") and os.path.isfile("Makefile"):
         do_ret = True
         ret1 = subprocess.call([
@@ -162,8 +167,7 @@ def do_build(_project_name: str, _project_dir: str) -> None:
             "make",
         ])
     package = ".venv/default/lib/python3.9/site-packages/pydmt"
-    disable = ".pydmt.disable"
-    if os.path.isdir(package) and not os.path.isfile(disable):
+    if os.path.isdir(package):
         do_ret = True
         ret2 = subprocess.call([
             "venv-run",
