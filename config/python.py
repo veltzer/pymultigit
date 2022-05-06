@@ -3,40 +3,31 @@ import config.project
 package_name = config.project.project_name
 
 console_scripts = [
-    'pymultigit=pymultigit.main:main',
-]
-
-setup_requires = [
+    "pymultigit=pymultigit.main:main",
 ]
 
 run_requires = [
-    'gitpython',
-    'pyfakeuse',
-    'pytconf',
-    'pylogconf',
-    'venv-run',
+    "gitpython",
+    "pyfakeuse",
+    "pytconf",
+    "pylogconf",
+    "venv-run",
 ]
 
 test_requires = [
-    'pylint',
-    'pytest',
-    'pytest-cov',
-    'flake8',
-    'pymakehelper',
+    "pylint",
+    "pytest",
+    "pytest-cov",
+    "flake8",
+    "pymakehelper",
 ]
 
 dev_requires = [
-    'pyclassifiers',
-    'pypitools',
-    'pydmt',
-    'Sphinx',
+    "pyclassifiers",
+    "pypitools",
+    "pydmt",
+    "Sphinx",
 ]
-
-install_requires = list(setup_requires)
-install_requires.extend(run_requires)
-
-extras_require = {
-}
 
 python_requires = ">=3.9"
 test_os = ["ubuntu-20.04"]
