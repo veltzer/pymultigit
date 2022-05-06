@@ -157,7 +157,7 @@ def do_build(_project_name: str, _project_dir: str) -> None:
     do_ret = False
     # creaete a virtual environment if it is not up to date
     # TBD
-    if os.path.isfile(".myenv") and os.path.isfile("Makefile"):
+    if os.path.isfile("Makefile"):
         do_ret = True
         ret1 = subprocess.call([
             "venv-run",
@@ -166,7 +166,7 @@ def do_build(_project_name: str, _project_dir: str) -> None:
             "--",
             "make",
         ])
-    package = ".venv/default/lib/python3.9/site-packages/pydmt"
+    package = ".venv/default"
     if os.path.isdir(package):
         do_ret = True
         ret2 = subprocess.call([
