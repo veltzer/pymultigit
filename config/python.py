@@ -6,7 +6,7 @@ console_scripts = [
     "pymultigit=pymultigit.main:main",
 ]
 
-run_requires = [
+install_requires = [
     "gitpython",
     "pyfakeuse",
     "pytconf",
