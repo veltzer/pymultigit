@@ -33,15 +33,6 @@ setuptools.setup(
     platforms=[
         'python3',
     ],
-    install_requires=[
-        'gitpython',
-        'pyfakeuse',
-        'pytconf',
-        'pylogconf',
-        'venv-run',
-    ],
-    extras_require={
-    },
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',
