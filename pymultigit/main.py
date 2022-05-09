@@ -181,7 +181,7 @@ def build_venv_make() -> None:
     description="Pull changes for multiple git repositories",
 )
 def pull() -> None:
-    do_for_all_projects(do_pull) 
+    do_for_all_projects(do_pull)
 
 
 @register_endpoint(
