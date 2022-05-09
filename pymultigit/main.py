@@ -9,8 +9,9 @@ import pylogconf.core
 
 from pymultigit.configs import ConfigDebug, ConfigGrep, ConfigMain, ConfigOutput
 from pymultigit.core import do_count, is_dirty, has_untracked_files, non_synchronized_with_upstream, \
-    do_for_all_projects, do_clean, do_status, do_dirty, do_build, do_pull, do_grep, do_local_branch, \
-    do_remote_branch, print_projects_that_return_true, do_github_branch, do_check_workflow_exists_for_makefile
+    do_for_all_projects, do_clean, do_status, do_dirty, do_pull, do_grep, do_local_branch, \
+    do_remote_branch, print_projects_that_return_true, do_github_branch, do_check_workflow_exists_for_makefile, \
+    do_build_bootstrap, do_build_pydmt, do_build_make, do_build_venv_make
 from pymultigit.static import DESCRIPTION, APP_NAME, VERSION_STR
 
 
@@ -129,10 +130,46 @@ def dirty() -> None:
         ConfigMain,
         ConfigOutput,
     ],
-    description="Build multiple git repositories",
+    description="run pydmt build on repos",
 )
-def build() -> None:
-    do_for_all_projects(do_build)
+def build_pydmt() -> None:
+    do_for_all_projects(do_build_pydmt)
+
+
+@register_endpoint(
+    configs=[
+        ConfigDebug,
+        ConfigMain,
+        ConfigOutput,
+    ],
+    description="run bootstrap build on repos",
+)
+def build_bootstrap() -> None:
+    do_for_all_projects(do_build_bootstrap)
+
+
+@register_endpoint(
+    configs=[
+        ConfigDebug,
+        ConfigMain,
+        ConfigOutput,
+    ],
+    description="run make build on repos",
+)
+def build_make() -> None:
+    do_for_all_projects(do_build_make)
+
+
+@register_endpoint(
+    configs=[
+        ConfigDebug,
+        ConfigMain,
+        ConfigOutput,
+    ],
+    description="run make build on repos",
+)
+def build_venv_make() -> None:
+    do_for_all_projects(do_build_venv_make)
 
 
 @register_endpoint(
