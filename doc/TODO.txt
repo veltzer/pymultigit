@@ -1,3 +1,4 @@
+- if there are not repos to work on print some kind of message.
 - make pymultigit stop when one of the things it does fails.
 	currently it keeps on going!
 - add a bashy plugin for pymultigit which configures the mg alias.
