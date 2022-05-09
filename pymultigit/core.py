@@ -133,7 +133,7 @@ def do_build_bootstrap(_project_name: str, _project_dir: str) -> None:
     if os.path.isfile(disable):
         return True
     if os.path.isfile("bootstrap"):
-        ret = subprocess.call(["bootstrap"])
+        ret = subprocess.call(["./bootstrap"])
         return ret == 0
     print("not a boostrap folder (bootstrap not there)")
     return True
