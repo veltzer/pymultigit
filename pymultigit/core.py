@@ -143,13 +143,13 @@ def do_build_pydmt(_project_name: str, _project_dir: str) -> None:
     disable = ".build.disable"
     if os.path.isfile(disable):
         return True
-    if os.path.isfile(".pydmt.conf"):
+    if os.path.isfile(".pydmt.config"):
         ret = subprocess.call([
             "pydmt",
             "build",
         ])
         return ret == 0
-    print("not a pydmt folder (.pydmt.conf not there)")
+    print("not a pydmt folder (.pydmt.config not there)")
     return True
 
 
