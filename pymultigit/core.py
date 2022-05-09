@@ -128,48 +128,56 @@ def non_synchronized_with_upstream(_repo: str) -> bool:
     return False
 
 
-def do_build(_project_name: str, _project_dir: str) -> None:
-    """
-    FIXME
-    Before we run make we need to activate a virtual environment
-    (if there is one). So we really need a bash script that activates
-    a virtual environment and then runs make...
-    Can we run commands under a virtual environment directly?
-    """
+def do_build_bootstrap(_project_name: str, _project_dir: str) -> None:
     disable = ".build.disable"
     if os.path.isfile(disable):
         return True
     if os.path.isfile("bootstrap"):
         ret = subprocess.call(["bootstrap"])
         return ret == 0
-    do_ret = False
-    # creaete a virtual environment if it is not up to date
-    # TBD
-    if os.path.isfile("Makefile"):
-        do_ret = True
-        ret1 = subprocess.call([
+    print("not a boostrap folder (bootstrap not there)")
+    return True
+
+
+def do_build_pydmt(_project_name: str, _project_dir: str) -> None:
+    disable = ".build.disable"
+    if os.path.isfile(disable):
+        return True
+    if os.path.isfile(".pydmt.conf"):
+        ret = subprocess.call([
+            "pydmt",
+            "build",
+        ])
+        return ret == 0
+    print("not a pydmt folder (.pydmt.conf not there)")
+    return True
+
+
+def do_build_venv_make(_project_name: str, _project_dir: str) -> None:
+    disable = ".build.disable"
+    if os.path.isfile(disable):
+        return True
+    if os.path.isfile("Makefile") and os.path.isdir(".venv/default"):
+        ret = subprocess.call([
             "venv-run",
             "--venv",
             ".venv/default",
             "--",
             "make",
         ])
-    package = ".venv/default"
-    if os.path.isdir(package):
-        do_ret = True
-        ret2 = subprocess.call([
-            "venv-run",
-            "--venv",
-            ".venv/default",
-            "--",
-            "pydmt",
-            "build",
-        ])
-    if do_ret:
-        return ret1 == 0 and ret2 == 0
+        return ret == 0
+    print("not a make venv folder (either Makefile or .venv/default is not there)")
+    return True
+
+
+def do_build_make(_project_name: str, _project_dir: str) -> None:
+    disable = ".build.disable"
+    if os.path.isfile(disable):
+        return True
     if os.path.isfile("Makefile"):
         ret = subprocess.call(["make"])
         return ret == 0
+    print("not a make folder (Makefile not there)")
     return True
 
 
