@@ -1,5 +1,6 @@
-- increase build time of all my projects when they are built.
-	Maybe it's the fact that I activate the virtual env more than one time?
+- make pymultigit stop when one of the things it does fails.
+	currently it keeps on going!
+- add a bashy plugin for pymultigit which configures the mg alias.
 - add command which upgrades python modules for each repo where that python
 	module actually exists.
 - add option so silence output (both stdout and stderr) when doing
