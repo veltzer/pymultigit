@@ -10,6 +10,9 @@ import git
 from pymultigit.configs import ConfigOutput, ConfigDebug, ConfigGrep, ConfigPull, ConfigMain
 
 
+DISABLE = ".build.disable"
+
+
 def projects(sort: bool) -> Generator[Tuple[str, str], None, None]:
     """
     the method returns tuples of (project_name, project_dir)
@@ -103,60 +106,60 @@ def non_synchronized_with_upstream(_repo: str) -> bool:
 
 
 def do_build_bootstrap(_project_name: str, _project_dir: str) -> None:
-    disable = ".build.disable"
-    if os.path.isfile(disable):
-        return True
-    if os.path.isfile("bootstrap"):
-        ret = subprocess.call(["./bootstrap"])
-        return ret == 0
-    if ConfigOutput.print_not:
-        print("not a boostrap folder (bootstrap not there)")
-    return True
+    if os.path.isfile(DISABLE):
+        if ConfigOutput.print_not:
+            print(f"build is disabled with file {DISABLE}")
+        return
+    if not os.path.isfile("bootstrap"):
+        if ConfigOutput.print_not:
+            print("not a boostrap folder (bootstrap not there)")
+        return
+    subprocess.check_call(["./bootstrap"])
 
 
 def do_build_pydmt(_project_name: str, _project_dir: str) -> None:
-    disable = ".build.disable"
-    if os.path.isfile(disable):
-        return True
-    if os.path.isfile(".pydmt.config"):
-        ret = subprocess.call([
-            "pydmt",
-            "build",
-        ])
-        return ret == 0
-    if ConfigOutput.print_not:
-        print("not a pydmt folder (.pydmt.config not there)")
-    return True
+    if os.path.isfile(DISABLE):
+        if ConfigOutput.print_not:
+            print(f"build is disabled with file {DISABLE}")
+        return
+    if not os.path.isfile(".pydmt.config"):
+        if ConfigOutput.print_not:
+            print("not a pydmt folder (.pydmt.config not there)")
+        return
+    subprocess.check_call([
+        "pydmt",
+        "build",
+    ])
 
 
 def do_build_venv_make(_project_name: str, _project_dir: str) -> None:
-    disable = ".build.disable"
-    if os.path.isfile(disable):
-        return True
-    if os.path.isfile("Makefile") and os.path.isdir(".venv/default"):
-        ret = subprocess.call([
-            "venv-run",
-            "--venv",
-            ".venv/default",
-            "--",
-            "make",
-        ])
-        return ret == 0
-    if ConfigOutput.print_not:
-        print("not a make venv folder (either Makefile or .venv/default is not there)")
-    return True
+    if os.path.isfile(DISABLE):
+        if ConfigOutput.print_not:
+            print(f"build is disabled with file {DISABLE}")
+        return
+    if not os.path.isfile("Makefile") or not os.path.isdir(".venv/default"):
+        if ConfigOutput.print_not:
+            print("not a make venv folder (either Makefile or .venv/default is not there)")
+        return
+    subprocess.check_call([
+        "venv-run",
+        "--venv",
+        ".venv/default",
+        "--",
+        "make",
+    ])
 
 
 def do_build_make(_project_name: str, _project_dir: str) -> None:
-    disable = ".build.disable"
-    if os.path.isfile(disable):
-        return True
-    if os.path.isfile("Makefile"):
-        ret = subprocess.call(["make"])
-        return ret == 0
-    if ConfigOutput.print_not:
-        print("not a make folder (Makefile not there)")
-    return True
+    if os.path.isfile(DISABLE):
+        if ConfigOutput.print_not:
+            print(f"build is disabled with file {DISABLE}")
+        return
+    if not os.path.isfile("Makefile"):
+        if ConfigOutput.print_not:
+            print("not a make folder (Makefile not there)")
+        return
+    subprocess.call(["make"])
 
 
 def do_pull(_project_name: str, _project_dir: str) -> int:
