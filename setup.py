@@ -9,7 +9,7 @@ def get_readme():
 setuptools.setup(
     # the first three fields are a must according to the documentation
     name="pymultigit",
-    version="0.0.64",
+    version="0.0.65",
     packages=[
         'pymultigit',
     ],
@@ -33,6 +33,13 @@ setuptools.setup(
     platforms=[
         'python3',
     ],
+    install_requires=[
+        'gitpython',
+        'pyfakeuse',
+        'pytconf',
+        'pylogconf',
+        'venv-run',
+    ],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',
@@ -49,5 +56,5 @@ setuptools.setup(
     entry_points={"console_scripts": [
         'pymultigit=pymultigit.main:main',
     ]},
-    python_requires=">=3.9",
+    python_requires=">=3.10",
 )
