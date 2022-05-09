@@ -22,6 +22,10 @@ class ConfigOutput(Config):
         help_string="show projects?",
         default=True,
     )
+    print_not = ParamCreator.create_bool(
+        help_string="print what the project is not",
+        default=False,
+    )
 
 
 class ConfigDebug(Config):

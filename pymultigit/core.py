@@ -135,7 +135,8 @@ def do_build_bootstrap(_project_name: str, _project_dir: str) -> None:
     if os.path.isfile("bootstrap"):
         ret = subprocess.call(["./bootstrap"])
         return ret == 0
-    print("not a boostrap folder (bootstrap not there)")
+    if ConfigOutput.print_not:
+        print("not a boostrap folder (bootstrap not there)")
     return True
 
 
@@ -149,7 +150,8 @@ def do_build_pydmt(_project_name: str, _project_dir: str) -> None:
             "build",
         ])
         return ret == 0
-    print("not a pydmt folder (.pydmt.config not there)")
+    if ConfigOutput.print_not:
+        print("not a pydmt folder (.pydmt.config not there)")
     return True
 
 
@@ -166,7 +168,8 @@ def do_build_venv_make(_project_name: str, _project_dir: str) -> None:
             "make",
         ])
         return ret == 0
-    print("not a make venv folder (either Makefile or .venv/default is not there)")
+    if ConfigOutput.print_not:
+        print("not a make venv folder (either Makefile or .venv/default is not there)")
     return True
 
 
@@ -177,7 +180,8 @@ def do_build_make(_project_name: str, _project_dir: str) -> None:
     if os.path.isfile("Makefile"):
         ret = subprocess.call(["make"])
         return ret == 0
-    print("not a make folder (Makefile not there)")
+    if ConfigOutput.print_not:
+        print("not a make folder (Makefile not there)")
     return True
 
 
