@@ -18,6 +18,10 @@ class ConfigOutput(Config):
         help_string="show statistics are the end?",
         default=False,
     )
+    output = ParamCreator.create_bool(
+        help_string="show projects?",
+        default=True,
+    )
 
 
 class ConfigDebug(Config):

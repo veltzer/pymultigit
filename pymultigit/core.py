@@ -64,22 +64,20 @@ def do_count(fnc, attr_name, not_attr_name, attr_plural, print_attr, print_not_a
         print(f'[{count_attr}] projects {attr_plural}')
 
 
-def do_for_all_projects(fnc, show_output) -> None:
+def do_for_all_projects(fnc) -> None:
     count = 0
     count_not_found = 0
     count_error = 0
     count_ok = 0
     orig_dir = os.getcwd()
     for (project_name, project_dir) in projects(sort=ConfigMain.sort):
-        if ConfigDebug.debug_verbose:
-            print(f'doing [{project_name}] at [{project_dir}]...', end="")
-            sys.stdout.flush()
+        if ConfigOutput.output:
+            print(f"[{project_name}] at [{project_dir}]...")
         count += 1
         if os.path.isdir(project_dir):
             os.chdir(project_dir)
-            ret = None
             try:
-                ret = fnc(project_name, project_dir)
+                fnc(project_name, project_dir)
                 count_ok += 1
                 if ConfigDebug.debug_verbose:
                     print('OK')
@@ -90,16 +88,6 @@ def do_for_all_projects(fnc, show_output) -> None:
                 count_error += 1
                 if ConfigDebug.debug_verbose:
                     print('ERROR')
-            if ConfigOutput.terse:
-                if show_output:
-                    print(f'{project_name} {ret}')
-                else:
-                    print(project_name)
-            else:
-                if show_output:
-                    print(f'project [{project_name}] at [{project_dir}] output [{ret}]')
-                else:
-                    print(f'project [{project_name}] at [{project_dir}]')
             os.chdir(orig_dir)
         else:
             if ConfigDebug.debug_verbose:

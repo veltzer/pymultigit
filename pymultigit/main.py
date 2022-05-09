@@ -7,7 +7,7 @@ from pytconf import register_main, config_arg_parse_and_launch
 import pylogconf.core
 
 
-from pymultigit.configs import ConfigDebug, ConfigGrep
+from pymultigit.configs import ConfigDebug, ConfigGrep, ConfigMain, ConfigOutput
 from pymultigit.core import do_count, is_dirty, has_untracked_files, non_synchronized_with_upstream, \
     do_for_all_projects, do_clean, do_status, do_dirty, do_build, do_pull, do_grep, do_local_branch, \
     do_remote_branch, print_projects_that_return_true, do_github_branch, do_check_workflow_exists_for_makefile
@@ -45,27 +45,39 @@ def untracked() -> None:
 
 
 @register_endpoint(
-    configs=[ConfigDebug],
+    configs=[
+        ConfigDebug,
+        ConfigMain,
+        ConfigOutput,
+    ],
     description="Show which local branch we are on",
 )
 def local_branch() -> None:
-    do_for_all_projects(do_local_branch, True)
+    do_for_all_projects(do_local_branch)
 
 
 @register_endpoint(
-    configs=[ConfigDebug],
+    configs=[
+        ConfigDebug,
+        ConfigMain,
+        ConfigOutput,
+    ],
     description="Show which local branch we are on",
 )
 def remote_branch() -> None:
-    do_for_all_projects(do_remote_branch, True)
+    do_for_all_projects(do_remote_branch)
 
 
 @register_endpoint(
-    configs=[ConfigDebug],
+    configs=[
+        ConfigDebug,
+        ConfigMain,
+        ConfigOutput,
+    ],
     description="Show the branch on the github side",
 )
 def github_branch() -> None:
-    do_for_all_projects(do_github_branch, True)
+    do_for_all_projects(do_github_branch)
 
 
 @register_endpoint(
@@ -84,11 +96,15 @@ def synchronized() -> None:
 
 
 @register_endpoint(
-    configs=[ConfigDebug],
+    configs=[
+        ConfigDebug,
+        ConfigMain,
+        ConfigOutput,
+    ],
     description="Clean all projects",
 )
 def clean() -> None:
-    do_for_all_projects(do_clean, False)
+    do_for_all_projects(do_clean)
 
 
 @register_endpoint(
@@ -108,19 +124,27 @@ def dirty() -> None:
 
 
 @register_endpoint(
-    configs=[ConfigDebug],
+    configs=[
+        ConfigDebug,
+        ConfigMain,
+        ConfigOutput,
+    ],
     description="Build multiple git repositories",
 )
 def build() -> None:
-    do_for_all_projects(do_build, False)
+    do_for_all_projects(do_build)
 
 
 @register_endpoint(
-    configs=[ConfigDebug],
+    configs=[
+        ConfigDebug,
+        ConfigOutput,
+        ConfigMain,
+    ],
     description="Pull changes for multiple git repositories",
 )
 def pull() -> None:
-    do_for_all_projects(do_pull, False)
+    do_for_all_projects(do_pull)
 
 
 @register_endpoint(
@@ -132,11 +156,15 @@ def check_workflow_exists_for_makefile() -> None:
 
 
 @register_endpoint(
-    configs=[ConfigDebug, ConfigGrep],
+    configs=[
+        ConfigDebug,
+        ConfigMain,
+        ConfigOutput,
+        ConfigGrep],
     description="Grep multiple repositories for pattern",
 )
 def grep() -> None:
-    do_for_all_projects(do_grep, False)
+    do_for_all_projects(do_grep)
 
 
 @register_endpoint(
