@@ -1,3 +1,5 @@
+add a pymultigit command which does a full clean and build
+	and check that all is well and also that triggers all workflows and sees that all is well...
 - if there are not repos to work on print some kind of message.
 - make pymultigit stop when one of the things it does fails.
 	currently it keeps on going!
