@@ -197,7 +197,10 @@ def do_grep(_project_name: str, project_dir: str) -> None:
         stderr=subprocess.PIPE,
     ) as pipe:
         for line in pipe.stdout:
-            print(f"{project_dir}/{line.decode()}", end="")
+            try:
+                print(f"{project_dir}/{line.decode()}", end="")
+            except UnicodeDecodeError:
+                print(f"{project_dir}/-- line cant be decoded --", end="")
         if pipe.returncode:
             raise subprocess.CalledProcessError(
                 returncode=pipe.returncode,
