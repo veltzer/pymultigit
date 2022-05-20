@@ -20,4 +20,5 @@ pycmdtools mcmp --print "config/__init__.py" py*/config/__init__.py
 # .idea stuff
 pycmdtools mcmp --print ".idea/.gitignore" py*/.idea/.gitignore
 # results of templates
-pycmdtools mcmp --print ".github/workflows/build.yml" ./*/.github/workflows/build.yml
+pycmdtools mcmp --print "py*/.github/workflows/build.yml" py*/.github/workflows/build.yml
+pycmdtools mcmp --print "[^py]*/.github/workflows/build.yml" [^py]*/.github/workflows/build.yml
