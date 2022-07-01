@@ -29,9 +29,9 @@ def projects(sort: bool) -> Generator[Tuple[str, str], None, None]:
 
 def run(args, do_exit=True) -> Tuple[str, str, int]:
     with subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE) as p:
-        (res_out, res_err) = p.communicate()
-        res_out = res_out.decode()
-        res_err = res_err.decode()
+        (res_out_b, res_err_b) = p.communicate()
+        res_out = res_out_b.decode()
+        res_err = res_err_b.decode()
         if p.returncode:
             print(f'errors while running [{args}]...')
             print(res_out, end='', file=sys.stderr)
@@ -196,7 +196,7 @@ def do_grep(_project_name: str, project_dir: str) -> None:
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
     ) as pipe:
-        for line in pipe.stdout:
+        for line in pipe.stdout:  # type: ignore[union-attr]
             try:
                 print(f"{project_dir}/{line.decode()}", end="")
             except UnicodeDecodeError:
@@ -208,7 +208,7 @@ def do_grep(_project_name: str, project_dir: str) -> None:
             )
 
 
-def do_local_branch(_project_name: str, _project_dir: str) -> int:
+def do_local_branch(_project_name: str, _project_dir: str) -> str:
     args = ['git', 'branch', '--show-current']
     if ConfigDebug.git_verbose:
         args.append('--verbose')
@@ -217,7 +217,7 @@ def do_local_branch(_project_name: str, _project_dir: str) -> int:
     return subprocess.check_output(args).decode().strip()
 
 
-def do_remote_branch(_project_name: str, _project_dir: str) -> int:
+def do_remote_branch(_project_name: str, _project_dir: str) -> str:
     args = ['git', 'branch', '--remotes', '--show-current']
     if ConfigDebug.git_verbose:
         args.append('--verbose')
@@ -226,7 +226,7 @@ def do_remote_branch(_project_name: str, _project_dir: str) -> int:
     return subprocess.check_output(args).decode().strip()
 
 
-def do_github_branch(_project_name: str, _project_dir: str) -> int:
+def do_github_branch(_project_name: str, _project_dir: str) -> str:
     """
     https://stackoverflow.com/questions/28666357/git-how-to-get-default-branch
     """
