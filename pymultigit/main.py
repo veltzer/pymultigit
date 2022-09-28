@@ -185,7 +185,6 @@ def pull() -> None:
 
 
 @register_endpoint(
-    configs=[],
     description="Check various things",
 )
 def check_workflow_exists_for_makefile() -> None:
