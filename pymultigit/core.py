@@ -132,6 +132,25 @@ def do_build_pydmt(_project_name: str, _project_dir: str) -> None:
     ])
 
 
+def do_build_venv_pydmt(_project_name: str, _project_dir: str) -> None:
+    if os.path.isfile(DISABLE):
+        if ConfigOutput.print_not:
+            print(f"build is disabled with file {DISABLE}")
+        return
+    if not os.path.isfile(".pydmt.config") or not os.path.isdir(".venv/default"):
+        if ConfigOutput.print_not:
+            print("not a make venv folder (either .pydmt.config or .venv/default is not there)")
+        return
+    subprocess.check_call([
+        "venv-run",
+        "--venv",
+        ".venv/default",
+        "--",
+        "pydmt",
+        "build",
+    ])
+
+
 def do_build_venv_make(_project_name: str, _project_dir: str) -> None:
     if os.path.isfile(DISABLE):
         if ConfigOutput.print_not:

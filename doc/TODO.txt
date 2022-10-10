@@ -1,10 +1,3 @@
-- currently
-	$ mg build_pydmt
-	runs pydmt with the system/user python and not the virtual env
-	python.
-	add an option:
-	$ mg build_venv_pydmt
-	that runs pydmt build inside the venv.
 - add a pymultigit command which does a full clean and build
 	and check that all is well and also that triggers all workflows and sees that all is well...
 - if there are not repos to work on print some kind of message.
