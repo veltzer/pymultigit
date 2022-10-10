@@ -11,7 +11,7 @@ from pymultigit.configs import ConfigDebug, ConfigGrep, ConfigMain, ConfigOutput
 from pymultigit.core import do_count, is_dirty, has_untracked_files, non_synchronized_with_upstream, \
     do_for_all_projects, do_clean, do_status, do_dirty, do_pull, do_grep, do_local_branch, \
     do_remote_branch, print_projects_that_return_true, do_github_branch, do_check_workflow_exists_for_makefile, \
-    do_build_bootstrap, do_build_pydmt, do_build_make, do_build_venv_make
+    do_build_bootstrap, do_build_pydmt, do_build_make, do_build_venv_make, do_build_venv_pydmt
 from pymultigit.static import DESCRIPTION, APP_NAME, VERSION_STR
 
 
@@ -166,10 +166,22 @@ def build_make() -> None:
         ConfigMain,
         ConfigOutput,
     ],
-    description="run make build on repos",
+    description="run make build on repos, inside venv",
 )
 def build_venv_make() -> None:
     do_for_all_projects(do_build_venv_make)
+
+
+@register_endpoint(
+    configs=[
+        ConfigDebug,
+        ConfigMain,
+        ConfigOutput,
+    ],
+    description="run pydmt build on repos, inside venv",
+)
+def build_venv_pydmt() -> None:
+    do_for_all_projects(do_build_venv_pydmt)
 
 
 @register_endpoint(

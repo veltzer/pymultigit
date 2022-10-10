@@ -3,3 +3,10 @@
 - make "pymultigit status" be silent and only report projects which
 	have issues.
 	it should show the project and the output afterwards.
+- currently
+	$ mg build_pydmt
+	runs pydmt with the system/user python and not the virtual env
+	python.
+	add an option:
+	$ mg build_venv_pydmt
+	that runs pydmt build inside the venv.
