@@ -9,7 +9,7 @@ def get_readme():
 setuptools.setup(
     # the first three fields are a must according to the documentation
     name="pymultigit",
-    version="0.0.71",
+    version="0.0.72",
     packages=[
         'pymultigit',
     ],

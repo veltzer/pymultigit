@@ -6,7 +6,7 @@ project website: https://veltzer.github.io/pymultigit
 
 author: Mark Veltzer
 
-version: 0.0.71
+version: 0.0.72
 
 ![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)
 
