@@ -254,7 +254,7 @@ def do_github_branch(_project_name: str, _project_dir: str) -> str:
 
 
 def do_clean(_project_name: str, _project_dir: str) -> int:
-    args = ['git', 'clean', '-ffxd']
+    args = ['git', 'clean', '-qffxd']
     # if ConfigDebug.git_verbose:
     #     args.append('--verbose')
     # if ConfigDebug.git_quiet:
