@@ -102,9 +102,9 @@ def synchronized() -> None:
         ConfigMain,
         ConfigOutput,
     ],
-    description="Clean all projects",
+    description="Clean all projects using git removing any files not known to git",
 )
-def clean() -> None:
+def clean_hard() -> None:
     do_for_all_projects(do_clean)
 
 
