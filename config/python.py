@@ -8,7 +8,6 @@ make_requires = [
     "pyclassifiers",
     "pymakehelper",
     "pydmt",
-    "sphinx",
 ]
 install_requires = [
     "gitpython",
