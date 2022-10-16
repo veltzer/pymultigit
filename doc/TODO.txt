@@ -1,3 +1,8 @@
+- add a "forall" command to pymultigit which does a command for all repositories
+	examples:
+	$ pymultigit forall make clean
+	$ pymultigit forall pydmt build
+	...
 - add a pymultigit command which does a full clean and build
 	and check that all is well and also that triggers all workflows and sees that all is well...
 - if there are not repos to work on print some kind of message.
