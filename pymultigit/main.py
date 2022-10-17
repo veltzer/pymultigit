@@ -10,7 +10,7 @@ import pylogconf.core
 from pymultigit.configs import ConfigDebug, ConfigGrep, ConfigMain, ConfigOutput
 from pymultigit.core import do_count, is_dirty, has_untracked_files, non_synchronized_with_upstream, \
     do_for_all_projects, do_clean, do_status, do_dirty, do_pull, do_grep, do_local_branch, \
-    do_remote_branch, print_projects_that_return_true, do_github_branch, do_check_workflow_exists_for_makefile, \
+    do_remote_branch, print_projects_that_return_data, do_github_branch, do_check_workflow_exists_for_makefile, \
     do_build_bootstrap, do_build_pydmt, do_build_make, do_build_venv_make, do_build_venv_pydmt
 from pymultigit.static import DESCRIPTION, APP_NAME, VERSION_STR
 
@@ -113,7 +113,7 @@ def clean_hard() -> None:
     description="Show the status of multiple git repositories",
 )
 def status() -> None:
-    print_projects_that_return_true(do_status)
+    print_projects_that_return_data(do_status)
 
 
 @register_endpoint(
@@ -121,7 +121,7 @@ def status() -> None:
     description="Show names of project which are dirty",
 )
 def dirty() -> None:
-    print_projects_that_return_true(do_dirty)
+    print_projects_that_return_data(do_dirty)
 
 
 @register_endpoint(
@@ -200,7 +200,7 @@ def pull() -> None:
     description="Check various things",
 )
 def check_workflow_exists_for_makefile() -> None:
-    print_projects_that_return_true(do_check_workflow_exists_for_makefile)
+    print_projects_that_return_data(do_check_workflow_exists_for_makefile)
 
 
 @register_endpoint(
@@ -220,7 +220,7 @@ def grep() -> None:
     description="List all projects",
 )
 def list_projects() -> None:
-    print_projects_that_return_true(lambda: (True, ""))
+    print_projects_that_return_data(lambda: "")
 
 
 @register_main(

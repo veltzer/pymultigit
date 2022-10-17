@@ -3,7 +3,7 @@ import os
 import os.path
 import subprocess
 import sys
-from typing import Tuple, Generator
+from typing import Union, Generator, Tuple
 
 import git
 
@@ -13,18 +13,17 @@ from pymultigit.configs import ConfigOutput, ConfigDebug, ConfigGrep, ConfigPull
 DISABLE = ".build.disable"
 
 
-def projects(sort: bool) -> Generator[Tuple[str, str], None, None]:
+def projects(sort: bool) -> Generator[str, None, None]:
     """
-    the method returns tuples of (project_name, project_dir)
+    the method yields all project folders [project_dir]
     """
     if ConfigMain.use_glob:
-        repos_list = [os.path.dirname(x) for x in glob.glob('*/.git')]
+        repos_list = [os.path.dirname(x) for x in glob.glob("*/.git")]
     else:
         repos_list = ConfigMain.folders
     if sort:
         repos_list.sort()
-    for x in repos_list:
-        yield x, x
+    yield from repos_list
 
 
 def run(args, do_exit=True) -> Tuple[str, str, int]:
@@ -33,9 +32,9 @@ def run(args, do_exit=True) -> Tuple[str, str, int]:
         res_out = res_out_b.decode()
         res_err = res_err_b.decode()
         if p.returncode:
-            print(f'errors while running [{args}]...')
-            print(res_out, end='', file=sys.stderr)
-            print(res_err, end='', file=sys.stderr)
+            print(f"errors while running [{args}]...")
+            print(res_out, end="", file=sys.stderr)
+            print(res_err, end="", file=sys.stderr)
             if do_exit:
                 sys.exit(p.returncode)
     return res_out, res_err, p.returncode
@@ -44,7 +43,7 @@ def run(args, do_exit=True) -> Tuple[str, str, int]:
 def do_count(fnc, attr_name, not_attr_name, attr_plural, print_attr, print_not_attr) -> None:
     count = 0
     count_attr = 0
-    for (project_name, project_dir) in projects(sort=ConfigMain.sort):
+    for project_dir in projects(sort=ConfigMain.sort):
         count += 1
         repo = git.Repo(project_dir)
         attr = fnc(repo)
@@ -53,43 +52,42 @@ def do_count(fnc, attr_name, not_attr_name, attr_plural, print_attr, print_not_a
         if attr:
             if print_attr:
                 if ConfigOutput.terse:
-                    print(project_name)
+                    print(project_dir)
                 else:
-                    print(f'project [{project_name}] {attr_name}')
+                    print(f"project [{project_dir}] {attr_name}")
         else:
             if print_not_attr:
                 if ConfigOutput.terse:
-                    print(project_name)
+                    print(project_dir)
                 else:
-                    print(f'project [{project_name}] {not_attr_name}')
+                    print(f"project [{project_dir}] {not_attr_name}")
     if ConfigOutput.stats:
-        print(f'scanned [{count}] projects')
-        print(f'[{count_attr}] projects {attr_plural}')
+        print(f"scanned [{count}] projects")
+        print(f"[{count_attr}] projects {attr_plural}")
 
 
 def do_for_all_projects(fnc) -> None:
     orig_dir = os.getcwd()
-    for (project_name, project_dir) in projects(sort=ConfigMain.sort):
+    for project_dir in projects(sort=ConfigMain.sort):
         if ConfigOutput.output:
-            print(f"[{project_name}] at [{project_dir}]...")
+            print(f"[{project_dir}]...")
         os.chdir(project_dir)
-        fnc(project_name, project_dir)
+        fnc()
         os.chdir(orig_dir)
 
 
-def print_projects_that_return_true(fnc) -> None:
+def print_projects_that_return_data(fnc) -> None:
     orig_dir = os.getcwd()
-    for (project_name, project_dir) in projects(sort=ConfigMain.sort):
+    for project_dir in projects(sort=ConfigMain.sort):
         if os.path.isdir(project_dir):
             os.chdir(project_dir)
-            res, extra = fnc()
-            if res:
+            data = fnc()
+            if data is not None:
                 if ConfigOutput.terse:
-                    print(project_name)
+                    print(project_dir)
                 else:
-                    print(f"project [{project_name}] at folder [{project_dir}]")
-                if not ConfigOutput.terse:
-                    print(extra, end="")
+                    print(f"project [{project_dir}]...")
+                    print(data, end="")
             os.chdir(orig_dir)
 
 
@@ -105,7 +103,7 @@ def non_synchronized_with_upstream(_repo: str) -> bool:
     return False
 
 
-def do_build_bootstrap(_project_name: str, _project_dir: str) -> None:
+def do_build_bootstrap() -> None:
     if os.path.isfile(DISABLE):
         if ConfigOutput.print_not:
             print(f"build is disabled with file {DISABLE}")
@@ -117,7 +115,7 @@ def do_build_bootstrap(_project_name: str, _project_dir: str) -> None:
     subprocess.check_call(["./bootstrap"])
 
 
-def do_build_pydmt(_project_name: str, _project_dir: str) -> None:
+def do_build_pydmt() -> None:
     if os.path.isfile(DISABLE):
         if ConfigOutput.print_not:
             print(f"build is disabled with file {DISABLE}")
@@ -132,7 +130,7 @@ def do_build_pydmt(_project_name: str, _project_dir: str) -> None:
     ])
 
 
-def do_build_venv_pydmt(_project_name: str, _project_dir: str) -> None:
+def do_build_venv_pydmt() -> None:
     if os.path.isfile(DISABLE):
         if ConfigOutput.print_not:
             print(f"build is disabled with file {DISABLE}")
@@ -151,7 +149,7 @@ def do_build_venv_pydmt(_project_name: str, _project_dir: str) -> None:
     ])
 
 
-def do_build_venv_make(_project_name: str, _project_dir: str) -> None:
+def do_build_venv_make() -> None:
     if os.path.isfile(DISABLE):
         if ConfigOutput.print_not:
             print(f"build is disabled with file {DISABLE}")
@@ -169,7 +167,7 @@ def do_build_venv_make(_project_name: str, _project_dir: str) -> None:
     ])
 
 
-def do_build_make(_project_name: str, _project_dir: str) -> None:
+def do_build_make() -> None:
     if os.path.isfile(DISABLE):
         if ConfigOutput.print_not:
             print(f"build is disabled with file {DISABLE}")
@@ -181,28 +179,26 @@ def do_build_make(_project_name: str, _project_dir: str) -> None:
     subprocess.call(["make"])
 
 
-def do_pull(_project_name: str, _project_dir: str) -> int:
-    args = ['git', 'pull']
+def do_pull() -> int:
+    args = ["git", "pull"]
     if ConfigDebug.git_verbose:
-        args.append('--verbose')
+        args.append("--verbose")
     if ConfigPull.pull_quiet:
-        args.append('--quiet')
+        args.append("--quiet")
     return subprocess.call(args)
 
 
-def do_check_workflow_exists_for_makefile() -> Tuple[bool, str]:
-    if os.path.isfile("Makefile"):
-        if not os.path.isfile(".github/workflows/build.yml"):
-            return True, ""
-    return False, ""
+def do_check_workflow_exists_for_makefile() -> bool:
+    return os.path.isfile("Makefile") and os.path.isfile(".github/workflows/build.yml")
 
 
-def do_grep(_project_name: str, project_dir: str) -> None:
-    args = ['git', 'grep']
+def do_grep() -> None:
+    project_dir = os.path.basename(os.getcwd())
+    args = ["git", "grep"]
     if ConfigDebug.git_verbose:
-        args.append('--verbose')
+        args.append("--verbose")
     if ConfigDebug.git_quiet:
-        args.append('--quiet')
+        args.append("--quiet")
     args.append(ConfigGrep.regexp)
     if ConfigGrep.files is not None:
         args.extend([
@@ -223,78 +219,80 @@ def do_grep(_project_name: str, project_dir: str) -> None:
         if pipe.returncode:
             raise subprocess.CalledProcessError(
                 returncode=pipe.returncode,
-                cmd=' '.join(args),
+                cmd=" ".join(args),
             )
 
 
-def do_local_branch(_project_name: str, _project_dir: str) -> str:
-    args = ['git', 'branch', '--show-current']
+def do_local_branch() -> str:
+    args = ["git", "branch", "--show-current"]
     if ConfigDebug.git_verbose:
-        args.append('--verbose')
+        args.append("--verbose")
     if ConfigDebug.git_quiet:
-        args.append('--quiet')
+        args.append("--quiet")
     return subprocess.check_output(args).decode().strip()
 
 
-def do_remote_branch(_project_name: str, _project_dir: str) -> str:
-    args = ['git', 'branch', '--remotes', '--show-current']
+def do_remote_branch() -> str:
+    args = ["git", "branch", "--remotes", "--show-current"]
     if ConfigDebug.git_verbose:
-        args.append('--verbose')
+        args.append("--verbose")
     if ConfigDebug.git_quiet:
-        args.append('--quiet')
+        args.append("--quiet")
     return subprocess.check_output(args).decode().strip()
 
 
-def do_github_branch(_project_name: str, _project_dir: str) -> str:
+def do_github_branch() -> str:
     """
     https://stackoverflow.com/questions/28666357/git-how-to-get-default-branch
     """
-    args = ['gh', 'repo', 'view', '--json', 'defaultBranchRef', '--jq', '.defaultBranchRef.name',]
+    args = ["gh", "repo", "view", "--json", "defaultBranchRef", "--jq", ".defaultBranchRef.name",]
     return subprocess.check_output(args).decode().strip()
 
 
-def do_clean(_project_name: str, _project_dir: str) -> int:
-    args = ['git', 'clean', '-qffxd']
+def do_clean() -> int:
+    args = ["git", "clean", "-qffxd"]
     # if ConfigDebug.git_verbose:
-    #     args.append('--verbose')
+    #     args.append("--verbose")
     # if ConfigDebug.git_quiet:
-    #     args.append('--quiet')
+    #     args.append("--quiet")
     return subprocess.check_call(args)
 
 
-def do_status() -> Tuple[bool, str]:
+def do_status() -> Union[None, str]:
     (res_out, res_err, _) = run([
-        'git',
-        'status',
+        "git",
+        "status",
         # porcelain is guaranteed to have parsable output and not
         # change across git versions
-        '--porcelain',
+        "--porcelain",
         # when using --porcelain branch information is not shown,
         # this flag makes it not so, the problem with it is that
         # it produces output which should be parsed and that is
-        # why we do not used it and use the 'git rev-list' that follows...
-        # '--branch'
-        # '--short',
+        # why we do not used it and use the "git rev-list" that follows...
+        # "--branch"
+        # "--short",
     ])
-    if res_out != '' or res_err != '':
-        return True, res_out + res_err
+    if res_out != "" or res_err != "":
+        return res_out + res_err
     (res_out, res_err, _) = run([
-        'git',
-        'rev-list',
-        '--left-only',
-        '--count',
-        '@...@{upstream}',
+        "git",
+        "rev-list",
+        "--left-only",
+        "--count",
+        "@...@{upstream}",
     ])
-    if res_out != '0\n' or res_err != '':
-        return True, res_out + res_err
-    return False, ""
+    if res_out != "0\n" or res_err != "":
+        return res_out + res_err
+    return None
 
 
-def do_dirty() -> Tuple[bool, str]:
-    args = ['git', 'status', '--porcelain']
+def do_dirty() -> Union[None, str]:
+    args = ["git", "status", "--porcelain"]
     if ConfigDebug.git_verbose:
-        args.append('--verbose')
+        args.append("--verbose")
     if ConfigDebug.git_quiet:
-        args.append('--quiet')
+        args.append("--quiet")
     output = subprocess.check_output(args, stderr=subprocess.DEVNULL).decode()
-    return output != '', output
+    if output != "":
+        return output
+    return None
