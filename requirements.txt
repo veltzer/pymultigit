@@ -1,7 +1,0 @@
-# THIS IS AN AUTO-GENERATED FILE. DO NOT EDIT!
-# production requirements
-gitpython
-pyfakeuse
-pytconf
-pylogconf
-venv-run
