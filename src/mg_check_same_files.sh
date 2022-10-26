@@ -26,4 +26,4 @@ pycmdtools mcmp --print ".idea/.gitignore" py*/.idea/.gitignore
 pycmdtools mcmp --print "py*/.github/workflows/build.yml" py*/.github/workflows/build.yml
 pycmdtools mcmp --print "[^py]*/.github/workflows/build.yml" [^py]*/.github/workflows/build.yml
 # github stuff
-pycmdtools mcmp --print "*/.github/FUNDING.yml" */.github/FUNDING.yml
+pycmdtools mcmp --print "*/.github/FUNDING.yml" ./*/.github/FUNDING.yml
