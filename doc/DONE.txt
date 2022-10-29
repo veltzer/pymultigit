@@ -10,3 +10,4 @@
 	add an option:
 	$ mg build_venv_pydmt
 	that runs pydmt build inside the venv.
+- allow to stop or not stop mg when failing

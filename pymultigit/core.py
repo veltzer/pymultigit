@@ -72,7 +72,12 @@ def do_for_all_projects(fnc) -> None:
         if ConfigOutput.output:
             print(f"[{project_dir}]...")
         os.chdir(project_dir)
-        fnc()
+        # pylint: disable=bare-except
+        try:
+            fnc()
+        except:  # noqa: E722
+            if ConfigMain.stop:
+                raise
         os.chdir(orig_dir)
 
 

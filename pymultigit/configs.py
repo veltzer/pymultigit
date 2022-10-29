@@ -66,6 +66,10 @@ class ConfigMain(Config):
         help_string="what list of folders to use?",
         default=[],
     )
+    stop = ParamCreator.create_bool(
+        help_string="Stop when failing?",
+        default=True,
+    )
 
 
 class ConfigGrep(Config):
