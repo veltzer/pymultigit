@@ -86,20 +86,21 @@ def is_git_folder(directory: str) -> bool:
 
 
 def print_projects_that_return_data(fnc) -> None:
+    """
+    In this function we are sure that the directories we get a real git folders
+    since we get them from the `projects` function. There is no need to check this.
+    """
     orig_dir = os.getcwd()
     for project_dir in projects(sort=ConfigMain.sort):
-        if is_git_folder(project_dir):
-            os.chdir(project_dir)
-            data = fnc()
-            if data is not None:
-                if ConfigOutput.terse:
-                    print(project_dir)
-                else:
-                    print(f"project [{project_dir}]...")
-                    print(data, end="")
-            os.chdir(orig_dir)
-        else:
-            print(f"skipping [{project_dir}]...")
+        os.chdir(project_dir)
+        data = fnc()
+        if data is not None:
+            if ConfigOutput.terse:
+                print(project_dir)
+            else:
+                print(f"project [{project_dir}]...")
+                print(data, end="")
+        os.chdir(orig_dir)
 
 
 def is_dirty(repo) -> bool:
