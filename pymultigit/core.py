@@ -81,10 +81,14 @@ def do_for_all_projects(fnc) -> None:
         os.chdir(orig_dir)
 
 
+def is_git_folder(directory: str) -> bool:
+    return os.path.isdir(directory) and os.path.isdir(os.path.join(directory, ".git"))
+
+
 def print_projects_that_return_data(fnc) -> None:
     orig_dir = os.getcwd()
     for project_dir in projects(sort=ConfigMain.sort):
-        if os.path.isdir(project_dir):
+        if is_git_folder(project_dir):
             os.chdir(project_dir)
             data = fnc()
             if data is not None:
@@ -94,6 +98,8 @@ def print_projects_that_return_data(fnc) -> None:
                     print(f"project [{project_dir}]...")
                     print(data, end="")
             os.chdir(orig_dir)
+        else:
+            print(f"skipping [{project_dir}]...")
 
 
 def is_dirty(repo) -> bool:
