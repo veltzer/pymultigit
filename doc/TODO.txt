@@ -1,3 +1,4 @@
+- add a "pymultigit diff" command that does a diff on all the repositories.
 - add a "forall" command to pymultigit which does a command for all repositories
 	examples:
 	$ pymultigit forall make clean
