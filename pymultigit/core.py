@@ -91,7 +91,9 @@ def print_projects_that_return_data(fnc) -> None:
     since we get them from the `projects` function. There is no need to check this.
     """
     orig_dir = os.getcwd()
+    have_projects = False
     for project_dir in projects(sort=ConfigMain.sort):
+        have_projects = True
         os.chdir(project_dir)
         data = fnc()
         if data is not None:
@@ -101,6 +103,8 @@ def print_projects_that_return_data(fnc) -> None:
                 print(f"project [{project_dir}]...")
                 print(data, end="")
         os.chdir(orig_dir)
+    if ConfigMain.print_no_projects and not have_projects:
+        print("no projects found")
 
 
 def is_dirty(repo) -> bool:

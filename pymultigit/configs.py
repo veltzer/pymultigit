@@ -70,6 +70,10 @@ class ConfigMain(Config):
         help_string="Stop when failing?",
         default=True,
     )
+    print_no_projects = ParamCreator.create_bool(
+        help_string="Print a message when no projects are found?",
+        default=True,
+    )
 
 
 class ConfigGrep(Config):
