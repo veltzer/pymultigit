@@ -119,10 +119,16 @@ def non_synchronized_with_upstream(_repo: str) -> bool:
     return False
 
 
-def do_build_bootstrap() -> None:
+def disable():
     if os.path.isfile(DISABLE):
         if ConfigOutput.print_not:
-            print(f"build is disabled with file {DISABLE}")
+            print(f"build is disabled with file [{DISABLE}]")
+        return True
+    return False
+
+
+def do_build_bootstrap() -> None:
+    if disable():
         return
     if not os.path.isfile("bootstrap"):
         if ConfigOutput.print_not:
@@ -132,9 +138,7 @@ def do_build_bootstrap() -> None:
 
 
 def do_build_pydmt() -> None:
-    if os.path.isfile(DISABLE):
-        if ConfigOutput.print_not:
-            print(f"build is disabled with file {DISABLE}")
+    if disable():
         return
     if not os.path.isfile(".pydmt.config"):
         if ConfigOutput.print_not:
@@ -147,9 +151,7 @@ def do_build_pydmt() -> None:
 
 
 def do_build_venv_pydmt() -> None:
-    if os.path.isfile(DISABLE):
-        if ConfigOutput.print_not:
-            print(f"build is disabled with file {DISABLE}")
+    if disable():
         return
     if not os.path.isfile(".pydmt.config") or not os.path.isdir(".venv/default"):
         if ConfigOutput.print_not:
@@ -166,9 +168,7 @@ def do_build_venv_pydmt() -> None:
 
 
 def do_build_venv_make() -> None:
-    if os.path.isfile(DISABLE):
-        if ConfigOutput.print_not:
-            print(f"build is disabled with file {DISABLE}")
+    if disable():
         return
     if not os.path.isfile("Makefile") or not os.path.isdir(".venv/default"):
         if ConfigOutput.print_not:
@@ -184,9 +184,7 @@ def do_build_venv_make() -> None:
 
 
 def do_build_make() -> None:
-    if os.path.isfile(DISABLE):
-        if ConfigOutput.print_not:
-            print(f"build is disabled with file {DISABLE}")
+    if disable():
         return
     if not os.path.isfile("Makefile"):
         if ConfigOutput.print_not:
