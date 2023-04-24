@@ -234,22 +234,22 @@ def do_grep() -> None:
             )
 
 
-def do_local_branch() -> str:
+def do_local_branch() -> None:
     args = ["git", "branch", "--show-current"]
     if ConfigDebug.git_verbose:
         args.append("--verbose")
     if ConfigDebug.git_quiet:
         args.append("--quiet")
-    return subprocess.check_output(args).decode().strip()
+    subprocess.check_call(args)
 
 
-def do_remote_branch() -> str:
+def do_remote_branch() -> None:
     args = ["git", "branch", "--remotes", "--show-current"]
     if ConfigDebug.git_verbose:
         args.append("--verbose")
     if ConfigDebug.git_quiet:
         args.append("--quiet")
-    return subprocess.check_output(args).decode().strip()
+    subprocess.check_call(args)
 
 
 def do_github_branch() -> str:
