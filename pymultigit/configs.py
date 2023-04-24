@@ -99,3 +99,17 @@ class ConfigPull(Config):
         help_string="add --quiet when running git?",
         default=True,
     )
+
+
+class ConfigSubprocess(Config):
+    """
+    Parameters to configure how we run subprocess
+    """
+    print_command = ParamCreator.create_bool(
+        help_string="print out commands",
+        default=True,
+    )
+    quiet = ParamCreator.create_bool(
+        help_string="Suppress output?",
+        default=False,
+    )

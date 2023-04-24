@@ -8,6 +8,7 @@ from typing import Union, Generator, Tuple
 import git
 
 from pymultigit.configs import ConfigOutput, ConfigDebug, ConfigGrep, ConfigPull, ConfigMain
+from pymultigit.utils.subprocess import check_call_ve
 
 
 DISABLE = ".build.disable"
@@ -127,6 +128,14 @@ def disable():
     return False
 
 
+def check_pydmt():
+    if not os.path.isfile(".pydmt.config"):
+        if ConfigOutput.print_not:
+            print("not a pydmt folder (.pydmt.config not there)")
+        return True
+    return False
+
+
 def do_build_bootstrap() -> None:
     if disable():
         return
@@ -140,9 +149,7 @@ def do_build_bootstrap() -> None:
 def do_build_pydmt() -> None:
     if disable():
         return
-    if not os.path.isfile(".pydmt.config"):
-        if ConfigOutput.print_not:
-            print("not a pydmt folder (.pydmt.config not there)")
+    if check_pydmt():
         return
     subprocess.check_call([
         "pydmt",
@@ -153,15 +160,9 @@ def do_build_pydmt() -> None:
 def do_build_venv_pydmt() -> None:
     if disable():
         return
-    if not os.path.isfile(".pydmt.config") or not os.path.isdir(".venv/default"):
-        if ConfigOutput.print_not:
-            print("not a make venv folder (either .pydmt.config or .venv/default is not there)")
+    if check_pydmt():
         return
-    subprocess.check_call([
-        "venv-run",
-        "--venv",
-        ".venv/default",
-        "--",
+    check_call_ve([
         "pydmt",
         "build",
     ])
@@ -174,11 +175,7 @@ def do_build_venv_make() -> None:
         if ConfigOutput.print_not:
             print("not a make venv folder (either Makefile or .venv/default is not there)")
         return
-    subprocess.check_call([
-        "venv-run",
-        "--venv",
-        ".venv/default",
-        "--",
+    check_call_ve([
         "make",
     ])
 
