@@ -1,4 +1,4 @@
-description_short = "Help you deal with multiple git repositories"
+description_short = "Pymultigit helps you deal with multiple git repositories"
 keywords = [
     "git",
     "python",
