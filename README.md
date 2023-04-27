@@ -1,6 +1,6 @@
 # *pymultigit* project by Mark Veltzer
 
-description: Help you deal with multiple git repositories
+description: Pymultigit helps you deal with multiple git repositories
 
 project website: https://veltzer.github.io/pymultigit
 
