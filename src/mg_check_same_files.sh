@@ -27,6 +27,6 @@ pycmdtools mcmp --print "*/.github/FUNDING.yml" ./*/.github/FUNDING.yml
 pycmdtools mcmp --print "*/sphinx/conf.py" ./*/sphinx/conf.py
 pycmdtools mcmp --print "*/sphinx/index.rst" ./*/sphinx/index.rst
 # config
-pycmdtools mcmp --print "*/config/platform.py" */config/platform.py
-pycmdtools mcmp --print "*/config/personal.py" */config/personal.py
-pycmdtools mcmp --print "*/config/github.py" */config/github.py
+pycmdtools mcmp --print "*/config/platform.py" ./*/config/platform.py
+pycmdtools mcmp --print "*/config/personal.py" ./*/config/personal.py
+pycmdtools mcmp --print "*/config/github.py" ./*/config/github.py
