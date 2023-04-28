@@ -24,4 +24,5 @@ pycmdtools mcmp --print "[^py]*/.github/workflows/build.yml" [^py]*/.github/work
 # github stuff
 pycmdtools mcmp --print "*/.github/FUNDING.yml" ./*/.github/FUNDING.yml
 # sphinx
-pycmdtools mcmp --print "*/sphinx/conf.py"
+pycmdtools mcmp --print "*/sphinx/conf.py" ./*/sphinx/conf.py
+pycmdtools mcmp --print "*/sphinx/index.rst" ./*/sphinx/index.rst
