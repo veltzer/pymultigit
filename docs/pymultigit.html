@@ -1,0 +1,502 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>pymultigit package &#8212; pymultigit 0.0.83 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pymultigit.utils package" href="pymultigit.utils.html" />
+    <link rel="prev" title="pymultigit" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="pymultigit-package">
+<h1>pymultigit package<a class="headerlink" href="#pymultigit-package" title="Permalink to this heading">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pymultigit.utils.html">pymultigit.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pymultigit.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pymultigit.utils.html#module-pymultigit.utils.subprocess">pymultigit.utils.subprocess module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pymultigit.utils.html#pymultigit.utils.subprocess.check_call_ve"><code class="docutils literal notranslate"><span class="pre">check_call_ve()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pymultigit.utils.html#module-pymultigit.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-pymultigit.configs">
+<span id="pymultigit-configs-module"></span><h2>pymultigit.configs module<a class="headerlink" href="#module-pymultigit.configs" title="Permalink to this heading">¶</a></h2>
+<p>All configurations for pymultigit</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigDebug">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymultigit.configs.</span></span><span class="sig-name descname"><span class="pre">ConfigDebug</span></span><a class="reference internal" href="_modules/pymultigit/configs.html#ConfigDebug"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.configs.ConfigDebug" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></p>
+<p>Parameters for debug</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigDebug.debug_verbose">
+<span class="sig-name descname"><span class="pre">debug_verbose</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pymultigit.configs.ConfigDebug.debug_verbose" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigDebug.git_quiet">
+<span class="sig-name descname"><span class="pre">git_quiet</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pymultigit.configs.ConfigDebug.git_quiet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigDebug.git_verbose">
+<span class="sig-name descname"><span class="pre">git_verbose</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pymultigit.configs.ConfigDebug.git_verbose" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigGrep">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymultigit.configs.</span></span><span class="sig-name descname"><span class="pre">ConfigGrep</span></span><a class="reference internal" href="_modules/pymultigit/configs.html#ConfigGrep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.configs.ConfigGrep" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></p>
+<p>Parameters for the grep command</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigGrep.files">
+<span class="sig-name descname"><span class="pre">files</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pymultigit.configs.ConfigGrep.files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigGrep.regexp">
+<span class="sig-name descname"><span class="pre">regexp</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;pytconf.param.Unique</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pymultigit.configs.ConfigGrep.regexp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigMain">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymultigit.configs.</span></span><span class="sig-name descname"><span class="pre">ConfigMain</span></span><a class="reference internal" href="_modules/pymultigit/configs.html#ConfigMain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.configs.ConfigMain" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></p>
+<p>Main parameters</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigMain.folders">
+<span class="sig-name descname"><span class="pre">folders</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#pymultigit.configs.ConfigMain.folders" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigMain.glob">
+<span class="sig-name descname"><span class="pre">glob</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'*/*.git'</span></em><a class="headerlink" href="#pymultigit.configs.ConfigMain.glob" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigMain.print_no_projects">
+<span class="sig-name descname"><span class="pre">print_no_projects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#pymultigit.configs.ConfigMain.print_no_projects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigMain.sort">
+<span class="sig-name descname"><span class="pre">sort</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#pymultigit.configs.ConfigMain.sort" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigMain.stop">
+<span class="sig-name descname"><span class="pre">stop</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#pymultigit.configs.ConfigMain.stop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigMain.use_glob">
+<span class="sig-name descname"><span class="pre">use_glob</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#pymultigit.configs.ConfigMain.use_glob" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigOutput">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymultigit.configs.</span></span><span class="sig-name descname"><span class="pre">ConfigOutput</span></span><a class="reference internal" href="_modules/pymultigit/configs.html#ConfigOutput"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.configs.ConfigOutput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></p>
+<p>Parameters to control output</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigOutput.output">
+<span class="sig-name descname"><span class="pre">output</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#pymultigit.configs.ConfigOutput.output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigOutput.print_not">
+<span class="sig-name descname"><span class="pre">print_not</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pymultigit.configs.ConfigOutput.print_not" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigOutput.stats">
+<span class="sig-name descname"><span class="pre">stats</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pymultigit.configs.ConfigOutput.stats" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigOutput.terse">
+<span class="sig-name descname"><span class="pre">terse</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pymultigit.configs.ConfigOutput.terse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigPull">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymultigit.configs.</span></span><span class="sig-name descname"><span class="pre">ConfigPull</span></span><a class="reference internal" href="_modules/pymultigit/configs.html#ConfigPull"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.configs.ConfigPull" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></p>
+<p>Parameters for the pull command</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigPull.pull_quiet">
+<span class="sig-name descname"><span class="pre">pull_quiet</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#pymultigit.configs.ConfigPull.pull_quiet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigSubprocess">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pymultigit.configs.</span></span><span class="sig-name descname"><span class="pre">ConfigSubprocess</span></span><a class="reference internal" href="_modules/pymultigit/configs.html#ConfigSubprocess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.configs.ConfigSubprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></p>
+<p>Parameters to configure how we run subprocess</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigSubprocess.print_command">
+<span class="sig-name descname"><span class="pre">print_command</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pymultigit.configs.ConfigSubprocess.print_command" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pymultigit.configs.ConfigSubprocess.quiet">
+<span class="sig-name descname"><span class="pre">quiet</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#pymultigit.configs.ConfigSubprocess.quiet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pymultigit.core">
+<span id="pymultigit-core-module"></span><h2>pymultigit.core module<a class="headerlink" href="#module-pymultigit.core" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.check_pydmt">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">check_pydmt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pymultigit/core.html#check_pydmt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.check_pydmt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.disable">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">disable</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pymultigit/core.html#disable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.disable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.do_build_bootstrap">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">do_build_bootstrap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#do_build_bootstrap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.do_build_bootstrap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.do_build_make">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">do_build_make</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#do_build_make"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.do_build_make" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.do_build_pydmt">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">do_build_pydmt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#do_build_pydmt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.do_build_pydmt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.do_build_venv_make">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">do_build_venv_make</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#do_build_venv_make"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.do_build_venv_make" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.do_build_venv_pydmt">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">do_build_venv_pydmt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#do_build_venv_pydmt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.do_build_venv_pydmt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.do_check_workflow_exists_for_makefile">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">do_check_workflow_exists_for_makefile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#do_check_workflow_exists_for_makefile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.do_check_workflow_exists_for_makefile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.do_clean">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">do_clean</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#do_clean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.do_clean" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.do_count">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">do_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">not_attr_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attr_plural</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_attr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_not_attr</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#do_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.do_count" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.do_dirty">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">do_dirty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#do_dirty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.do_dirty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.do_for_all_projects">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">do_for_all_projects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnc</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#do_for_all_projects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.do_for_all_projects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.do_github_branch">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">do_github_branch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#do_github_branch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.do_github_branch" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://stackoverflow.com/questions/28666357/git-how-to-get-default-branch">https://stackoverflow.com/questions/28666357/git-how-to-get-default-branch</a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.do_grep">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">do_grep</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#do_grep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.do_grep" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.do_local_branch">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">do_local_branch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#do_local_branch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.do_local_branch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.do_pull">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">do_pull</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#do_pull"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.do_pull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.do_remote_branch">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">do_remote_branch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#do_remote_branch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.do_remote_branch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.do_status">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">do_status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#do_status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.do_status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.has_untracked_files">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">has_untracked_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#has_untracked_files"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.has_untracked_files" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.is_dirty">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">is_dirty</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#is_dirty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.is_dirty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.is_git_folder">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">is_git_folder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#is_git_folder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.is_git_folder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.non_synchronized_with_upstream">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">non_synchronized_with_upstream</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_repo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#non_synchronized_with_upstream"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.non_synchronized_with_upstream" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.print_projects_that_return_data">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">print_projects_that_return_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fnc</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#print_projects_that_return_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.print_projects_that_return_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>In this function we are sure that the directories we get a real git folders
+since we get them from the <cite>projects</cite> function. There is no need to check this.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.projects">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">projects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Generator</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">None</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#projects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.projects" title="Permalink to this definition">¶</a></dt>
+<dd><p>the method yields all project folders [project_dir]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.core.run">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.core.</span></span><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_exit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/pymultigit/core.html#run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.core.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-pymultigit.main">
+<span id="pymultigit-main-module"></span><h2>pymultigit.main module<a class="headerlink" href="#module-pymultigit.main" title="Permalink to this heading">¶</a></h2>
+<p>main</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.main.build_bootstrap">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.main.</span></span><span class="sig-name descname"><span class="pre">build_bootstrap</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/main.html#build_bootstrap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.main.build_bootstrap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.main.build_make">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.main.</span></span><span class="sig-name descname"><span class="pre">build_make</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/main.html#build_make"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.main.build_make" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.main.build_pydmt">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.main.</span></span><span class="sig-name descname"><span class="pre">build_pydmt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/main.html#build_pydmt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.main.build_pydmt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.main.build_venv_make">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.main.</span></span><span class="sig-name descname"><span class="pre">build_venv_make</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/main.html#build_venv_make"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.main.build_venv_make" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.main.build_venv_pydmt">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.main.</span></span><span class="sig-name descname"><span class="pre">build_venv_pydmt</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/main.html#build_venv_pydmt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.main.build_venv_pydmt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.main.check_workflow_exists_for_makefile">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.main.</span></span><span class="sig-name descname"><span class="pre">check_workflow_exists_for_makefile</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/main.html#check_workflow_exists_for_makefile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.main.check_workflow_exists_for_makefile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.main.clean_hard">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.main.</span></span><span class="sig-name descname"><span class="pre">clean_hard</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/main.html#clean_hard"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.main.clean_hard" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.main.count_dirty">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.main.</span></span><span class="sig-name descname"><span class="pre">count_dirty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/main.html#count_dirty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.main.count_dirty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.main.dirty">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.main.</span></span><span class="sig-name descname"><span class="pre">dirty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/main.html#dirty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.main.dirty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.main.github_branch">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.main.</span></span><span class="sig-name descname"><span class="pre">github_branch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/main.html#github_branch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.main.github_branch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.main.grep">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.main.</span></span><span class="sig-name descname"><span class="pre">grep</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/main.html#grep"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.main.grep" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.main.list_projects">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.main.</span></span><span class="sig-name descname"><span class="pre">list_projects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/main.html#list_projects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.main.list_projects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.main.local_branch">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.main.</span></span><span class="sig-name descname"><span class="pre">local_branch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/main.html#local_branch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.main.local_branch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.main.main">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.main.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pymultigit/main.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.main.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.main.pull">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.main.</span></span><span class="sig-name descname"><span class="pre">pull</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/main.html#pull"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.main.pull" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.main.remote_branch">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.main.</span></span><span class="sig-name descname"><span class="pre">remote_branch</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/main.html#remote_branch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.main.remote_branch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.main.status">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.main.</span></span><span class="sig-name descname"><span class="pre">status</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/main.html#status"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.main.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.main.synchronized">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.main.</span></span><span class="sig-name descname"><span class="pre">synchronized</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/main.html#synchronized"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.main.synchronized" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pymultigit.main.untracked">
+<span class="sig-prename descclassname"><span class="pre">pymultigit.main.</span></span><span class="sig-name descname"><span class="pre">untracked</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/pymultigit/main.html#untracked"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pymultigit.main.untracked" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-pymultigit.static">
+<span id="pymultigit-static-module"></span><h2>pymultigit.static module<a class="headerlink" href="#module-pymultigit.static" title="Permalink to this heading">¶</a></h2>
+<p>version which can be consumed from within the module</p>
+</section>
+<section id="module-pymultigit">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pymultigit" title="Permalink to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">pymultigit</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">pymultigit</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">pymultigit package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">pymultigit</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">pymultigit</a></li>
+      <li>Next: <a href="pymultigit.utils.html" title="next chapter">pymultigit.utils package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;Mark Veltzer.
+      
+      |
+      <a href="_sources/pymultigit.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
