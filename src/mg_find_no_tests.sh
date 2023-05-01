@@ -1,8 +1,8 @@
 #!/bin/bash -e
 for x in py*
 do
-	if [ ! -d "$x/tests" ]
+	if [ ! -d "${x}/tests" ]
 	then
-		echo "$x"
+		echo "${x}"
 	fi
 done
