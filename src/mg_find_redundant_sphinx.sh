@@ -1,11 +1,11 @@
 #!/bin/bash -e
 for x in py*
 do
-	if [ ! -d "$x/sphinx" ]
+	if [ ! -d "${x}/sphinx" ]
 	then
-		if grep sphinx "$x/config/python.py" > /dev/null 
+		if grep sphinx "${x}/config/python.py" > /dev/null 
 		then
-			echo "$x"
+			echo "${x}"
 		fi
 	fi
 done
