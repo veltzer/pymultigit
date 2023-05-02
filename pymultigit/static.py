@@ -1,5 +1,5 @@
 """ version which can be consumed from within the module """
-VERSION_STR = "0.0.83"
+VERSION_STR = "0.0.84"
 DESCRIPTION = "Pymultigit helps you deal with multiple git repositories"
 APP_NAME = "pymultigit"
 LOGGER_NAME = "pymultigit"
