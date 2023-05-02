@@ -168,6 +168,17 @@ def do_build_venv_pydmt() -> None:
     ])
 
 
+def do_build_pydmt_build_venv() -> None:
+    if disable():
+        return
+    if not os.path.isfile(".pydmt.config"):
+        if ConfigOutput.print_not:
+            print("not a pydmt folder (.pydmt.config not there)")
+        return
+    args = ["pydmt", "build_venv"]
+    subprocess.check_call(args)
+
+
 def do_build_venv_make() -> None:
     if disable():
         return
