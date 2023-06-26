@@ -207,7 +207,7 @@ def do_pull() -> int:
         args.append("--verbose")
     if ConfigPull.pull_quiet:
         args.append("--quiet")
-    return subprocess.call(args)
+    return subprocess.check_call(args)
 
 
 def do_check_workflow_exists_for_makefile() -> bool:
