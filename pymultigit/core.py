@@ -198,7 +198,7 @@ def do_build_make() -> None:
         if ConfigOutput.print_not:
             print("not a make folder (Makefile not there)")
         return
-    subprocess.call(["make"])
+    subprocess.check_call(["make"])
 
 
 def do_pull() -> int:
