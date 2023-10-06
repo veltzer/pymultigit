@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pymultigit.main &#8212; pymultigit 0.0.86 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=039e1c02" />
+    <script src="../../_static/documentation_options.js?v=339ea818"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
    
@@ -48,7 +48,9 @@
 <span class="kn">from</span> <span class="nn">pymultigit.static</span> <span class="kn">import</span> <span class="n">DESCRIPTION</span><span class="p">,</span> <span class="n">APP_NAME</span><span class="p">,</span> <span class="n">VERSION_STR</span>
 
 
-<div class="viewcode-block" id="count_dirty"><a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.count_dirty">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+<div class="viewcode-block" id="count_dirty">
+<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.count_dirty">[docs]</a>
+<span class="nd">@register_endpoint</span><span class="p">(</span>
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span><span class="n">ConfigDebug</span><span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Show the status of multiple git repositories&quot;</span><span class="p">,</span>
 <span class="p">)</span>
@@ -63,7 +65,10 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="untracked"><a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.untracked">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+
+<div class="viewcode-block" id="untracked">
+<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.untracked">[docs]</a>
+<span class="nd">@register_endpoint</span><span class="p">(</span>
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span><span class="n">ConfigDebug</span><span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Show which repositories have untracked files&quot;</span><span class="p">,</span>
 <span class="p">)</span>
@@ -78,7 +83,10 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="local_branch"><a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.local_branch">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+
+<div class="viewcode-block" id="local_branch">
+<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.local_branch">[docs]</a>
+<span class="nd">@register_endpoint</span><span class="p">(</span>
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span>
         <span class="n">ConfigDebug</span><span class="p">,</span>
         <span class="n">ConfigMain</span><span class="p">,</span>
@@ -90,7 +98,10 @@
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_local_branch</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="remote_branch"><a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.remote_branch">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+
+<div class="viewcode-block" id="remote_branch">
+<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.remote_branch">[docs]</a>
+<span class="nd">@register_endpoint</span><span class="p">(</span>
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span>
         <span class="n">ConfigDebug</span><span class="p">,</span>
         <span class="n">ConfigMain</span><span class="p">,</span>
@@ -102,7 +113,10 @@
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_remote_branch</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="github_branch"><a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.github_branch">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+
+<div class="viewcode-block" id="github_branch">
+<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.github_branch">[docs]</a>
+<span class="nd">@register_endpoint</span><span class="p">(</span>
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span>
         <span class="n">ConfigDebug</span><span class="p">,</span>
         <span class="n">ConfigMain</span><span class="p">,</span>
@@ -114,7 +128,10 @@
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_github_branch</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="synchronized"><a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.synchronized">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+
+<div class="viewcode-block" id="synchronized">
+<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.synchronized">[docs]</a>
+<span class="nd">@register_endpoint</span><span class="p">(</span>
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span><span class="n">ConfigDebug</span><span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Show which repositories are synchronized with their upstream&quot;</span><span class="p">,</span>
 <span class="p">)</span>
@@ -129,7 +146,10 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="clean_hard"><a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.clean_hard">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+
+<div class="viewcode-block" id="clean_hard">
+<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.clean_hard">[docs]</a>
+<span class="nd">@register_endpoint</span><span class="p">(</span>
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span>
         <span class="n">ConfigDebug</span><span class="p">,</span>
         <span class="n">ConfigMain</span><span class="p">,</span>
@@ -141,7 +161,10 @@
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_clean</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="status"><a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.status">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+
+<div class="viewcode-block" id="status">
+<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.status">[docs]</a>
+<span class="nd">@register_endpoint</span><span class="p">(</span>
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span><span class="n">ConfigDebug</span><span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Show the status of multiple git repositories&quot;</span><span class="p">,</span>
 <span class="p">)</span>
@@ -149,7 +172,10 @@
     <span class="n">print_projects_that_return_data</span><span class="p">(</span><span class="n">do_status</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="dirty"><a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.dirty">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+
+<div class="viewcode-block" id="dirty">
+<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.dirty">[docs]</a>
+<span class="nd">@register_endpoint</span><span class="p">(</span>
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span><span class="n">ConfigDebug</span><span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Show names of project which are dirty&quot;</span><span class="p">,</span>
 <span class="p">)</span>
@@ -157,7 +183,10 @@
     <span class="n">print_projects_that_return_data</span><span class="p">(</span><span class="n">do_dirty</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="build_pydmt"><a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.build_pydmt">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+
+<div class="viewcode-block" id="build_pydmt">
+<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.build_pydmt">[docs]</a>
+<span class="nd">@register_endpoint</span><span class="p">(</span>
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span>
         <span class="n">ConfigDebug</span><span class="p">,</span>
         <span class="n">ConfigMain</span><span class="p">,</span>
@@ -169,7 +198,10 @@
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_build_pydmt</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="build_bootstrap"><a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.build_bootstrap">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+
+<div class="viewcode-block" id="build_bootstrap">
+<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.build_bootstrap">[docs]</a>
+<span class="nd">@register_endpoint</span><span class="p">(</span>
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span>
         <span class="n">ConfigDebug</span><span class="p">,</span>
         <span class="n">ConfigMain</span><span class="p">,</span>
@@ -181,7 +213,10 @@
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_build_bootstrap</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="build_make"><a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.build_make">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+
+<div class="viewcode-block" id="build_make">
+<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.build_make">[docs]</a>
+<span class="nd">@register_endpoint</span><span class="p">(</span>
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span>
         <span class="n">ConfigDebug</span><span class="p">,</span>
         <span class="n">ConfigMain</span><span class="p">,</span>
@@ -193,7 +228,10 @@
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_build_make</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="build_venv_make"><a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.build_venv_make">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+
+<div class="viewcode-block" id="build_venv_make">
+<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.build_venv_make">[docs]</a>
+<span class="nd">@register_endpoint</span><span class="p">(</span>
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span>
         <span class="n">ConfigDebug</span><span class="p">,</span>
         <span class="n">ConfigMain</span><span class="p">,</span>
@@ -205,7 +243,10 @@
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_build_venv_make</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="build_pydmt_build_venv"><a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.build_pydmt_build_venv">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+
+<div class="viewcode-block" id="build_pydmt_build_venv">
+<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.build_pydmt_build_venv">[docs]</a>
+<span class="nd">@register_endpoint</span><span class="p">(</span>
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span>
         <span class="n">ConfigDebug</span><span class="p">,</span>
         <span class="n">ConfigMain</span><span class="p">,</span>
@@ -217,7 +258,10 @@
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_build_pydmt_build_venv</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="build_venv_pydmt"><a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.build_venv_pydmt">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+
+<div class="viewcode-block" id="build_venv_pydmt">
+<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.build_venv_pydmt">[docs]</a>
+<span class="nd">@register_endpoint</span><span class="p">(</span>
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span>
         <span class="n">ConfigDebug</span><span class="p">,</span>
         <span class="n">ConfigMain</span><span class="p">,</span>
@@ -229,7 +273,10 @@
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_build_venv_pydmt</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="pull"><a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.pull">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+
+<div class="viewcode-block" id="pull">
+<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.pull">[docs]</a>
+<span class="nd">@register_endpoint</span><span class="p">(</span>
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span>
         <span class="n">ConfigDebug</span><span class="p">,</span>
         <span class="n">ConfigOutput</span><span class="p">,</span>
@@ -241,14 +288,20 @@
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_pull</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="check_workflow_exists_for_makefile"><a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.check_workflow_exists_for_makefile">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+
+<div class="viewcode-block" id="check_workflow_exists_for_makefile">
+<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.check_workflow_exists_for_makefile">[docs]</a>
+<span class="nd">@register_endpoint</span><span class="p">(</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Check various things&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="k">def</span> <span class="nf">check_workflow_exists_for_makefile</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">print_projects_that_return_data</span><span class="p">(</span><span class="n">do_check_workflow_exists_for_makefile</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="grep"><a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.grep">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+
+<div class="viewcode-block" id="grep">
+<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.grep">[docs]</a>
+<span class="nd">@register_endpoint</span><span class="p">(</span>
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span>
         <span class="n">ConfigDebug</span><span class="p">,</span>
         <span class="n">ConfigMain</span><span class="p">,</span>
@@ -260,7 +313,10 @@
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_grep</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="list_projects"><a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.list_projects">[docs]</a><span class="nd">@register_endpoint</span><span class="p">(</span>
+
+<div class="viewcode-block" id="list_projects">
+<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.list_projects">[docs]</a>
+<span class="nd">@register_endpoint</span><span class="p">(</span>
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span><span class="n">ConfigDebug</span><span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List all projects&quot;</span><span class="p">,</span>
 <span class="p">)</span>
@@ -268,7 +324,10 @@
     <span class="n">print_projects_that_return_data</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="main"><a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.main">[docs]</a><span class="nd">@register_main</span><span class="p">(</span>
+
+<div class="viewcode-block" id="main">
+<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.main">[docs]</a>
+<span class="nd">@register_main</span><span class="p">(</span>
     <span class="n">main_description</span><span class="o">=</span><span class="n">DESCRIPTION</span><span class="p">,</span>
     <span class="n">app_name</span><span class="o">=</span><span class="n">APP_NAME</span><span class="p">,</span>
     <span class="n">version</span><span class="o">=</span><span class="n">VERSION_STR</span><span class="p">,</span>
@@ -276,6 +335,7 @@
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">pylogconf</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
     <span class="n">config_arg_parse_and_launch</span><span class="p">()</span></div>
+
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
