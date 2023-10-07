@@ -14,7 +14,7 @@ from pymultigit.utils.subprocess import check_call_ve
 DISABLE = ".build.disable"
 
 
-def projects(sort: bool) -> Generator[str, None, None]:
+def projects() -> Generator[str, None, None]:
     """
     the method yields all project folders [project_dir]
     """
@@ -22,7 +22,7 @@ def projects(sort: bool) -> Generator[str, None, None]:
         repos_list = [os.path.dirname(x) for x in glob.glob("*/.git")]
     else:
         repos_list = ConfigMain.folders
-    if sort:
+    if ConfigMain.sort:
         repos_list.sort()
     yield from repos_list
 
@@ -44,7 +44,7 @@ def run(args, do_exit=True) -> Tuple[str, str, int]:
 def do_count(fnc, attr_name, not_attr_name, attr_plural, print_attr, print_not_attr) -> None:
     count = 0
     count_attr = 0
-    for project_dir in projects(sort=ConfigMain.sort):
+    for project_dir in projects():
         count += 1
         repo = git.Repo(project_dir)
         attr = fnc(repo)
@@ -69,7 +69,7 @@ def do_count(fnc, attr_name, not_attr_name, attr_plural, print_attr, print_not_a
 
 def do_for_all_projects(fnc) -> None:
     orig_dir = os.getcwd()
-    for project_dir in projects(sort=ConfigMain.sort):
+    for project_dir in projects():
         if ConfigOutput.output:
             print(f"[{project_dir}]...")
         os.chdir(project_dir)
@@ -93,7 +93,7 @@ def print_projects_that_return_data(fnc) -> None:
     """
     orig_dir = os.getcwd()
     have_projects = False
-    for project_dir in projects(sort=ConfigMain.sort):
+    for project_dir in projects():
         have_projects = True
         os.chdir(project_dir)
         data = fnc()
