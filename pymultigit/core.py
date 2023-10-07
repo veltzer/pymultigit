@@ -19,7 +19,12 @@ def projects() -> Generator[str, None, None]:
     the method yields all project folders [project_dir]
     """
     if ConfigMain.use_glob:
-        repos_list = [os.path.dirname(x) for x in glob.glob("*/.git")]
+        if os.path.isdir(".git"):
+            repos_list = [os.getcwd()]
+        else:
+            repos_list = [os.path.dirname(x) for x in glob.glob("*/.git")]
+            if not repos_list:
+                repos_list = [os.path.dirname(x) for x in glob.glob("*/**/.git")]
     else:
         repos_list = ConfigMain.folders
     if ConfigMain.sort:
