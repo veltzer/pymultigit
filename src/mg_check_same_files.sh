@@ -1,4 +1,8 @@
 #!/bin/bash -e
+# my repos
+# FOLDERS=$(echo */.veltzer.tag)
+# echo "$FOLDERS"
+# exit 1
 # python modules
 pycmdtools mcmp --print "py*/setup.cfg" py*/setup.cfg
 pycmdtools mcmp --print "py*/Makefile" py*/Makefile
