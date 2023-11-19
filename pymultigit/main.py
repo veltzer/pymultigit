@@ -246,16 +246,7 @@ def list_projects() -> None:
 def main():
     pylogconf.core.setup()
     # make sure stdout is line buffered
-    # pylint: disable=consider-using-with
-    sys.stdout = open(
-        sys.stdout.fileno(),
-        mode='w',
-        buffering=1,
-        encoding=sys.stdout.encoding,
-        errors=sys.stdout.errors,
-        newline=sys.stdout.newlines,
-        closefd=False,
-    )
+    sys.stdout.reconfigure(line_buffering=True)
     config_arg_parse_and_launch()
 
 
