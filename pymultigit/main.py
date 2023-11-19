@@ -2,6 +2,7 @@
 main
 """
 
+import sys
 from pytconf import register_endpoint
 from pytconf import register_main, config_arg_parse_and_launch
 import pylogconf.core
@@ -120,7 +121,7 @@ def status() -> None:
 
 @register_endpoint(
     configs=[ConfigDebug],
-    description="Show names of project which are dirty",
+    description="Show names of projects which are dirty",
 )
 def dirty() -> None:
     print_projects_that_return_data(do_dirty)
@@ -244,6 +245,17 @@ def list_projects() -> None:
 )
 def main():
     pylogconf.core.setup()
+    # make sure stdout is line buffered
+    # pylint: disable=consider-using-with
+    sys.stdout = open(
+        sys.stdout.fileno(),
+        mode='w',
+        buffering=1,
+        encoding=sys.stdout.encoding,
+        errors=sys.stdout.errors,
+        newline=sys.stdout.newlines,
+        closefd=False,
+    )
     config_arg_parse_and_launch()
 
 
