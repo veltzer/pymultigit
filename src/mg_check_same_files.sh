@@ -69,3 +69,8 @@ mcmp "./*/sphinx/index.rst" folders /sphinx/index.rst
 mcmp "./*/config/platform.py" folders /config/platform.py
 mcmp "./*/config/personal.py" folders /config/personal.py
 mcmp "./*/config/github.py" folders /config/github.py
+# aspell
+mcmp "./*/.aspell.conf" folders /config/github.py
+# markdown linting with mdl
+mcmp "./*/.mdlrc" folders /config/github.py
+mcmp "./*/.mdl.style.rb" folders /config/github.py
