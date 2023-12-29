@@ -2,20 +2,20 @@
 
 shopt -s globstar
 alltags=(*/.git)
-subfolders=()
+allfolders=()
 for elem in "${alltags[@]}"
 do
-	subfolders+=("${elem%/*}")
+	allfolders+=("${elem%/*}")
 done
-# printf "%s\n" "${subfolders[@]}"
+# printf "%s\n" "${allfolders[@]}"
 
 tags=(*/.veltzer.tag)
-folders=()
+myfolders=()
 for elem in "${tags[@]}"
 do
-	folders+=("${elem%/*}")
+	myfolders+=("${elem%/*}")
 done
-# printf "%s\n" "${folders[@]}"
+# printf "%s\n" "${myfolders[@]}"
 
 notags=([^py]*/.veltzer.tag)
 nofolders=()
@@ -51,35 +51,35 @@ function mcmp() {
 # python modules
 mcmp "py*/setup.cfg" pyfolders "/setup.cfg"
 mcmp "py*/Makefile" pyfolders "/Makefile"
-mcmp "./*/.mypy.ini" folders "/.mypy.ini"
-mcmp "./*/.pylintrc" folders "/.pylintrc"
-mcmp "./*/.flake8" folders "/.flake8"
-mcmp "./*/.gitignore" folders "/.gitignore"
-mcmp "./*/.shellcheckrc" folders "/.shellcheckrc"
+mcmp "./*/.mypy.ini" myfolders "/.mypy.ini"
+mcmp "./*/.pylintrc" myfolders "/.pylintrc"
+mcmp "./*/.flake8" myfolders "/.flake8"
+mcmp "./*/.gitignore" myfolders "/.gitignore"
+mcmp "./*/.shellcheckrc" myfolders "/.shellcheckrc"
 # templates
 mcmp "[^py]*/templates/README.md.mako" nofolders /templates/README.md.mako
 mcmp "py*/templates/LICENSE.mako" pyfolders /templates/LICENSE.mako
 mcmp "py*/templates/setup.py.mako" pyfolders /templates/setup.py.mako
 mcmp "py*/templates/README.rst.mako" pyfolders /templates/README.rst.mako
 mcmp "py*/templates/README.md.mako" pyfolders /templates/README.md.mako
-mcmp "./*/templates/.github/workflows/build.yml.mako" folders /templates/.github/workflows/build.yml.mako
-mcmp "./*/templates/requirements.txt.mako" folders /templates/requirements.txt.mako
+mcmp "./*/templates/.github/workflows/build.yml.mako" myfolders /templates/.github/workflows/build.yml.mako
+mcmp "./*/templates/requirements.txt.mako" myfolders /templates/requirements.txt.mako
 # .idea stuff
 mcmp "py*/.idea/.gitignore" pyfolders /.idea/.gitignore
 # results of templates
 mcmp "py*/.github/workflows/build.yml" pyfolders /.github/workflows/build.yml
 mcmp "[^py]*/.github/workflows/build.yml" nofolders /.github/workflows/build.yml
 # github stuff
-mcmp "./*/.github/FUNDING.yml" folders /.github/FUNDING.yml
+mcmp "./*/.github/FUNDING.yml" myfolders /.github/FUNDING.yml
 # sphinx
-mcmp "./*/sphinx/conf.py" folders /sphinx/conf.py
-mcmp "./*/sphinx/index.rst" folders /sphinx/index.rst
+mcmp "./*/sphinx/conf.py" myfolders /sphinx/conf.py
+mcmp "./*/sphinx/index.rst" myfolders /sphinx/index.rst
 # config
-mcmp "./*/config/platform.py" folders /config/platform.py
-mcmp "./*/config/personal.py" folders /config/personal.py
-mcmp "./*/config/github.py" folders /config/github.py
+mcmp "./*/config/platform.py" myfolders /config/platform.py
+mcmp "./*/config/personal.py" myfolders /config/personal.py
+mcmp "./*/config/github.py" myfolders /config/github.py
 # aspell
-mcmp "./*/.aspell.conf" subfolders /.aspell.conf
+mcmp "./*/.aspell.conf" myfolders /.aspell.conf
 # markdown linting with mdl
-mcmp "./*/.mdlrc" subfolders /.mdlrc
-mcmp "./*/.mdl.style.rb" subfolders /.mdl.style.rb
+mcmp "./*/.mdlrc" myfolders /.mdlrc
+mcmp "./*/.mdl.style.rb" myfolders /.mdl.style.rb
