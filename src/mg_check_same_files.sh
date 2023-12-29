@@ -1,5 +1,14 @@
 #!/bin/bash -e
 
+shopt -s globstar
+alltags=(*/.git)
+subfolders=()
+for elem in "${alltags[@]}"
+do
+	subfolders+=("${elem%/*}")
+done
+# printf "%s\n" "${subfolders[@]}"
+
 tags=(*/.veltzer.tag)
 folders=()
 for elem in "${tags[@]}"
@@ -70,7 +79,7 @@ mcmp "./*/config/platform.py" folders /config/platform.py
 mcmp "./*/config/personal.py" folders /config/personal.py
 mcmp "./*/config/github.py" folders /config/github.py
 # aspell
-mcmp "./*/.aspell.conf" folders /config/github.py
+mcmp "./*/.aspell.conf" subfolders /.aspell.conf
 # markdown linting with mdl
-mcmp "./*/.mdlrc" folders /config/github.py
-mcmp "./*/.mdl.style.rb" folders /config/github.py
+mcmp "./*/.mdlrc" subfolders /.mdlrc
+mcmp "./*/.mdl.style.rb" subfolders /.mdl.style.rb
