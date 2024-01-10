@@ -4,14 +4,11 @@ from typing import List
 console_scripts: List[str] = [
     "pymultigit=pymultigit.main:main",
 ]
-config_requires: List[str] = []
 dev_requires: List[str] = [
     "pypitools",
 ]
-make_requires: List[str] = [
+config_requires: List[str] = [
     "pyclassifiers",
-    "pymakehelper",
-    "pydmt",
 ]
 install_requires: List[str] = [
     "gitpython",
@@ -19,6 +16,10 @@ install_requires: List[str] = [
     "pytconf",
     "pylogconf",
     "venv-run",
+]
+make_requires: List[str] = [
+    "pymakehelper",
+    "pydmt",
 ]
 test_requires: List[str] = [
     "pylint",
