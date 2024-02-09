@@ -96,8 +96,8 @@ class ConfigPull(Config):
     """
 
     pull_quiet = ParamCreator.create_bool(
-        help_string="add --quiet when running git?",
-        default=True,
+        help_string="add --quiet when running git pull?",
+        default=False,
     )
 
 

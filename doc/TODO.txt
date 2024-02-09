@@ -1,6 +1,3 @@
-- when doing:
-	$ pymultigit pull
-	show what is being pulled.
 - add:
 	$ pymultigit commit "message"
 	$ pymiltigit push
