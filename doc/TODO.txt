@@ -1,6 +1,3 @@
-- add pymultigit build_pydmt_build_venv
-	which will build venvs on all repos.
-	if indeel this is a pydmt folder.
 - add:
 	$ pymultigit commit "message"
 	$ pymiltigit push
