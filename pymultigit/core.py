@@ -206,13 +206,13 @@ def do_build_make() -> None:
     subprocess.check_call(["make"])
 
 
-def do_pull() -> int:
+def do_pull() -> None:
     args = ["git", "pull"]
     if ConfigDebug.git_verbose:
         args.append("--verbose")
     if ConfigPull.pull_quiet:
         args.append("--quiet")
-    return subprocess.check_call(args)
+    subprocess.check_call(args, stdout=subprocess.DEVNULL)
 
 
 def do_check_workflow_exists_for_makefile() -> bool:
