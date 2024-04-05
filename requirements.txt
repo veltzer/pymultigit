@@ -1,0 +1,14 @@
+# THIS IS AN AUTO-GENERATED FILE. DO NOT EDIT!
+pyclassifiers
+gitpython
+pyfakeuse
+pytconf
+pylogconf
+venv-run
+pymakehelper
+pydmt
+pylint
+pytest
+pytest-cov
+flake8
+mypy
