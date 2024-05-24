@@ -5,6 +5,7 @@ do
 	then
 		continue
 	fi
+	echo "repo [${x}]..."
 	cd "${x}" || exit
 	if [ ! -f "requirements.txt" ]
 	then
@@ -13,8 +14,11 @@ do
 	fi
 	rm -f "requirements.txt"
 	make clean_hard
-	prompt_pydmt
-	pydmt_build
+	pydmt build_venv
+	# shellcheck source=/dev/null
+	source .venv/default/bin/activate
+	pydmt build
 	pip freeze > "requirements.txt"
+	deactivate
 	cd ..
 done
