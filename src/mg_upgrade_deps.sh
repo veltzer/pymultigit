@@ -13,7 +13,7 @@ do
 		continue
 	fi
 	rm -f "requirements.txt"
-	make clean_hard
+	git clean -qffxd
 	pydmt build_venv
 	# shellcheck source=/dev/null
 	source .venv/default/bin/activate
