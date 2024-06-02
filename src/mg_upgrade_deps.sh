@@ -1,5 +1,5 @@
 #!/bin/bash -e
-for x in *
+for x in "$@"
 do
 	if [ ! -d "${x}/.git" ]
 	then
