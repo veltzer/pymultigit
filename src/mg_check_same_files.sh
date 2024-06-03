@@ -15,7 +15,7 @@ for elem in "${tags[@]}"
 do
 	myfolders+=("${elem%/*}")
 done
-# printf "%s\n" "${myfolders[@]}"
+# printf "myfolders: %s\n" "${myfolders[@]}"
 
 notags=([^py]*/.veltzer.tag)
 nofolders=()
@@ -51,19 +51,19 @@ function mcmp() {
 # python modules
 mcmp "py*/setup.cfg" pyfolders "/setup.cfg"
 mcmp "py*/Makefile" pyfolders "/Makefile"
-mcmp "./*/.mypy.ini" myfolders "/.mypy.ini"
-mcmp "./*/.pylintrc" myfolders "/.pylintrc"
-mcmp "./*/.flake8" myfolders "/.flake8"
-mcmp "./*/.gitignore" myfolders "/.gitignore"
-mcmp "./*/.shellcheckrc" myfolders "/.shellcheckrc"
+mcmp "./*/.mypy.ini" allfolders "/.mypy.ini"
+mcmp "./*/.pylintrc" allfolders "/.pylintrc"
+mcmp "./*/.flake8" allfolders "/.flake8"
+mcmp "./*/.gitignore" allfolders "/.gitignore"
+mcmp "./*/.shellcheckrc" allfolders "/.shellcheckrc"
 # templates
 mcmp "[^py]*/templates/README.md.mako" nofolders /templates/README.md.mako
 mcmp "py*/templates/LICENSE.mako" pyfolders /templates/LICENSE.mako
 mcmp "py*/templates/setup.py.mako" pyfolders /templates/setup.py.mako
 mcmp "py*/templates/README.rst.mako" pyfolders /templates/README.rst.mako
 mcmp "py*/templates/README.md.mako" pyfolders /templates/README.md.mako
-mcmp "./*/templates/.github/workflows/build.yml.mako" myfolders /templates/.github/workflows/build.yml.mako
-mcmp "./*/templates/requirements.thawed.txt.mako" myfolders /templates/requirements.thawed.txt.mako
+mcmp "./*/templates/.github/workflows/build.yml.mako" allfolders /templates/.github/workflows/build.yml.mako
+mcmp "./*/templates/requirements.thawed.txt.mako" allfolders /templates/requirements.thawed.txt.mako
 # .idea stuff
 mcmp "py*/.idea/.gitignore" pyfolders /.idea/.gitignore
 # results of templates
