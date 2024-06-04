@@ -1,5 +1,6 @@
 #!/bin/bash -e
-for x in "$@"
+# for x in "$@"
+for x in *
 do
 	if [ ! -d "${x}/.git" ]
 	then
@@ -14,11 +15,15 @@ do
 	fi
 	rm -f "requirements.txt"
 	git clean -qffxd
-	pydmt build_venv
-	# shellcheck source=/dev/null
-	source .venv/default/bin/activate
-	pydmt build
-	pip freeze > "requirements.txt"
-	deactivate
-	cd ..
+	if pydmt build_venv
+	then
+		# shellcheck source=/dev/null
+		source .venv/default/bin/activate
+		if pydmt build
+		then
+			pip freeze > "requirements.txt"
+		fi
+		deactivate
+	fi
+	cd ".."
 done
