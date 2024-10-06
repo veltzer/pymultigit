@@ -33,6 +33,14 @@ do
 done
 # printf "%s\n" "${pyfolders[@]}"
 
+gaetags=(*/.gcloudignore)
+gaefolders=()
+for elem in "${gaetags[@]}"
+do
+	gaefolders+=("${elem%/*}")
+done
+# printf "%s\n" "${gaefolders[@]}"
+
 function mcmp() {
 	local print=$1
 	local -n arr=$2
@@ -83,3 +91,5 @@ mcmp "./*/.aspell.conf" myfolders /.aspell.conf
 # markdown linting with mdl
 mcmp "./*/.mdlrc" myfolders /.mdlrc
 mcmp "./*/.mdl.style.rb" myfolders /.mdl.style.rb
+# gcloud ignore files
+mcmp "*/.gcloudignore" gaefolders /.gcloudignore
