@@ -86,7 +86,7 @@ def github_branch() -> None:
 
 @register_endpoint(
     configs=[ConfigDebug],
-    description="Show which repositories are synchronized with their upstream",
+    description="Show which repositories are not synchronized with their upstream",
 )
 def synchronized() -> None:
     do_count(
