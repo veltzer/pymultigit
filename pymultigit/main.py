@@ -10,8 +10,8 @@ import pylogconf.core
 
 from pymultigit.configs import ConfigDebug, ConfigGrep, ConfigMain, ConfigOutput
 from pymultigit.core import do_count, is_dirty, has_untracked_files, non_synchronized_with_upstream, \
-    do_for_all_projects, do_clean, do_status, do_dirty, do_pull, do_grep, do_local_branch, \
-    do_remote_branch, print_projects_that_return_data, do_github_branch, do_check_workflow_exists_for_makefile, \
+    do_for_all_projects, do_clean, do_status, do_dirty, do_pull, do_grep, do_branch_local, \
+    do_branch_remote, print_projects_that_return_data, do_branch_github, do_check_workflow_exists_for_makefile, \
     do_build_bootstrap, do_build_pydmt, do_build_make, do_build_venv_make, do_build_venv_pydmt, \
     do_build_pydmt_build_venv
 
@@ -56,8 +56,8 @@ def untracked() -> None:
     ],
     description="Show which local branch we are on",
 )
-def local_branch() -> None:
-    do_for_all_projects(do_local_branch)
+def branch_local() -> None:
+    do_for_all_projects(do_branch_local)
 
 
 @register_endpoint(
@@ -66,10 +66,10 @@ def local_branch() -> None:
         ConfigMain,
         ConfigOutput,
     ],
-    description="Show which local branch we are on",
+    description="Show which remote branch we are on",
 )
-def remote_branch() -> None:
-    do_for_all_projects(do_remote_branch)
+def branch_remote() -> None:
+    do_for_all_projects(do_branch_remote)
 
 
 @register_endpoint(
@@ -80,8 +80,8 @@ def remote_branch() -> None:
     ],
     description="Show the branch on the github side",
 )
-def github_branch() -> None:
-    do_for_all_projects(do_github_branch)
+def branch_github() -> None:
+    do_for_all_projects(do_branch_github)
 
 
 @register_endpoint(

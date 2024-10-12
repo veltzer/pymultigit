@@ -250,7 +250,7 @@ def do_grep() -> None:
             )
 
 
-def do_local_branch() -> None:
+def do_branch_local() -> None:
     args = ["git", "branch", "--show-current"]
     if ConfigDebug.git_verbose:
         args.append("--verbose")
@@ -259,7 +259,7 @@ def do_local_branch() -> None:
     subprocess.check_call(args)
 
 
-def do_remote_branch() -> None:
+def do_branch_remote() -> None:
     args = ["git", "branch", "--remotes", "--show-current"]
     if ConfigDebug.git_verbose:
         args.append("--verbose")
@@ -268,7 +268,7 @@ def do_remote_branch() -> None:
     subprocess.check_call(args)
 
 
-def do_github_branch() -> str:
+def do_branch_github() -> str:
     """
     https://stackoverflow.com/questions/28666357/git-how-to-get-default-branch
     """
