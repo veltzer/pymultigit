@@ -93,3 +93,4 @@ mcmp "./*/.mdlrc" myfolders /.mdlrc
 mcmp "./*/.mdl.style.rb" myfolders /.mdl.style.rb
 # gcloud ignore files
 mcmp "*/.gcloudignore" gaefolders /.gcloudignore
+mcmp "gae-*/Makefile" gaefolders /Makefile
