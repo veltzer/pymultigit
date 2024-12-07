@@ -46,6 +46,7 @@ def run(args, do_exit=True) -> Tuple[str, str, int]:
     return res_out, res_err, p.returncode
 
 
+# pylint: disable=too-many-positional-arguments
 def do_count(fnc, attr_name, not_attr_name, attr_plural, print_attr, print_not_attr) -> None:
     count = 0
     count_attr = 0
