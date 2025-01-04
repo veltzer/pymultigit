@@ -92,6 +92,6 @@ mcmp "./*/.aspell.conf" myfolders /.aspell.conf
 mcmp "./*/.mdlrc" myfolders /.mdlrc
 mcmp "./*/.mdl.style.rb" myfolders /.mdl.style.rb
 # gcloud ignore files
-mcmp "*/.gcloudignore" gaefolders /.gcloudignore
+mcmp "gae-*/.gcloudignore" gaefolders /.gcloudignore
 mcmp "gae-*/Makefile" gaefolders /Makefile
 mcmp "gae-*/app.yaml" gaefolders /app.yaml
