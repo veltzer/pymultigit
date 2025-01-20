@@ -73,7 +73,7 @@ mcmp "py*/templates/README.md.mako" pyfolders /templates/README.md.mako
 mcmp "./*/templates/.github/workflows/build.yml.mako" allfolders /templates/.github/workflows/build.yml.mako
 mcmp "./*/templates/requirements.thawed.txt.mako" allfolders /templates/requirements.thawed.txt.mako
 # .idea stuff
-mcmp "py*/.idea/.gitignore" pyfolders /.idea/.gitignore
+# mcmp "py*/.idea/.gitignore" pyfolders /.idea/.gitignore
 # results of templates
 mcmp "py*/.github/workflows/build.yml" pyfolders /.github/workflows/build.yml
 mcmp "[^py]*/.github/workflows/build.yml" nofolders /.github/workflows/build.yml
