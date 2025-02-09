@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>pymultigit.main &#8212; pymultigit Documentation</title>
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
     <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=686e5160" />
     <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
     <script src="../../_static/documentation_options.js?v=0f58e6e2"></script>
@@ -35,20 +35,20 @@
 <span class="sd">main</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">pytconf</span> <span class="kn">import</span> <span class="n">register_endpoint</span>
-<span class="kn">from</span> <span class="nn">pytconf</span> <span class="kn">import</span> <span class="n">register_main</span><span class="p">,</span> <span class="n">config_arg_parse_and_launch</span>
-<span class="kn">import</span> <span class="nn">pylogconf.core</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pytconf</span><span class="w"> </span><span class="kn">import</span> <span class="n">register_endpoint</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pytconf</span><span class="w"> </span><span class="kn">import</span> <span class="n">register_main</span><span class="p">,</span> <span class="n">config_arg_parse_and_launch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pylogconf.core</span>
 
 
-<span class="kn">from</span> <span class="nn">pymultigit.configs</span> <span class="kn">import</span> <span class="n">ConfigDebug</span><span class="p">,</span> <span class="n">ConfigGrep</span><span class="p">,</span> <span class="n">ConfigMain</span><span class="p">,</span> <span class="n">ConfigOutput</span>
-<span class="kn">from</span> <span class="nn">pymultigit.core</span> <span class="kn">import</span> <span class="n">do_count</span><span class="p">,</span> <span class="n">is_dirty</span><span class="p">,</span> <span class="n">has_untracked_files</span><span class="p">,</span> <span class="n">non_synchronized_with_upstream</span><span class="p">,</span> \
+<span class="kn">from</span><span class="w"> </span><span class="nn">pymultigit.configs</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfigDebug</span><span class="p">,</span> <span class="n">ConfigGrep</span><span class="p">,</span> <span class="n">ConfigMain</span><span class="p">,</span> <span class="n">ConfigOutput</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pymultigit.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">do_count</span><span class="p">,</span> <span class="n">is_dirty</span><span class="p">,</span> <span class="n">has_untracked_files</span><span class="p">,</span> <span class="n">non_synchronized_with_upstream</span><span class="p">,</span> \
     <span class="n">do_for_all_projects</span><span class="p">,</span> <span class="n">do_clean</span><span class="p">,</span> <span class="n">do_status</span><span class="p">,</span> <span class="n">do_dirty</span><span class="p">,</span> <span class="n">do_pull</span><span class="p">,</span> <span class="n">do_grep</span><span class="p">,</span> <span class="n">do_branch_local</span><span class="p">,</span> \
     <span class="n">do_branch_remote</span><span class="p">,</span> <span class="n">print_projects_that_return_data</span><span class="p">,</span> <span class="n">do_branch_github</span><span class="p">,</span> <span class="n">do_check_workflow_exists_for_makefile</span><span class="p">,</span> \
     <span class="n">do_build_bootstrap</span><span class="p">,</span> <span class="n">do_build_pydmt</span><span class="p">,</span> <span class="n">do_build_make</span><span class="p">,</span> <span class="n">do_build_venv_make</span><span class="p">,</span> <span class="n">do_build_venv_pydmt</span><span class="p">,</span> \
     <span class="n">do_build_pydmt_build_venv</span>
 
-<span class="kn">from</span> <span class="nn">pymultigit.static</span> <span class="kn">import</span> <span class="n">DESCRIPTION</span><span class="p">,</span> <span class="n">APP_NAME</span><span class="p">,</span> <span class="n">VERSION_STR</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pymultigit.static</span><span class="w"> </span><span class="kn">import</span> <span class="n">DESCRIPTION</span><span class="p">,</span> <span class="n">APP_NAME</span><span class="p">,</span> <span class="n">VERSION_STR</span>
 
 
 <div class="viewcode-block" id="count_dirty">
@@ -57,7 +57,7 @@
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span><span class="n">ConfigDebug</span><span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Show the status of multiple git repositories&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">count_dirty</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">count_dirty</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">do_count</span><span class="p">(</span>
         <span class="n">is_dirty</span><span class="p">,</span>
         <span class="s1">&#39;is dirty&#39;</span><span class="p">,</span>
@@ -75,7 +75,7 @@
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span><span class="n">ConfigDebug</span><span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Show which repositories have untracked files&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">untracked</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">untracked</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">do_count</span><span class="p">(</span>
         <span class="n">has_untracked_files</span><span class="p">,</span>
         <span class="s1">&#39;has untracked files&#39;</span><span class="p">,</span>
@@ -97,7 +97,7 @@
     <span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Show which local branch we are on&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">branch_local</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">branch_local</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_branch_local</span><span class="p">)</span></div>
 
 
@@ -112,7 +112,7 @@
     <span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Show which remote branch we are on&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">branch_remote</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">branch_remote</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_branch_remote</span><span class="p">)</span></div>
 
 
@@ -127,7 +127,7 @@
     <span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Show the branch on the github side&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">branch_github</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">branch_github</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_branch_github</span><span class="p">)</span></div>
 
 
@@ -138,7 +138,7 @@
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span><span class="n">ConfigDebug</span><span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Show which repositories are not synchronized with their upstream&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">synchronized</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">synchronized</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">do_count</span><span class="p">(</span>
         <span class="n">non_synchronized_with_upstream</span><span class="p">,</span>
         <span class="s1">&#39;is behind upstream&#39;</span><span class="p">,</span>
@@ -160,7 +160,7 @@
     <span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Clean all projects using git removing any files not known to git&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">clean_hard</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">clean_hard</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_clean</span><span class="p">)</span></div>
 
 
@@ -171,7 +171,7 @@
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span><span class="n">ConfigDebug</span><span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Show the status of multiple git repositories&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">status</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">status</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">print_projects_that_return_data</span><span class="p">(</span><span class="n">do_status</span><span class="p">)</span></div>
 
 
@@ -182,7 +182,7 @@
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span><span class="n">ConfigDebug</span><span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Show names of projects which are dirty&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">dirty</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">dirty</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">print_projects_that_return_data</span><span class="p">(</span><span class="n">do_dirty</span><span class="p">)</span></div>
 
 
@@ -197,7 +197,7 @@
     <span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;run pydmt build on repos&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">build_pydmt</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">build_pydmt</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_build_pydmt</span><span class="p">)</span></div>
 
 
@@ -212,7 +212,7 @@
     <span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;run bootstrap build on repos&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">build_bootstrap</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">build_bootstrap</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_build_bootstrap</span><span class="p">)</span></div>
 
 
@@ -227,7 +227,7 @@
     <span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;run make build on repos&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">build_make</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">build_make</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_build_make</span><span class="p">)</span></div>
 
 
@@ -242,7 +242,7 @@
     <span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;run make build on repos, inside venv&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">build_venv_make</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">build_venv_make</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_build_venv_make</span><span class="p">)</span></div>
 
 
@@ -257,7 +257,7 @@
     <span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;create pydmt virtual env&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">build_pydmt_build_venv</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">build_pydmt_build_venv</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_build_pydmt_build_venv</span><span class="p">)</span></div>
 
 
@@ -272,7 +272,7 @@
     <span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;run pydmt build on repos, inside venv&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">build_venv_pydmt</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">build_venv_pydmt</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_build_venv_pydmt</span><span class="p">)</span></div>
 
 
@@ -287,7 +287,7 @@
     <span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Pull changes for multiple git repositories&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">pull</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pull</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_pull</span><span class="p">)</span></div>
 
 
@@ -297,7 +297,7 @@
 <span class="nd">@register_endpoint</span><span class="p">(</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Check various things&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">check_workflow_exists_for_makefile</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_workflow_exists_for_makefile</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">print_projects_that_return_data</span><span class="p">(</span><span class="n">do_check_workflow_exists_for_makefile</span><span class="p">)</span></div>
 
 
@@ -312,7 +312,7 @@
         <span class="n">ConfigGrep</span><span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Grep multiple repositories for pattern&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">grep</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">grep</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_grep</span><span class="p">)</span></div>
 
 
@@ -323,7 +323,7 @@
     <span class="n">configs</span><span class="o">=</span><span class="p">[</span><span class="n">ConfigDebug</span><span class="p">],</span>
     <span class="n">description</span><span class="o">=</span><span class="s2">&quot;List all projects&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">list_projects</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">list_projects</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">print_projects_that_return_data</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">)</span></div>
 
 
@@ -335,7 +335,7 @@
     <span class="n">app_name</span><span class="o">=</span><span class="n">APP_NAME</span><span class="p">,</span>
     <span class="n">version</span><span class="o">=</span><span class="n">VERSION_STR</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="n">pylogconf</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">setup</span><span class="p">()</span>
     <span class="c1"># make sure stdout is line buffered</span>
     <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">reconfigure</span><span class="p">(</span><span class="n">line_buffering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
