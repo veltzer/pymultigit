@@ -1,3 +1,7 @@
+"""
+core.py
+"""
+
 import glob
 import os
 import os.path
