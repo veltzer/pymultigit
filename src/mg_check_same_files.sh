@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -eu
 
 shopt -s globstar
 alltags=(*/.git)

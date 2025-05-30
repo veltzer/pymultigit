@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -eu
 for x in py*
 do
 	if [ ! -f "${x}/MANIFEST.in" ]

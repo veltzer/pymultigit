@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -eu
 for x in */Makefile
 do
 	echo "${x}"
