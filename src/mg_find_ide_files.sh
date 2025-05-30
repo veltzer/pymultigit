@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash -eu
 find .\
 	-name ".idea" -or\
 	-name ".project" -or\
