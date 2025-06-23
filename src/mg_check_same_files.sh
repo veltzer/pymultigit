@@ -64,6 +64,8 @@ mcmp "./*/.pylintrc" allfolders "/.pylintrc"
 mcmp "./*/.flake8" allfolders "/.flake8"
 mcmp "./*/.gitignore" allfolders "/.gitignore"
 mcmp "./*/.shellcheckrc" allfolders "/.shellcheckrc"
+mcmp "./*/.jshintrc" allfolders "/.jshintrc"
+mcmp "./*/.jshintignore" allfolders "/.jshintignore"
 # templates
 mcmp "[^py]*/templates/README.md.mako" nofolders /templates/README.md.mako
 mcmp "py*/templates/LICENSE.mako" pyfolders /templates/LICENSE.mako
