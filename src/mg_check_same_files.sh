@@ -33,7 +33,7 @@ do
 done
 # printf "%s\n" "${pyfolders[@]}"
 
-gcptags=(*/.gcp.conf)
+gcptags=(gcp-*/.gcp.conf)
 gcpfolders=()
 for elem in "${gcptags[@]}"
 do
