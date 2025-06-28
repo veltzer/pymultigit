@@ -1,14 +1,13 @@
 # THIS IS AN AUTO-GENERATED FILE. DO NOT EDIT!
-pyclassifiers
 gitpython
-pyfakeuse
-pytconf
-pylogconf
-venv-run
-pymakehelper
+mypy
+pyclassifiers
 pydmt
+pyfakeuse
 pylint
+pylogconf
+pymakehelper
+pytconf
 pytest
 pytest-cov
-flake8
-mypy
+venv-run

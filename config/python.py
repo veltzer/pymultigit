@@ -1,8 +1,8 @@
 """ python deps for this project """
 
-console_scripts: list[str] = [
-    "pymultigit=pymultigit.main:main",
-]
+scripts: dict[str,str] = {
+    "pymultigit": "pymultigit.main:main",
+}
 
 config_requires: list[str] = [
     "pyclassifiers",
