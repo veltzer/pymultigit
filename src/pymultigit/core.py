@@ -7,7 +7,8 @@ import os
 import os.path
 import subprocess
 import sys
-from typing import Union, Generator, Tuple
+from typing import Union, Tuple
+from collections.abc import Generator
 
 import git
 
@@ -36,7 +37,7 @@ def projects() -> Generator[str, None, None]:
     yield from repos_list
 
 
-def run(args, do_exit=True) -> Tuple[str, str, int]:
+def run(args, do_exit=True) -> tuple[str, str, int]:
     with subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE) as p:
         (res_out_b, res_err_b) = p.communicate()
         res_out = res_out_b.decode()
@@ -290,7 +291,7 @@ def do_clean() -> int:
     return subprocess.check_call(args)
 
 
-def do_status() -> Union[None, str]:
+def do_status() -> None | str:
     (res_out, res_err, _) = run([
         "git",
         "status",
@@ -318,7 +319,7 @@ def do_status() -> Union[None, str]:
     return None
 
 
-def do_dirty() -> Union[None, str]:
+def do_dirty() -> None | str:
     args = ["git", "status", "--porcelain"]
     if ConfigDebug.git_verbose:
         args.append("--verbose")

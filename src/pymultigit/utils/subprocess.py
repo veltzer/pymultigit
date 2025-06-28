@@ -10,7 +10,7 @@ from typing import List
 from pymultigit.configs import ConfigSubprocess, ConfigOutput
 
 
-def check_call_ve(orig_args: List[str]) -> None:
+def check_call_ve(orig_args: list[str]) -> None:
     if not os.path.isdir(".venv/default"):
         if ConfigOutput.print_not:
             print("not a make venv folder (.venv/default is not there)")
