@@ -7,7 +7,6 @@ import os
 import os.path
 import subprocess
 import sys
-from typing import Union, Tuple
 from collections.abc import Generator
 
 import git
