@@ -5,7 +5,6 @@ subprocess.py
 import os
 import os.path
 import subprocess
-from typing import List
 
 from pymultigit.configs import ConfigSubprocess, ConfigOutput
 
