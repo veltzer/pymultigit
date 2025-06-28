@@ -87,6 +87,7 @@ mcmp "./*/.github/FUNDING.yml" myfolders /.github/FUNDING.yml
 mcmp "./*/config/platform.py" myfolders /config/platform.py
 mcmp "./*/config/personal.py" myfolders /config/personal.py
 mcmp "./*/config/github.py" myfolders /config/github.py
+mcmp "./*/config/shared.py" myfolders /config/shared.py
 # aspell
 mcmp "./*/.aspell.conf" myfolders /.aspell.conf
 # markdown linting with mdl
