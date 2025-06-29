@@ -81,8 +81,8 @@ mcmp "[^py]*/.github/workflows/build.yml" nofolders /.github/workflows/build.yml
 # github stuff
 mcmp "./*/.github/FUNDING.yml" myfolders /.github/FUNDING.yml
 # sphinx
-# mcmp "./*/sphinx/conf.py" myfolders /sphinx/conf.py
-# mcmp "./*/sphinx/index.rst" myfolders /sphinx/index.rst
+mcmp "./*/sphinx/conf.py" myfolders /sphinx/conf.py
+mcmp "./*/sphinx/index.rst" myfolders /sphinx/index.rst
 # config
 mcmp "./*/config/platform.py" myfolders /config/platform.py
 mcmp "./*/config/personal.py" myfolders /config/personal.py
