@@ -9,13 +9,13 @@ pymultigit.utils.subprocess module
 
 .. automodule:: pymultigit.utils.subprocess
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
 
 Module contents
 ---------------
 
 .. automodule:: pymultigit.utils
    :members:
-   :undoc-members:
    :show-inheritance:
+   :undoc-members:
