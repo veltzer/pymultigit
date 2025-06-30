@@ -76,7 +76,7 @@ debug:
 .PHONY: install
 install:
 	$(info doing [$@])
-	$(Q)pymakehelper symlink_install --source_folder src --target_folder ~/install/bin
+	$(Q)pymakehelper symlink_install --source_folder scripts --target_folder ~/install/bin
 ############
 # patterns #
 ############
