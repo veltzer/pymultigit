@@ -8,6 +8,6 @@ do
 	fi
 	echo "doing [${x}]"
 	cd "${x}"
-	git_commit.sh
+	git_commit.sh || true
 	cd ..
 done
