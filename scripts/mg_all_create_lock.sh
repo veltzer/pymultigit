@@ -6,8 +6,19 @@ do
 	then
 		continue
 	fi
-	echo "doing [${x}]"
+	if [ ! -f "${x}/requirements.thawed.txt" ]
+	then
+		continue
+	fi
 	cd "${x}"
-	mg_create_lock_file.sh
+	echo "doing [${x}]"
+	rm -rf "/tmp/venv"
+	virtualenv "/tmp/venv"
+	# shellcheck source=/dev/null
+	source "/tmp/venv/bin/activate"
+	pip install -r "requirements.thawed.txt"
+	pip freeze > "requirements.txt"
+	deactivate
+	rm -rf "/tmp/venv"
 	cd ..
 done
