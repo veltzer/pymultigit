@@ -25,6 +25,6 @@ do
 	fi
 	cd "${x}"
 	echo "doing [${x}]"
-	uv pip compile "requirements.thawed.txt" --no-annotate --no-header --output-file "requirements.txt"
+	uv pip compile "requirements.thawed.txt" --no-annotate --no-header > "requirements.txt"
 	cd ..
 done

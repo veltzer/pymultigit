@@ -10,7 +10,7 @@ do
 	cd "${x}"
 	if [ -f "requirements.txt" ]
 	then
-		pip install -r "requirements.txt"
+		uv pip install -r "requirements.txt"
 	fi
 	cd ..
 done
