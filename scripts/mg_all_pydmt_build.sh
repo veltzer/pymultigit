@@ -6,7 +6,7 @@ do
 	then
 		continue
 	fi
-	if [ ! -f "pydmt.config" ]
+	if [ ! -f "${x}/.pydmt.config" ]
 	then
 		continue
 	fi
