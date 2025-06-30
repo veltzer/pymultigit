@@ -6,6 +6,7 @@ do
 	then
 		continue
 	fi
+	echo "doing [${x}]"
 	cd "${x}"
 	if [ -f "requirements.txt" ]
 	then
