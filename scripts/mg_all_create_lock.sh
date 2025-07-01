@@ -13,6 +13,7 @@ function old_code() {
 	rm -rf "${env_path}"
 }
 
+uv cache clean
 for x in * 
 do
 	if [ ! -d "${x}" ]
