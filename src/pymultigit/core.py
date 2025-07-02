@@ -290,6 +290,11 @@ def do_clean() -> int:
     return subprocess.check_call(args)
 
 
+def do_diff() -> int:
+    args = ["git", "diff"]
+    return subprocess.check_call(args)
+
+
 def do_status() -> None | str:
     (res_out, res_err, _) = run([
         "git",

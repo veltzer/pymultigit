@@ -10,7 +10,7 @@ import pylogconf.core
 
 from pymultigit.configs import ConfigDebug, ConfigGrep, ConfigMain, ConfigOutput
 from pymultigit.core import do_count, is_dirty, has_untracked_files, non_synchronized_with_upstream, \
-    do_for_all_projects, do_clean, do_status, do_dirty, do_pull, do_grep, do_branch_local, \
+    do_for_all_projects, do_clean, do_diff, do_status, do_dirty, do_pull, do_grep, do_branch_local, \
     do_branch_remote, print_projects_that_return_data, do_branch_github, do_check_workflow_exists_for_makefile, \
     do_build_bootstrap, do_build_pydmt, do_build_make, do_build_venv_make, do_build_venv_pydmt, \
     do_build_pydmt_build_venv
@@ -235,6 +235,14 @@ def grep() -> None:
     description="List all projects",
 )
 def list_projects() -> None:
+    print_projects_that_return_data(lambda: "")
+
+
+@register_endpoint(
+    configs=[ConfigDebug],
+    description="diff all projects",
+)
+def diff() -> None:
     print_projects_that_return_data(lambda: "")
 
 

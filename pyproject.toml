@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "pymultigit"
-version = "0.0.93"
+version = "0.0.94"
 requires-python = ">=3.12"
 authors = [
 	{ name = "Mark Veltzer", email = "mark.veltzer@gmail.com" }
