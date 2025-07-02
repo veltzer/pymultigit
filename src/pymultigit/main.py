@@ -243,7 +243,7 @@ def list_projects() -> None:
     description="diff all projects",
 )
 def diff() -> None:
-    print_projects_that_return_data(lambda: "")
+    do_for_all_projects(do_diff)
 
 
 @register_main(
