@@ -2,6 +2,7 @@
 """
 Check for version collisions between multiple requirements.txt files.
 """
+import glob
 import sys
 import re
 from pathlib import Path
@@ -54,19 +55,15 @@ def check_collisions(requirement_files):
     return collisions
 
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: python check_collisions.py <requirements1.txt> <requirements2.txt> ...")
-        print("   or: python check_collisions.py requirements*.txt")
-        sys.exit(1)
-    
-    requirement_files = sys.argv[1:]
+    # requirement_files = sys.argv[1:]
+    requirement_files = glob.glob("*/requirements.txt")
     collisions = check_collisions(requirement_files)
     
     if not collisions:
-        print("✅ No version collisions found!")
+        print("No version collisions found!")
         return
     
-    print(f"❌ Found {len(collisions)} version collision(s):\n")
+    print(f"Found {len(collisions)} version collision(s):\n")
     
     for package, file_versions in collisions:
         print(f"Package: {package}")
