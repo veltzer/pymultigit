@@ -22,3 +22,4 @@ do
 	uv pip compile "requirements.thawed.txt" --constraint "/tmp/master-constraints.txt" --no-annotate --no-header > "requirements.txt"
 	cd ..
 done
+mg_check_collision.py
