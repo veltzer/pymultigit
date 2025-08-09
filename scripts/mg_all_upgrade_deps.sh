@@ -4,7 +4,7 @@
 cat ./*/requirements.thawed.txt | sort -u > "/tmp/reqs"
 # cat ./*/requirements.txt | sort -u > "/tmp/reqs"
 uv cache clean
-uv pip install -r "/tmp/reqs"
+uv pip install -r "/tmp/reqs" --prerelease=allow
 uv pip freeze > "/tmp/master-constraints.txt"
 
 for x in * 
