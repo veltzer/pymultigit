@@ -10,7 +10,13 @@ do
 	cd "${x}"
 	if [ -f "requirements.txt" ]
 	then
-		uv pip install -r "requirements.txt"
+		if [ -s "requirements.txt" ]
+		then
+			uv pip install --strict -r "requirements.txt"
+		else
+			echo "ERROR: requirements.txt file is empty!"
+			exit 1
+		fi
 	fi
 	cd ..
 done
