@@ -25,9 +25,9 @@ from pymultigit.static import DESCRIPTION, APP_NAME, VERSION_STR
 def count_dirty() -> None:
     do_count(
         is_dirty,
-        'is dirty',
-        'is clean',
-        'were dirty',
+        "is dirty",
+        "is clean",
+        "were dirty",
         True,
         False,
     )
@@ -40,9 +40,9 @@ def count_dirty() -> None:
 def untracked() -> None:
     do_count(
         has_untracked_files,
-        'has untracked files',
-        'is fully tracked',
-        'have untracked files',
+        "has untracked files",
+        "is fully tracked",
+        "have untracked files",
         True,
         False,
     )
@@ -91,9 +91,9 @@ def branch_github() -> None:
 def synchronized() -> None:
     do_count(
         non_synchronized_with_upstream,
-        'is behind upstream',
-        'is synchronized',
-        'are behind upstream',
+        "is behind upstream",
+        "is synchronized",
+        "are behind upstream",
         True,
         False,
     )
@@ -258,5 +258,5 @@ def main():
     config_arg_parse_and_launch()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
