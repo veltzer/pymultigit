@@ -14,7 +14,7 @@ def check_call_ve(orig_args: list[str]) -> None:
         if ConfigOutput.print_not:
             print("not a make venv folder (.venv/default is not there)")
         return
-    # we call 'venv-run' with absolute path since it may change folder
+    # we call "venv-run" with absolute path since it may change folder
     args = [
         "venv-run",
         "--venv",
