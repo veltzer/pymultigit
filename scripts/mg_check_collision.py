@@ -69,8 +69,11 @@ def main():
     for package, file_versions in collisions:
         print(f"Package: {package}")
         for file_path, info in file_versions.items():
-            print(f"  {file_path}:{info[\"line\"]} -> {info[\"version\"]}")
-            print(f"    {info[\"raw_line\"]}")
+            info_line = info["line"]
+            info_version = info["version"]
+            info_raw_line = info["raw_line"]
+            print(f"  {file_path}:{info_line} -> {info_version}")
+            print(f"    {info_raw_line}")
         print()
 
 if __name__ == "__main__":
