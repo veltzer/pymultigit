@@ -1,5 +1,7 @@
 #!/bin/bash -eu
 
+# This script builds multiple git repos
+
 for x in * 
 do
 	if [ ! -d "${x}" ]

@@ -1,5 +1,8 @@
 #!/bin/bash -eu
 
+# This script runs over multiple git repos installing the requirements they
+# need into a single git repo
+
 for x in * 
 do
 	if [ ! -d "${x}" ]
