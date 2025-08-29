@@ -8,12 +8,14 @@ do
 	then
 		continue
 	fi
+	echo "doing [${x}]"
 	if [ ! -f "${x}/.pydmt.config" ]
 	then
+		# echo "no .pydmt.config"
 		continue
 	fi
-	echo "doing [${x}]"
 	cd "${x}"
+	# echo "building..."
 	pydmt build
 	cd ..
 done
