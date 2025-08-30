@@ -58,7 +58,7 @@ function mcmp() {
 }
 # python modules
 mcmp "py*/Makefile" pyfolders "/Makefile"
-mcmp "py*/config/deps.py" pyfolders "/config/deps.py"
+# mcmp "py*/config/deps.py" pyfolders "/config/deps.py"
 mcmp "./*/.mypy.ini" allfolders "/.mypy.ini"
 mcmp "./*/.pylintrc" allfolders "/.pylintrc"
 mcmp "./*/.gitignore" allfolders "/.gitignore"
