@@ -1,11 +1,13 @@
 #!/bin/bash -eu
 
+file_reqs="${VIRTUAL_ENV}/requirements.txt"
+file_cons="${VIRTUAL_ENV}/master-constraints.txt"
 # create full requirements file
-cat ./*/requirements.thawed.txt | sort -u > "/tmp/requirements.txt"
+sort -u ./*/requirements.thawed.txt > "${file_reqs}"
 uv cache clean
-# uv pip install -r "/tmp/requirements.txt" --prerelease=disallow
-uv pip install -r "/tmp/requirements.txt" --prerelease=allow
-uv pip freeze > "/tmp/master-constraints.txt"
+# you can put --prerelease=disallow
+uv pip install -r "${file_reqs}" --prerelease=allow
+uv pip freeze > "${file_cons}"
 
 for x in * 
 do
@@ -19,7 +21,7 @@ do
 	fi
 	cd "${x}"
 	echo "doing [${x}]"
-	uv pip compile "requirements.thawed.txt" --constraint "/tmp/master-constraints.txt" --no-annotate --no-header > "requirements.txt" --prerelease=allow
+	uv pip compile "requirements.thawed.txt" --constraint "${file_cons}" --no-annotate --no-header > "requirements.txt" --prerelease=allow
 	cd ..
 done
 mg_check_collision.py
