@@ -1,0 +1,13 @@
+I have a bunch of python projects: project1, project2, ... all under the same folder.
+I can create a virtual env for each of them but that takes too much disk space.
+So I created one big environment for all of them together.
+In order for that big env to have all the modules that all projects needed I concatenated
+the requiremets (and uniqued them) and installed them all using
+"uv pip install -r concatenated.txt".
+
+Now I want to create a lock file for each of the projects.
+I want the lock file to be created with something like:
+	$ uv pip compile "requirements.thawed.txt" --no-annotate --no-header > "requirements.txt"
+But this will calculated the requirements with no regard to the other projects.
+How can I create a lock file per project but still have all those lock files match each other
+in terms of versinos?
