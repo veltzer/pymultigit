@@ -17,37 +17,37 @@ pymultigit.configs module
 
 .. automodule:: pymultigit.configs
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 pymultigit.core module
 ----------------------
 
 .. automodule:: pymultigit.core
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 pymultigit.main module
 ----------------------
 
 .. automodule:: pymultigit.main
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 pymultigit.static module
 ------------------------
 
 .. automodule:: pymultigit.static
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
 
 Module contents
 ---------------
 
 .. automodule:: pymultigit
    :members:
-   :show-inheritance:
    :undoc-members:
+   :show-inheritance:
