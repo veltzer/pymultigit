@@ -6,8 +6,8 @@ file_cons="${VIRTUAL_ENV}/master-constraints.txt"
 sort -u ./*/requirements.thawed.txt > "${file_reqs}"
 uv cache clean
 # you can put --prerelease=disallow
-uv pip install -r "${file_reqs}" --prerelease=allow
-uv pip freeze > "${file_cons}"
+# uv pip install -r "${file_reqs}" --prerelease=allow
+# uv pip freeze > "${file_cons}"
 
 for x in * 
 do
