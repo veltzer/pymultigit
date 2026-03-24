@@ -1,10 +1,8 @@
-#!/bin/bash -eu
+#!/bin/bash -eux
 
 function all_repos {
-	for x in * 
-	do
-		if [ ! -d "${x}" ]
-		then
+	for x in *; do
+		if [ ! -d "${x}" ]; then
 			continue
 		fi
 		echo "doing [${x}]"
@@ -14,8 +12,7 @@ function all_repos {
 	done
 }
 
-for x in $(pymultigit status --terse True)
-do
+for x in $(pymultigit status --terse True); do
 	echo "doing [${x}]"
 	cd "${x}"
 	git_commit.sh
