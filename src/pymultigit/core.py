@@ -11,9 +11,8 @@ from collections.abc import Generator
 
 import git
 
-from pymultigit.configs import ConfigOutput, ConfigDebug, ConfigGrep, ConfigPull, ConfigMain
+from pymultigit.configs import ConfigDebug, ConfigGrep, ConfigMain, ConfigOutput, ConfigPull
 from pymultigit.utils.subprocess import check_call_ve
-
 
 DISABLE = ".build.disable"
 
