@@ -5,10 +5,10 @@ Check for version collisions between multiple requirements.txt files.
 """
 
 import glob
-import sys
 import re
-from pathlib import Path
+import sys
 from collections import defaultdict
+from pathlib import Path
 
 
 def parse_requirement_line(line):
@@ -48,7 +48,7 @@ def check_collisions(requirement_files):
     collisions = []
     for package, file_versions in package_versions.items():
         if len(file_versions) > 1:
-            versions = set(info["version"] for info in file_versions.values())
+            versions = {info["version"] for info in file_versions.values()}
             if len(versions) > 1:
                 collisions.append((package, file_versions))
 

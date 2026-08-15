@@ -3,19 +3,36 @@ main
 """
 
 import sys
-from pytconf import register_endpoint
-from pytconf import register_main, config_arg_parse_and_launch
-import pylogconf.core
 
+import pylogconf.core
+from pytconf import config_arg_parse_and_launch, register_endpoint, register_main
 
 from pymultigit.configs import ConfigDebug, ConfigGrep, ConfigMain, ConfigOutput
-from pymultigit.core import do_count, is_dirty, has_untracked_files, non_synchronized_with_upstream, \
-    do_for_all_projects, do_clean, do_diff, do_status, do_dirty, do_pull, do_grep, do_branch_local, \
-    do_branch_remote, print_projects_that_return_data, do_branch_github, do_check_workflow_exists_for_makefile, \
-    do_build_bootstrap, do_build_pydmt, do_build_make, do_build_venv_make, do_build_venv_pydmt, \
-    do_build_pydmt_build_venv
-
-from pymultigit.static import DESCRIPTION, APP_NAME, VERSION_STR
+from pymultigit.core import (
+    do_branch_github,
+    do_branch_local,
+    do_branch_remote,
+    do_build_bootstrap,
+    do_build_make,
+    do_build_pydmt,
+    do_build_pydmt_build_venv,
+    do_build_venv_make,
+    do_build_venv_pydmt,
+    do_check_workflow_exists_for_makefile,
+    do_clean,
+    do_count,
+    do_diff,
+    do_dirty,
+    do_for_all_projects,
+    do_grep,
+    do_pull,
+    do_status,
+    has_untracked_files,
+    is_dirty,
+    non_synchronized_with_upstream,
+    print_projects_that_return_data,
+)
+from pymultigit.static import APP_NAME, DESCRIPTION, VERSION_STR
 
 
 @register_endpoint(

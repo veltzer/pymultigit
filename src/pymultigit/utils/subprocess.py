@@ -6,7 +6,7 @@ import os
 import os.path
 import subprocess
 
-from pymultigit.configs import ConfigSubprocess, ConfigOutput
+from pymultigit.configs import ConfigOutput, ConfigSubprocess
 
 
 def check_call_ve(orig_args: list[str]) -> None:
