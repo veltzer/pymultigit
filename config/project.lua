@@ -6,3 +6,4 @@ KEYWORDS = {
     "repositories",
     "multiple",
 }
+PYPI = true
