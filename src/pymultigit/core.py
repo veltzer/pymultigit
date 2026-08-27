@@ -17,7 +17,7 @@ from pymultigit.utils.subprocess import check_call_ve
 DISABLE = ".build.disable"
 
 
-def projects() -> Generator[str, None, None]:
+def projects() -> Generator[str]:
     """
     the method yields all project folders [project_dir]
     """
