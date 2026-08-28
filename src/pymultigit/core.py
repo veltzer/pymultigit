@@ -118,7 +118,7 @@ def print_projects_that_return_data(fnc) -> None:
 
 
 def is_dirty(repo) -> bool:
-    return repo.is_dirty()
+    return bool(repo.is_dirty())
 
 
 def has_untracked_files(repo) -> bool:
