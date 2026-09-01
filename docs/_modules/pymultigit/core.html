@@ -200,17 +200,6 @@
 
 
 
-<div class="viewcode-block" id="check_pydmt">
-<a class="viewcode-back" href="../../pymultigit.html#pymultigit.core.check_pydmt">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">check_pydmt</span><span class="p">():</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s2">".pydmt.config"</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">ConfigOutput</span><span class="o">.</span><span class="n">print_not</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">"not a pydmt folder (.pydmt.config not there)"</span><span class="p">)</span>
-        <span class="k">return</span> <span class="kc">True</span>
-    <span class="k">return</span> <span class="kc">False</span></div>
-
-
-
 <div class="viewcode-block" id="do_build_bootstrap">
 <a class="viewcode-back" href="../../pymultigit.html#pymultigit.core.do_build_bootstrap">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">do_build_bootstrap</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -221,48 +210,6 @@
             <span class="nb">print</span><span class="p">(</span><span class="s2">"not a boostrap folder (bootstrap not there)"</span><span class="p">)</span>
         <span class="k">return</span>
     <span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">([</span><span class="s2">"./bootstrap"</span><span class="p">])</span></div>
-
-
-
-<div class="viewcode-block" id="do_build_pydmt">
-<a class="viewcode-back" href="../../pymultigit.html#pymultigit.core.do_build_pydmt">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">do_build_pydmt</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">disable</span><span class="p">():</span>
-        <span class="k">return</span>
-    <span class="k">if</span> <span class="n">check_pydmt</span><span class="p">():</span>
-        <span class="k">return</span>
-    <span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">([</span>
-        <span class="s2">"pydmt"</span><span class="p">,</span>
-        <span class="s2">"build"</span><span class="p">,</span>
-    <span class="p">])</span></div>
-
-
-
-<div class="viewcode-block" id="do_build_venv_pydmt">
-<a class="viewcode-back" href="../../pymultigit.html#pymultigit.core.do_build_venv_pydmt">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">do_build_venv_pydmt</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">disable</span><span class="p">():</span>
-        <span class="k">return</span>
-    <span class="k">if</span> <span class="n">check_pydmt</span><span class="p">():</span>
-        <span class="k">return</span>
-    <span class="n">check_call_ve</span><span class="p">([</span>
-        <span class="s2">"pydmt"</span><span class="p">,</span>
-        <span class="s2">"build"</span><span class="p">,</span>
-    <span class="p">])</span></div>
-
-
-
-<div class="viewcode-block" id="do_build_pydmt_build_venv">
-<a class="viewcode-back" href="../../pymultigit.html#pymultigit.core.do_build_pydmt_build_venv">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">do_build_pydmt_build_venv</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">disable</span><span class="p">():</span>
-        <span class="k">return</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s2">".pydmt.config"</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">ConfigOutput</span><span class="o">.</span><span class="n">print_not</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">"not a pydmt folder (.pydmt.config not there)"</span><span class="p">)</span>
-        <span class="k">return</span>
-    <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"pydmt"</span><span class="p">,</span> <span class="s2">"build_venv"</span><span class="p">]</span>
-    <span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">(</span><span class="n">args</span><span class="p">)</span></div>
 
 
 

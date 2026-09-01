@@ -47,10 +47,7 @@
     <span class="n">do_branch_remote</span><span class="p">,</span>
     <span class="n">do_build_bootstrap</span><span class="p">,</span>
     <span class="n">do_build_make</span><span class="p">,</span>
-    <span class="n">do_build_pydmt</span><span class="p">,</span>
-    <span class="n">do_build_pydmt_build_venv</span><span class="p">,</span>
     <span class="n">do_build_venv_make</span><span class="p">,</span>
-    <span class="n">do_build_venv_pydmt</span><span class="p">,</span>
     <span class="n">do_check_workflow_exists_for_makefile</span><span class="p">,</span>
     <span class="n">do_clean</span><span class="p">,</span>
     <span class="n">do_count</span><span class="p">,</span>
@@ -204,21 +201,6 @@
 
 
 
-<div class="viewcode-block" id="build_pydmt">
-<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.build_pydmt">[docs]</a>
-<span class="nd">@register_endpoint</span><span class="p">(</span>
-    <span class="n">configs</span><span class="o">=</span><span class="p">[</span>
-        <span class="n">ConfigDebug</span><span class="p">,</span>
-        <span class="n">ConfigMain</span><span class="p">,</span>
-        <span class="n">ConfigOutput</span><span class="p">,</span>
-    <span class="p">],</span>
-    <span class="n">description</span><span class="o">=</span><span class="s2">"run pydmt build on repos"</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">build_pydmt</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_build_pydmt</span><span class="p">)</span></div>
-
-
-
 <div class="viewcode-block" id="build_bootstrap">
 <a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.build_bootstrap">[docs]</a>
 <span class="nd">@register_endpoint</span><span class="p">(</span>
@@ -261,36 +243,6 @@
 <span class="p">)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">build_venv_make</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_build_venv_make</span><span class="p">)</span></div>
-
-
-
-<div class="viewcode-block" id="build_pydmt_build_venv">
-<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.build_pydmt_build_venv">[docs]</a>
-<span class="nd">@register_endpoint</span><span class="p">(</span>
-    <span class="n">configs</span><span class="o">=</span><span class="p">[</span>
-        <span class="n">ConfigDebug</span><span class="p">,</span>
-        <span class="n">ConfigMain</span><span class="p">,</span>
-        <span class="n">ConfigOutput</span><span class="p">,</span>
-    <span class="p">],</span>
-    <span class="n">description</span><span class="o">=</span><span class="s2">"create pydmt virtual env"</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">build_pydmt_build_venv</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_build_pydmt_build_venv</span><span class="p">)</span></div>
-
-
-
-<div class="viewcode-block" id="build_venv_pydmt">
-<a class="viewcode-back" href="../../pymultigit.html#pymultigit.main.build_venv_pydmt">[docs]</a>
-<span class="nd">@register_endpoint</span><span class="p">(</span>
-    <span class="n">configs</span><span class="o">=</span><span class="p">[</span>
-        <span class="n">ConfigDebug</span><span class="p">,</span>
-        <span class="n">ConfigMain</span><span class="p">,</span>
-        <span class="n">ConfigOutput</span><span class="p">,</span>
-    <span class="p">],</span>
-    <span class="n">description</span><span class="o">=</span><span class="s2">"run pydmt build on repos, inside venv"</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">build_venv_pydmt</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="n">do_for_all_projects</span><span class="p">(</span><span class="n">do_build_venv_pydmt</span><span class="p">)</span></div>
 
 
 
