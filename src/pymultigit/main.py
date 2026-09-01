@@ -14,10 +14,7 @@ from pymultigit.core import (
     do_branch_remote,
     do_build_bootstrap,
     do_build_make,
-    do_build_pydmt,
-    do_build_pydmt_build_venv,
     do_build_venv_make,
-    do_build_venv_pydmt,
     do_check_workflow_exists_for_makefile,
     do_clean,
     do_count,
@@ -150,18 +147,6 @@ def dirty() -> None:
         ConfigMain,
         ConfigOutput,
     ],
-    description="run pydmt build on repos",
-)
-def build_pydmt() -> None:
-    do_for_all_projects(do_build_pydmt)
-
-
-@register_endpoint(
-    configs=[
-        ConfigDebug,
-        ConfigMain,
-        ConfigOutput,
-    ],
     description="run bootstrap build on repos",
 )
 def build_bootstrap() -> None:
@@ -190,30 +175,6 @@ def build_make() -> None:
 )
 def build_venv_make() -> None:
     do_for_all_projects(do_build_venv_make)
-
-
-@register_endpoint(
-    configs=[
-        ConfigDebug,
-        ConfigMain,
-        ConfigOutput,
-    ],
-    description="create pydmt virtual env",
-)
-def build_pydmt_build_venv() -> None:
-    do_for_all_projects(do_build_pydmt_build_venv)
-
-
-@register_endpoint(
-    configs=[
-        ConfigDebug,
-        ConfigMain,
-        ConfigOutput,
-    ],
-    description="run pydmt build on repos, inside venv",
-)
-def build_venv_pydmt() -> None:
-    do_for_all_projects(do_build_venv_pydmt)
 
 
 @register_endpoint(
