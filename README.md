@@ -5,7 +5,7 @@
 
 description: Pymultigit helps you deal with multiple git repositories
 
-project website: https://veltzer.github.io/pymultigit
+project website: <https://veltzer.github.io/pymultigit>
 
 author: Mark Veltzer
 
