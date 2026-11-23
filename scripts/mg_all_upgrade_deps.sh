@@ -1,5 +1,7 @@
 #!/bin/bash -eu
 
+: "${VIRTUAL_ENV:?VIRTUAL_ENV must be set}"
+
 file_reqs="${VIRTUAL_ENV}/requirements.txt"
 file_cons="${VIRTUAL_ENV}/master-constraints.txt"
 # create full requirements file

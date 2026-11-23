@@ -65,12 +65,11 @@ def do_count(fnc, attr_name, not_attr_name, attr_plural, print_attr, print_not_a
                     print(project_dir)
                 else:
                     print(f"project [{project_dir}] {attr_name}")
-        else:
-            if print_not_attr:
-                if ConfigOutput.terse:
-                    print(project_dir)
-                else:
-                    print(f"project [{project_dir}] {not_attr_name}")
+        elif print_not_attr:
+            if ConfigOutput.terse:
+                print(project_dir)
+            else:
+                print(f"project [{project_dir}] {not_attr_name}")
     if ConfigOutput.stats:
         print(f"scanned [{count}] projects")
         print(f"[{count_attr}] projects {attr_plural}")
@@ -253,7 +252,7 @@ def do_diff() -> int:
     return subprocess.check_call(args)
 
 
-def do_status() -> None | str:
+def do_status() -> str | None:
     (res_out, res_err, _) = run([
         "git",
         "status",
@@ -281,7 +280,7 @@ def do_status() -> None | str:
     return None
 
 
-def do_dirty() -> None | str:
+def do_dirty() -> str | None:
     args = ["git", "status", "--porcelain"]
     if ConfigDebug.git_verbose:
         args.append("--verbose")

@@ -2,6 +2,7 @@
 main
 """
 
+import io
 import sys
 
 import pylogconf.core
@@ -232,7 +233,8 @@ def diff() -> None:
 def main():
     pylogconf.core.setup()
     # make sure stdout is line buffered
-    sys.stdout.reconfigure(line_buffering=True)
+    if isinstance(sys.stdout, io.TextIOWrapper):
+        sys.stdout.reconfigure(line_buffering=True)
     config_arg_parse_and_launch()
 
 
