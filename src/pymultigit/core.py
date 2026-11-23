@@ -49,7 +49,6 @@ def run(args, do_exit=True) -> tuple[str, str, int]:
     return res_out, res_err, p.returncode
 
 
-# pylint: disable=too-many-positional-arguments
 def do_count(fnc, attr_name, not_attr_name, attr_plural, print_attr, print_not_attr) -> None:
     count = 0
     count_attr = 0
@@ -81,10 +80,9 @@ def do_for_all_projects(fnc) -> None:
         if ConfigOutput.output:
             print(f"[{project_dir}]...")
         os.chdir(project_dir)
-        # pylint: disable=bare-except
         try:
             fnc()
-        except:  # noqa: E722
+        except Exception:
             if ConfigMain.stop:
                 raise
         os.chdir(orig_dir)
@@ -200,7 +198,8 @@ def do_grep() -> None:
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
     ) as pipe:
-        for line in pipe.stdout:  # type: ignore[union-attr]
+        assert pipe.stdout is not None  # stdout=PIPE above
+        for line in pipe.stdout:
             try:
                 print(f"{project_dir}/{line.decode()}", end="")
             except UnicodeDecodeError:
