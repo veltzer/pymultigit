@@ -53,8 +53,7 @@ function mcmp() {
 			t+=("${elem}${add}")
 		fi
 	done
-	# shellcheck disable=SC2046
-	pycmdtools mcmp --print "${print}" $(printf "%s " "${t[@]}")
+	pycmdtools mcmp --print "${print}" "${t[@]}"
 }
 # python modules
 mcmp "py*/Makefile" pyfolders "/Makefile"
