@@ -5,15 +5,15 @@
 
 for x in * 
 do
-	if [ ! -d "${x}" ]
+	if [[ ! -d "${x}" ]]
 	then
 		continue
 	fi
 	echo "doing [${x}]"
 	cd "${x}"
-	if [ -f "requirements.txt" ]
+	if [[ -f "requirements.txt" ]]
 	then
-		if [ -s "requirements.txt" ]
+		if [[ -s "requirements.txt" ]]
 		then
 			uv pip install --strict -r "requirements.txt"
 		else

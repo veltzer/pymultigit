@@ -48,7 +48,7 @@ function mcmp() {
 	t=()
 	for elem in "${arr[@]}"
 	do
-		if [ -f "${elem}${add}" ]
+		if [[ -f "${elem}${add}" ]]
 		then
 			t+=("${elem}${add}")
 		fi

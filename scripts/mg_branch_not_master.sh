@@ -1,23 +1,24 @@
 #!/bin/bash -eu
 for x in *
 do
-	if [ ! -d "${x}/.git" ]
+	if [[ ! -d "${x}/.git" ]]
 	then
 		continue
 	fi
 	cd "${x}" || exit
 	branch=$(git branch --show-current)
-	if [ "${branch}" != "master" ]
+	if [[ "${branch}" != "master" ]]
 	then
 		echo "${x} local ${branch}"
 	fi
 	remote=$(git branch -r -q --show-current)
-	if [ "${remote}" != "master" ]
+	if [[ "${remote}" != "master" ]]
 	then
 		echo "${x} remote ${branch}"
 	fi
-	num_branches=$(git branch | wc -l)
-	if [ "${num_branches}" != "1" ]
+	mapfile -t branch_list < <(git branch || true)
+	num_branches=${#branch_list[@]}
+	if [[ "${num_branches}" != "1" ]]
 	then
 		echo "${x} ${num_branches}"
 	fi

@@ -2,7 +2,7 @@
 
 function all_repos {
 	for x in *; do
-		if [ ! -d "${x}" ]; then
+		if [[ ! -d "${x}" ]]; then
 			continue
 		fi
 		echo "doing [${x}]"

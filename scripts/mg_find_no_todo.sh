@@ -1,7 +1,7 @@
 #!/bin/bash -eu
 for x in py*
 do
-	if [ ! -f "${x}/doc/TODO.txt" ]
+	if [[ ! -f "${x}/doc/TODO.txt" ]]
 	then
 		echo "${x}"
 	fi

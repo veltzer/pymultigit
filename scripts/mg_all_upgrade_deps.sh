@@ -13,11 +13,11 @@ uv cache clean
 
 for x in * 
 do
-	if [ ! -d "${x}" ]
+	if [[ ! -d "${x}" ]]
 	then
 		continue
 	fi
-	if [ ! -f "${x}/requirements.thawed.txt" ]
+	if [[ ! -f "${x}/requirements.thawed.txt" ]]
 	then
 		continue
 	fi
