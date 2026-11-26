@@ -7,12 +7,15 @@ import os
 import os.path
 import subprocess
 import sys
-from collections.abc import Generator
+from typing import TYPE_CHECKING
 
 import git
 
 from pymultigit.configs import ConfigDebug, ConfigGrep, ConfigMain, ConfigOutput, ConfigPull
 from pymultigit.utils.subprocess import check_call_ve
+
+if TYPE_CHECKING:
+    from collections.abc import Generator
 
 DISABLE = ".build.disable"
 
