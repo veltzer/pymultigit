@@ -11,7 +11,7 @@ from collections import defaultdict
 from pathlib import Path
 
 
-def parse_requirement_line(line):
+def parse_requirement_line(line: str):
     """Parse a requirement line and return (package, version)."""
     line = line.strip()
     if not line or line.startswith("#"):
@@ -28,7 +28,7 @@ def parse_requirement_line(line):
     return None, None
 
 
-def check_collisions(requirement_files):
+def check_collisions(requirement_files: list[str]):
     """Check for version collisions across multiple requirements files."""
     package_versions = defaultdict(dict)  # {package: {file: version}}
 
@@ -55,7 +55,7 @@ def check_collisions(requirement_files):
     return collisions
 
 
-def main():
+def main() -> None:
     requirement_files = glob.glob("*/requirements.txt")
     collisions = check_collisions(requirement_files)
 

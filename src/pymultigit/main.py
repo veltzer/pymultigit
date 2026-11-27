@@ -230,7 +230,7 @@ def diff() -> None:
     app_name=APP_NAME,
     version=VERSION_STR,
 )
-def main():
+def main() -> None:
     pylogconf.core.setup()
     # make sure stdout is line buffered
     if isinstance(sys.stdout, io.TextIOWrapper):

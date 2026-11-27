@@ -8,20 +8,20 @@ from pymultigit import core
 
 
 class IsGitFolderTests(unittest.TestCase):
-    def test_directory_with_git_subdir_is_git_folder(self):
+    def test_directory_with_git_subdir_is_git_folder(self) -> None:
         with tempfile.TemporaryDirectory() as d:
             os.mkdir(os.path.join(d, ".git"))
             assert core.is_git_folder(d)
 
-    def test_directory_without_git_subdir_is_not(self):
+    def test_directory_without_git_subdir_is_not(self) -> None:
         with tempfile.TemporaryDirectory() as d:
             assert not core.is_git_folder(d)
 
-    def test_nonexistent_path_is_not(self):
+    def test_nonexistent_path_is_not(self) -> None:
         with tempfile.TemporaryDirectory() as d:
             assert not core.is_git_folder(os.path.join(d, "nope"))
 
-    def test_git_as_file_not_dir_is_not(self):
+    def test_git_as_file_not_dir_is_not(self) -> None:
         # a submodule's ".git" is a file, not a directory; that must not count
         with tempfile.TemporaryDirectory() as d:
             with open(os.path.join(d, ".git"), "w", encoding="utf-8"):

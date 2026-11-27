@@ -15,7 +15,7 @@ from pymultigit.configs import ConfigDebug, ConfigGrep, ConfigMain, ConfigOutput
 from pymultigit.utils.subprocess import check_call_ve
 
 if TYPE_CHECKING:
-    from collections.abc import Generator
+    from collections.abc import Callable, Generator
 
 DISABLE = ".build.disable"
 
@@ -38,7 +38,7 @@ def projects() -> Generator[str]:
     yield from repos_list
 
 
-def run(args, *, do_exit=True) -> tuple[str, str, int]:
+def run(args: list[str], *, do_exit: bool = True) -> tuple[str, str, int]:
     with subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE) as p:
         (res_out_b, res_err_b) = p.communicate()
         res_out = res_out_b.decode()
@@ -52,7 +52,7 @@ def run(args, *, do_exit=True) -> tuple[str, str, int]:
     return res_out, res_err, p.returncode
 
 
-def do_count(fnc, attr_name, not_attr_name, attr_plural, print_attr, print_not_attr) -> None:
+def do_count(fnc: Callable[[git.Repo], bool], attr_name: str, not_attr_name: str, attr_plural: str, *, print_attr: bool, print_not_attr: bool) -> None:
     count = 0
     count_attr = 0
     for project_dir in projects():
@@ -77,7 +77,7 @@ def do_count(fnc, attr_name, not_attr_name, attr_plural, print_attr, print_not_a
         print(f"[{count_attr}] projects {attr_plural}")
 
 
-def do_for_all_projects(fnc) -> None:
+def do_for_all_projects(fnc: Callable[[], object]) -> None:
     orig_dir = os.getcwd()
     for project_dir in projects():
         if ConfigOutput.output:
@@ -95,7 +95,7 @@ def is_git_folder(directory: str) -> bool:
     return os.path.isdir(directory) and os.path.isdir(os.path.join(directory, ".git"))
 
 
-def print_projects_that_return_data(fnc) -> None:
+def print_projects_that_return_data(fnc: Callable[[], object]) -> None:
     """
     In this function we are sure that the directories we get a real git folders
     since we get them from the `projects` function. There is no need to check this.
@@ -117,19 +117,19 @@ def print_projects_that_return_data(fnc) -> None:
         print("no projects found")
 
 
-def is_dirty(repo) -> bool:
-    return bool(repo.is_dirty())
+def is_dirty(repo: git.Repo) -> bool:
+    return repo.is_dirty()
 
 
-def has_untracked_files(repo) -> bool:
+def has_untracked_files(repo: git.Repo) -> bool:
     return len(repo.untracked_files) > 0
 
 
-def non_synchronized_with_upstream(_repo: str) -> bool:
+def non_synchronized_with_upstream(_repo: git.Repo) -> bool:
     return False
 
 
-def disable():
+def disable() -> bool:
     if os.path.isfile(DISABLE):
         if ConfigOutput.print_not:
             print(f"build is disabled with file [{DISABLE}]")
