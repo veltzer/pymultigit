@@ -56,7 +56,6 @@ def check_collisions(requirement_files):
 
 
 def main():
-    # requirement_files = sys.argv[1:]
     requirement_files = glob.glob("*/requirements.txt")
     collisions = check_collisions(requirement_files)
 

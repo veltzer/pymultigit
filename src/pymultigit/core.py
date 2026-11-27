@@ -242,10 +242,6 @@ def do_branch_github() -> str:
 
 def do_clean() -> int:
     args = ["git", "clean", "-qffxd"]
-    # if ConfigDebug.git_verbose:
-    #     args.append("--verbose")
-    # if ConfigDebug.git_quiet:
-    #     args.append("--quiet")
     return subprocess.check_call(args)
 
 
