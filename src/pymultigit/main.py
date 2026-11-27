@@ -43,8 +43,8 @@ def count_dirty() -> None:
         "is dirty",
         "is clean",
         "were dirty",
-        True,
-        False,
+        print_attr=True,
+        print_not_attr=False,
     )
 
 
@@ -58,8 +58,8 @@ def untracked() -> None:
         "has untracked files",
         "is fully tracked",
         "have untracked files",
-        True,
-        False,
+        print_attr=True,
+        print_not_attr=False,
     )
 
 
@@ -109,8 +109,8 @@ def synchronized() -> None:
         "is behind upstream",
         "is synchronized",
         "are behind upstream",
-        True,
-        False,
+        print_attr=True,
+        print_not_attr=False,
     )
 
 

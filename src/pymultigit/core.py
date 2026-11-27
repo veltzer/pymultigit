@@ -38,7 +38,7 @@ def projects() -> Generator[str]:
     yield from repos_list
 
 
-def run(args, do_exit=True) -> tuple[str, str, int]:
+def run(args, *, do_exit=True) -> tuple[str, str, int]:
     with subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE) as p:
         (res_out_b, res_err_b) = p.communicate()
         res_out = res_out_b.decode()
